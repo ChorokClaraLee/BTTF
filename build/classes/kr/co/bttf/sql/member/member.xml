@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+	<select id="login" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM USER_ALL WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+	</select>
+	
+	<insert id="join" parameterType="userdto">
+		INSERT INTO USER_ALL (user_id, user_pw, user_name, user_phone, user_email, main_language) VALUES ( #{user_id }, #{user_pw }, #{user_name }, #{user_phone }, #{user_email }, #{main_language } )
+	</insert>
+	
+	<select id ="findPw" parameterType = "hashmap" resultType="string"	>
+		SELECT user_pw FROM USER_ALL WHERE user_id = #{user_id} AND user_email = #{user_email}
+	</select>
+	
+	<select id ="findId" parameterType = "hashmap" resultType="string"	>
+		SELECT USER_ID FROM USER_ALL WHERE user_name = #{user_name} AND user_email = #{user_email}
+	</select>
+	
+	<select id="searchById" parameterType="string" resultType="_int">
+		SELECT count(*) FROM USER_ALL WHERE user_id = #{user_id}
+	</select>
+</mapper>
