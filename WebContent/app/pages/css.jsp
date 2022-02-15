@@ -112,7 +112,9 @@
 	                </table>
 	            </div>
 	            <!-- End notice -->
-	            <a href="${pageContext.request.contextPath }/pages/csswrite.do"class="btn btn-primary" type="submit">글쓰기</a>
+	            <c:if test="${sessionScope.session_id != null }">
+	           	 <a href="${pageContext.request.contextPath }/pages/csswrite.do"class="btn btn-primary" type="submit">글쓰기</a>
+	            </c:if>
 				<!--<input type="hidden" name="css" value="1"> -->
             </form>
         </div>
