@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -112,11 +112,43 @@
 	                </table>
 	            </div>
 	            <!-- End notice -->
+
 	            <c:if test="${sessionScope.session_id != null }">
 	           	 <a href="${pageContext.request.contextPath }/pages/csswrite.do"class="btn btn-primary" type="submit">글쓰기</a>
 	            </c:if>
 				<!--<input type="hidden" name="css" value="1"> -->
             </form>
+            <!-- board pagination -->
+				<nav aria-label="Page navigation" class="text-center">
+				<input type="hidden" name="post_id" value="${board.post_id }">
+					<ul class="pagination">
+						<c:if test="${nowPage > 1 }">
+							<li class="page-item">							
+								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage - 1 }">&lt;</a>
+							</li>
+						</c:if>
+						<c:forEach var="i" begin="${startPage}" end="${endPage }">
+							<c:choose>
+								<c:when test="${i == nowPage }">
+									<li class="page-item">
+										<a class="page-link">${i }	</a>						
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">									
+										<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${i }">${i }</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>	
+						<c:if test="${nowPage<totalPage }">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage + 1 }">&gt;</a>
+							</li>
+						</c:if>						
+					</ul>
+				</nav>
+								<!-- end of board pagination -->	
         </div>
     </div>
     <!-- End notice -->
