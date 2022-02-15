@@ -62,19 +62,19 @@
         <div class="content-lg container">
             <h1 class="pt-4">
                 <i class="fas fa-user-circle title_subject_icon"></i>
-                ê´ë¦¬ì íì´ì§
+                	관리자 페이지
             </h1>
             <div role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tab-text-nav" role="tablist" >
                     <li role="presentation" class="active col-md-4 tab_non"  style="padding: 0 !important;">
                         <a class="text-center" href="#management" aria-controls="management" role="tab" data-toggle="tab">
-                            íìê´ë¦¬
+							회원관리
                         </a>
                     </li>
                     <li role="presentation" class="col-md-4 tab_non"  style="padding: 0 !important;">
                         <a class="text-center" href="#postmanagement" aria-controls="postmanagement" role="tab" data-toggle="tab"> 
-                            ê²ìê¸ ê´ë¦¬
+							게시글 관리
                         </a>
                     </li>
                 </ul>
@@ -83,19 +83,17 @@
                 <div class="tab-content">
                     <!-- member management tab-->
                     <div role="tabpanel" class="tab-pane active" id="management">
-
                         <div role="tabpanel " style="margin-top: 70px;">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-text-nav" role="tablist" >
                                 <li role="presentation" class="active col-md-4 tab_non"  style="padding: 0 !important;">
                                     <a class="text-center" href="#allmembers" aria-controls="allmembers" role="tab" data-toggle="tab">
-                                        ì ì²´íì
+										전체회원
                                     </a>
                                 </li>
                                 <li role="presentation" class="col-md-4 tab_non"  style="padding: 0 !important;">
                                     <a class="text-center" href="#blockedmember" aria-controls="blockedmember" role="tab" data-toggle="tab"> 
-                                        ì°¨ë¨ë íì
-                                    </a>
+                            			신고된 회원</a>
                                 </li>
                             </ul>
                             <!-- End Nav tabs -->
@@ -107,16 +105,15 @@
                                         <!-- memberlist table -->
                                         <h2>
                                             <i class="fas fa-user-cog title_subject_icon"></i>
-                                            ì ì²´íì
-                                        </h2>
+                                             	회원목록</h2>
                                         <div class="table-responsive">
                                             <table class="table table-striped">
                                                 <thead>
                                                     <th>ID</th>
-                                                    <th>ì´ë¦</th>
-                                                    <th>ì íë²í¸</th>
-                                                    <th>ê°ìì¼ì</th>
-                                                    <th>ì°¨ë¨íê¸°</th>
+                                                    <th>회원이름</th>
+                                                    <th>휴대폰번호</th>
+                                                    <th>가입일자</th>
+                                                    <th>계정관리</th>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -124,50 +121,30 @@
                                                         <td>test name</td>
                                                         <td>010-****-1111</td>
                                                         <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
+                                                        <td><input class="btn btn-danger" type="button" value="차단하기"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>test2</td>
                                                         <td>test name2</td>
                                                         <td>010-****-1111</td>
                                                         <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
+                                                        <td><input class="btn btn-danger" type="button" value="차단하기"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>test3</td>
                                                         <td>test name3</td>
                                                         <td>010-****-1111</td>
                                                         <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
+                                                        <td><input class="btn btn-danger" type="button" value="차단하기"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>test4</td>
                                                         <td>test name4</td>
                                                         <td>010-****-1111</td>
                                                         <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
+                                                        <td><input class="btn btn-danger" type="button" value="차단하기"></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>test5</td>
-                                                        <td>test name5</td>
-                                                        <td>010-****-1111</td>
-                                                        <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>test6</td>
-                                                        <td>test name6</td>
-                                                        <td>010-****-1111</td>
-                                                        <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>test7</td>
-                                                        <td>test name7</td>
-                                                        <td>010-****-1111</td>
-                                                        <td>2021-12-08</td>
-                                                        <td><input class="btn btn-danger" type="button" value="ì°¨ë¨"></td>
-                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
@@ -182,16 +159,17 @@
                                         <!-- memberlist table -->
                                         <h2>
                                             <i class="fas fa-user-alt-slash title_subject_icon"></i>
-                                            ì°¨ë¨ë íì
-                                        </h2>
+                                            	차단된 회원</h2>
                                         <div class="table-responsive">
                                             <table class="table table-striped">
                                                 <thead>
-                                                    <th>ID</th>
-                                                    <th>ì´ë¦</th>
-                                                    <th>ì íë²í¸</th>
-                                                    <th>ê°ìì¼ì</th>
-                                                    <th>ì°¨ë¨í´ì </th>
+	                                                <tr>
+	                                                    <th>ID</th>
+	                                                    <th>회원이름</th>
+	                                                    <th>휴대폰번호</th>
+	                                                    <th>가입일자</th>
+	                                                    <th>계정관리</th>
+	                                                </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -264,18 +242,15 @@
                             <ul class="nav nav-tabs tab-text-nav" role="tablist" >
                                 <li role="presentation" class="active col-md-4 tab_non"  style="padding: 0 !important;">
                                     <a class="text-center" href="#allboard" aria-controls="allboard" role="tab" data-toggle="tab">
-                                        ì ì²´ ê²ìê¸
-                                    </a>
+                                        	전체 게시글</a>
                                 </li>
                                 <li role="presentation" class="col-md-4 tab_non"  style="padding: 0 !important;">
                                     <a class="text-center" href="#notice" aria-controls="notice" role="tab" data-toggle="tab"> 
-                                        ê³µì§ì¬í­ ë±ë¡
-                                    </a>
+                                        	공지사항</a>
                                 </li>
                                 <li role="presentation" class="col-md-4 tab_non"  style="padding: 0 !important;">
                                     <a class="text-center" href="#blockedboard" aria-controls="blockedboard" role="tab" data-toggle="tab"> 
-                                        ì ê³ ë ê²ìê¸
-                                    </a>
+                                        	신고된게시글</a>
                                 </li>
                             </ul>
                             <!-- End Nav tabs -->
@@ -284,18 +259,21 @@
                                 <!-- allboard tab-->
                                 <div role="tabpanel" class="tab-pane active" id="allboard">
                                     <div class="content-lg container">
-                                        <!-- memberlist table -->
+                                        <!-- allboard table -->
                                         <h2>
                                             <i class="fas fa-list title_subject_icon"></i>
-                                            ì ì²´ ê²ìë¬¼
+                                           	 전체 게시글
                                         </h2>
                                         <div class="table-responsive">
                                             <table class="table table-striped">
                                                 <thead>
-                                                    <th>ì ëª©</th>
-                                                    <th>ì¶ì²ì</th>
-                                                    <th>ìì±ì</th>
-                                                    <th>ìì±ì¼ì</th>
+                                                    <tr>
+	                                                <th>게시글</th>
+                                                    <th>제목</th>
+                                                    <th>작성자</th>
+                                                    <th>작성일자</th>
+
+	                                                </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -369,23 +347,24 @@
                                 <!--notice tab -->
                                 <div role="tabpanel" class="tab-pane" id="notice">
                                     <div class="content-lg container">
-                                        <!-- memberlist table -->
+                                        <!-- notice table -->
                                         <h2>
                                             <i class="fas fa-bullhorn title_subject_icon"></i>
-                                            ê³µì§ì¬í­
+                                            	공지사항
                                         </h2>
                                         <div class="table-responsive">
                                             <table class="table table-striped">
                                                 <thead>
-                                                    <th>ì ëª©</th>
-                                                    <th>ì¶ì²ì</th>
-                                                    <th>ìì±ì</th>
-                                                    <th>ìì±ì¼ì</th>
+                                                    <tr>
+		                                                <th>게시글</th>
+	                                                    <th>제목</th>
+	                                                    <th>작성자</th>
+	                                                    <th>작성일자</th>
+	                                                </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td colspan="4" class="text-center">ë±ë¡ë ê³µì§ì¬í­ì´ ììµëë¤.</td>
-                                                        
+                                                        <td colspan="4" class="text-center">등록된 게시글이 없습니다.</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -401,15 +380,16 @@
                                         <!-- memberlist table -->
                                         <h2>
                                             <i class="fas fa-window-close title_subject_icon"></i>
-                                            ì ê³ ë ê²ìê¸
-                                        </h2>
+                                            	신고된게시글</h2>
                                         <div class="table-responsive">
                                             <table class="table table-striped">
                                                 <thead>
-                                                    <th>ì ëª©</th>
-                                                    <th>ì¶ì²ì</th>
-                                                    <th>ìì±ì</th>
-                                                    <th>ìì±ì¼ì</th>
+                                                <tr>
+                                                    <th>게시글</th>
+                                                    <th>제목</th>
+                                                    <th>작성자</th>
+                                                    <th>작성일자</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
@@ -505,17 +485,17 @@
     <script src="../../resource/vendor/c3-0.7.20/c3.js"></script>
     <script src="../../resource/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 
-    <script>
-        var chart = c3.generate({
-            bindto: '#chart',
-            data: {
-            columns: [
-                ['ìì±í ê¸', 30, 200, 100, 400, 150, 250],
-                ['ë°ì ì¶ì²ì', 50, 20, 10, 40, 15, 25]
-            ]
-            }
-        });
-    </script>
+<!--     <script> -->
+//         var chart = c3.generate({
+//             bindto: '#chart',
+//             data: {
+//             columns: [
+//                 ['ìì±í ê¸', 30, 200, 100, 400, 150, 250],
+//                 ['ë°ì ì¶ì²ì', 50, 20, 10, 40, 15, 25]
+//             ]
+//             }
+//         });
+<!--     </script> -->
 </body>
 <!-- END BODY -->
 

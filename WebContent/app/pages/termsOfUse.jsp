@@ -519,8 +519,6 @@
     <script src="/resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="/resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="/resource/js/action.js"></script>
-    <!-- Prevention/ F12, -->
-    <!-- <script src="js/Prevention.js"></script> -->
 </body>
 <!-- END BODY -->
 

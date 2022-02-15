@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -112,7 +112,11 @@
 	                </table>
 	            </div>
 	            <!-- End notice -->
-	            <a href="${pageContext.request.contextPath }/pages/csswrite.do"class="btn btn-primary" type="submit">글쓰기</a>
+
+	            <c:if test="${sessionScope.session_id != null }">
+	           	 <a href="${pageContext.request.contextPath }/pages/csswrite.do"class="btn btn-primary" type="submit">글쓰기</a>
+	            </c:if>
+				<!--<input type="hidden" name="css" value="1"> -->
             </form>
             <!-- board pagination -->
 				<nav aria-label="Page navigation" class="text-center">

@@ -93,8 +93,8 @@
                                 	<p class="margin-b-50 text-center" > 작성자 ${board.writer }</p>
                                 </div>
                                 <div>
-                                    <textarea class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
-                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</textarea>
+                                    <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
+                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</pre>
                                 </div> 
 	                            <div class="mb-5">
 	                                <c:if test="${empty sessionScope.session}">
@@ -115,7 +115,7 @@
                             </form>
                             
            					<!-- 댓글 작성 -->
-							<form name="replyForm" action="${pageContext.request.contextPath }/pages/cssReplyWriteOKAction.do" method="post">
+							<form name="replyForm" action="${pageContext.request.contextPath }/pages/cssReplyWriteOKAction.do" method="post" onsubmit="return update()">
 								<input type="hidden" name="post_id" value="${board.post_id }">
 								<div class="col-auto" style="display: flex;">
                            			<input id="reply_contents" name="reply_contents" class="form-control mt-5" style="width: 95%;" type="text" placeholder="댓글을 작성해보세요">
@@ -127,29 +127,27 @@
 									<c:choose>
 										<c:when test="${replylist != null and fn:length(replylist) > 0 }">
 											<c:forEach var="reply" items="${replylist }">
-												<div>
+												<div class="reply_box mt-5">
 													<!-- 정상적인 접근 경로 -->
-													<c:if test="${sessionScope.session_id != null }" >
 														<div align="center" width="200px" >
-														<p id="re_author" name="user_id" class="form-control margin-b-50" style="display:hidden;">${reply.replyer }</p>
+															<p id="re_author" name="user_id" class="text-left reply_subject" style="display:hidden;">${reply.replyer }</p>
 														</div>
+													<c:if test="${sessionScope.session_id != null }" >
 														<div valign="top" style="padding-left: 10px;">
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
-															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</textarea>
+															<pre id="reply${reply.reply_id }" name="reply${reply.reply_id }" style="text-align:left;border:0px; height:fit-content; " readonly>${reply.reply_contents }</pre>
 															<%--<c:if test= ${sessionScope.session_id ==  dto.writer} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
-															<a href="javascript:updateReply( ${reply.reply_id})">[수정]</a>
-															<a href="javascript:updateReadonlyReply( ${reply.reply_id} );">[수정 하기]</a>
-															<a href="javascript:deleteReply( ${reply.reply_id})">[삭제]</a>
+															<a type="submit" id="editbtn" class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" name="updata">수정 하기</a>
+															<a id="edityesbtn" class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})">수정  완료</a>
+															<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})">삭제</a>
 														</div>
 													</c:if>
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${sessionScope.session_id == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
-															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</textarea>
-															<a href="login.jsp" class="btn btn-info mt-4" id="editsubmitfail">[수정]</a>
-															<a href="login.jsp" class="btn btn-info mt-4" id="editfail">[수정 하기]</a>
-															<a href="login.jsp" class="btn btn-info mt-4" id="deletefail">[삭제]</a>
+															<pre id="reply${reply.reply_id }" name="reply${reply.reply_id }" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</pre>
+															<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-info mt-4" id="editfail">수정 하기</a>
+															<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-primary mt-4" id="editsubmitfail">수정 완료</a>
+															<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-danger mt-4" id="deletefail">삭제</a>
 														</div>
 													</c:if>
 												</div>
@@ -241,9 +239,24 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-    <script src="../../resource/js/Prevention.js"></script>
     <script src="../../resource/vendor/ckeditor5-build-classic/translations/ko.js"></script>
 	<script src="../../resource/vendor/ckeditor5-build-classic/ckeditor.js"></script>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			
+			
+			
+		};	
+	
+		document.getElementById("edityesbtn").className = "hidden";
+		
+		
+		
+	</script>
+	
+	
+
     <script>
         ClassicEditor
             .create( document.querySelector( '#classic' ))
@@ -264,6 +277,7 @@
 	function deleteCss(post_id){
 		if (true){
 			document.replyForm.action = "${pageContext.request.contextPath}/pages/cssDelete.do?post_id="+post_id;
+			
 			document.replyForm.submit();
 		}
 	}
@@ -271,12 +285,14 @@
 	// [댓글 수정하기] function
 	function updateReadonlyReply( reply_id ){
 		document.getElementById( 'reply' + reply_id ).readOnly = false;
+		
 	}
 	
-	// [댓글 수정] function
+	// [댓글 수정완료] function
 	function updateReply( reply_id ){
 		if (true){
 			document.replyForm.action = "${pageContext.request.contextPath}/pages/cssUpdateReply.do?reply_id="+reply_id;
+			
 			document.replyForm.submit();
 		}
 	}
@@ -288,6 +304,9 @@
 			document.replyForm.submit();
 		}
 	}
+	
+	
+	
 	
 </script>
 </html>
