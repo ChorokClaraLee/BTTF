@@ -241,7 +241,6 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-    <script src="../../resource/js/Prevention.js"></script>
     <script src="../../resource/vendor/ckeditor5-build-classic/translations/ko.js"></script>
 	<script src="../../resource/vendor/ckeditor5-build-classic/ckeditor.js"></script>
     <script>

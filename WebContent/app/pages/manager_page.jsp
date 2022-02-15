@@ -498,8 +498,6 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-    <!-- F12 ,right click block-->
-    <!-- <script src="js/Prevention.js"></script> -->
 
     <!-- Load d3.js and c3.js -->
     <script src="../../resource/vendor/c3-0.7.20/c3.js"></script>
