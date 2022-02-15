@@ -134,8 +134,8 @@
 														<p id="re_author" name="user_id" class="form-control margin-b-50" style="display:hidden;">${reply.replyer }</p>
 														</div>
 														<div valign="top" style="padding-left: 10px;">
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
-															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</textarea>
+															<pre id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
+															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</pre>
 															<%--<c:if test= ${sessionScope.session_id ==  dto.writer} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
 															<a href="javascript:updateReply( ${reply.reply_id})">[수정]</a>
 															<a href="javascript:updateReadonlyReply( ${reply.reply_id} );">[수정 하기]</a>
@@ -145,8 +145,8 @@
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${sessionScope.session_id == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
-															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</textarea>
+															<pre id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
+															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</pre>
 															<a href="login.jsp" class="btn btn-info mt-4" id="editsubmitfail">[수정]</a>
 															<a href="login.jsp" class="btn btn-info mt-4" id="editfail">[수정 하기]</a>
 															<a href="login.jsp" class="btn btn-info mt-4" id="deletefail">[삭제]</a>
