@@ -93,8 +93,8 @@
                                 	<p class="margin-b-50 text-center" > 작성자 ${board.writer }</p>
                                 </div>
                                 <div>
-                                    <textarea class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
-                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</textarea>
+                                    <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
+                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</pre>
                                 </div> 
 	                            <div class="mb-5">
 	                                <c:if test="${empty sessionScope.session}">
