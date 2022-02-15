@@ -137,8 +137,8 @@
 															<pre id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
 															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</pre>
 															<%--<c:if test= ${sessionScope.session_id ==  dto.writer} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
-															<a href="javascript:updateReply( ${reply.reply_id})">[수정]</a>
 															<a href="javascript:updateReadonlyReply( ${reply.reply_id} );">[수정 하기]</a>
+															<a href="javascript:updateReply( ${reply.reply_id})">[수정완료]</a>
 															<a href="javascript:deleteReply( ${reply.reply_id})">[삭제]</a>
 														</div>
 													</c:if>
