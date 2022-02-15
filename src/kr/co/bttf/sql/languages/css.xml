@@ -8,11 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 1. 리스트 출력 -->
 	<select id="getCssBoardList" parameterType="hashmap"
 		resultType="cssdto">
-		SELECT * FROM
-		( SELECT ROWNUM R, D.* FROM
-		( SELECT * FROM CSS ORDER BY POST_ID DESC) D
-		) B
-		WHERE B.R BETWEEN #{startRow} AND #{endRow}
+<!-- 		SELECT * FROM -->
+<!-- 		( SELECT ROWNUM R, D.* FROM -->
+<!-- 		( SELECT * FROM CSS ORDER BY POST_ID DESC) D -->
+<!-- 		) B -->
+<!-- 		WHERE B.R BETWEEN #{startRow} AND #{endRow} -->
+		SELECT * FROM (SELECT * FROM ( SELECT ROWNUM R, D.* FROM ( SELECT * FROM CSS ORDER BY POST_ID DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R WHERE post_available = 1
 	</select>
 
 
@@ -43,14 +44,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 2. 리스트 개수 -->
 	<select id="getCssBoardCnt" resultType="_int">
-		SELECT COUNT(*) FROM CSS
+		SELECT COUNT(*) FROM CSS WHERE post_available = 1
 	</select>
 
 
 	<select id="getCssReplyCnt" resultType="_int"
 		parameterType="_int">
-		SELECT COUNT(*) FROM reply_css where post_id =
-		#{post_id}
+		SELECT COUNT(*) FROM reply_css where post_id = #{post_id}
 	</select>
 
 
@@ -58,8 +58,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 3. 작성하기 -->
 	<insert id="insertCssBoard" parameterType="cssdto">
 		INSERT INTO CSS
-		(POST_ID, post_subject, post_contents, writer)
-		VALUES (css_seq.nextval, #{post_subject}, #{post_contents} , #{writer})
+		(POST_ID, post_subject, post_contents, post_available, writer)
+		VALUES (css_seq.nextval, #{post_subject}, #{post_contents}, 1, #{writer})
 	</insert>
 
 
@@ -109,10 +109,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- 7. 삭제하기 -->
-	<delete id="deleteCss" parameterType="_int">
-		delete from css where
-		post_id= #{post_id}
-	</delete>
+<!-- 	<delete id="deleteCss" parameterType="_int"> -->
+<!-- 		delete from css where -->
+<!-- 		post_id= #{post_id} -->
+<!-- 	</delete> -->
+	<update id="deleteCss" parameterType="_int">
+		update css SET POST_AVAILABLE = 0 WHERE POST_ID = #{post_id}
+	</update>
 
 
 	<delete id="deleteCssReply" parameterType="_int">

@@ -30,9 +30,9 @@ public class CssBoardListAction implements Action {
 		int pageSize = 40;
 
 		// 1 페이지 endRow = 10, 4 페이지 endRow = 40
-		int endRow = page * pageSize;
+		int endRow = page * 40;
 		// 1 페이지 startRow = 1, 4 페이지 startRow = 31
-		int startRow = endRow - (pageSize - 1);
+		int startRow = endRow - 39;
 
 		// [1][2]...[10] : [1], [21],[22],...[30] :[21]
 		int startPage = (page - 1) / pageSize * pageSize + 1;
