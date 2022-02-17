@@ -425,9 +425,6 @@ pre{
 .my_box {
     background: #fff;
     padding: 50px;
-    height: 2000px !important;
-
-
 }
   
 
@@ -465,7 +462,37 @@ pre{
 
 /*edit end*/
 
-  
+
+/* reply style */
+.reply_subject{
+	color: #000;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.reply_box{
+	background: cornsilk;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.reply_con_box{
+	text-align: left;
+    border: 0px;
+    height: fit-content;
+    resize: none;
+    background: cornsilk;
+    width: 990px;
+    
+}
+
+
+/* reply style end */
+
+
+
+
 /* 3. content section end */
 
 
