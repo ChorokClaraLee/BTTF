@@ -74,8 +74,7 @@
                                 <div class="col-auto">
                                     <label for="id">아이디</label>
                                     <div style="display: flex;">
-                                        <input  id="id" class="form-control margin-b-50" type="text" style="width: 80%; margin-right: 10px;" placeholder="아이디">
-                                        <button class="btn btn-primary" style="height: 50px;" type="submit">중복확인</button>
+                                        <input  id="id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly>
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -84,7 +83,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <label for="name">이름</label>
-                                    <input  id="name" class="form-control margin-b-50" type="text" placeholder="이름">
+                                    <input  id="name" class="form-control margin-b-50" type="text" placeholder="이름" readonly>
                                 </div>
                                 <div class="col-auto">
                                     <label for="phone">전화번호</label>
@@ -107,6 +106,7 @@
                                         <option value="HTML5">HTML5</option>
                                     </select>
                                 </div>
+                                <input class="btn btn-danger mt-5" value ="탈퇴하기">
                             </form>
                         </div>
                     </div>

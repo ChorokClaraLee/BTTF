@@ -136,8 +136,8 @@
 														<div valign="top" style="padding-left: 10px;">
 															<pre id="reply${reply.reply_id }" name="reply${reply.reply_id }" style="text-align:left;border:0px; height:fit-content; " readonly>${reply.reply_contents }</pre>
 															<%--<c:if test= ${sessionScope.session_id ==  dto.writer} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
-															<a type="submit" id="editbtn" class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" name="updata">수정 하기</a>
-															<a id="edityesbtn" class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})">수정  완료</a>
+															<a type="submit" id="editbtn" class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" name="update">수정 하기</a>
+<%-- 															<a id="edityesbtn" class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})">수정  완료</a> --%>
 															<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})">삭제</a>
 														</div>
 													</c:if>
@@ -285,17 +285,18 @@
 	// [댓글 수정하기] function
 	function updateReadonlyReply( reply_id ){
 		document.getElementById( 'reply' + reply_id ).readOnly = false;
-		
+		document.replyForm.action = "${pageContext.request.contextPath}/pages/cssUpdateReply.do?reply_id="+reply_id;
+		document.replyForm.submit();
 	}
 	
-	// [댓글 수정완료] function
-	function updateReply( reply_id ){
-		if (true){
-			document.replyForm.action = "${pageContext.request.contextPath}/pages/cssUpdateReply.do?reply_id="+reply_id;
+// 	// [댓글 수정완료] function
+// 	function updateReply( reply_id ){
+// 		if (true){
+// 			document.replyForm.action = "${pageContext.request.contextPath}/pages/cssUpdateReply.do?reply_id="+reply_id;
 			
-			document.replyForm.submit();
-		}
-	}
+// 			document.replyForm.submit();
+// 		}
+// 	}
 	
 	// [댓글삭제] function
 	function deleteReply( reply_id ){

@@ -123,7 +123,7 @@ a {
 					</h2>
 				</div>
 				<div class="card-body">
-					<form action="${PageContext.request.contextPath}/pages/MemberLogin.do" class="form-signin" method="POST">
+					<form action="${PageContext.request.contextPath}/pages/MemberLogin.us" class="form-signin" method="POST">
 						<div class="col-md-12 col-sm-12" style="justify-content: flex-end; display: flex; margin-bottom : 20px;">
 							
 							<div class="form-check col-md-4 col-sm-4">

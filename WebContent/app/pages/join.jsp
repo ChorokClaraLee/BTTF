@@ -92,7 +92,7 @@
                             <div class="my_box_element">
                                 <i class="my_box_icon fas fa-id-card"></i>
                             </div>
-                            <form action="${PageContext.request.contextPath}/pages/MemberJoin.do" method="post" name="joinForm">
+                            <form action="${PageContext.request.contextPath}/pages/MemberJoin.us" method="post" name="joinForm">
                                 <div class="col-auto">
                                     <label>아이디</label>
                                     <div style="display: flex;">
