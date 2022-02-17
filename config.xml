@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="kr.co.bttf.DTO.Board_CSS_DTO"
+			alias="cssdto" />
+		<typeAlias type="kr.co.bttf.DTO.Board_HTML_DTO"
+			alias="htmldto" />
+		<typeAlias type="kr.co.bttf.DTO.Board_JAVA_DTO"
+			alias="javadto" />
+		<typeAlias type="kr.co.bttf.DTO.Board_JAVASCRIPT_DTO"
+			alias="jsdto" />
+		<typeAlias type="kr.co.bttf.DTO.Board_JSP_DTO"
+			alias="jspdto" />
+		<typeAlias type="kr.co.bttf.DTO.Board_ORACLE_DTO"
+			alias="oracledto" />
+		<typeAlias type="kr.co.bttf.DTO.Board_SPRING_DTO"
+			alias="springdto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_CSS_DTO"
+			alias="recssdto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_HTML_DTO"
+			alias="rehtmldto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_JAVA_DTO"
+			alias="rejavadto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_JAVASCRIPT_DTO"
+			alias="rejsdto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_JSP_DTO"
+			alias="rejspdto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_ORACLE_DTO"
+			alias="reoracledto" />
+		<typeAlias type="kr.co.bttf.DTO.Reply_SPRING_DTO"
+			alias="respringdto" />
+		<typeAlias type="kr.co.bttf.DTO.AuthorityDTO"
+			alias="authdto" />
+		<typeAlias type="kr.co.bttf.DTO.HonoraryDTO"
+			alias="honordto" />
+		<typeAlias type="kr.co.bttf.DTO.UserDTO" alias="userdto" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"
+					value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="bttf" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+
+		<!-- admin -->
+		<!-- <mapper resource="kr/co/bttf/sql/admin/announcements.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/admin/manager_page.xml" /> -->
+
+		<!-- board -->
+		<!-- <mapper resource="kr/co/bttf/sql/board/edit.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/board/view.xml" /> -->
+
+		<!-- languages -->
+		<mapper resource="kr/co/bttf/sql/languages/css.xml" />
+		<!-- <mapper resource="kr/co/bttf/sql/languages/html.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/languages/java.xml" /> -->
+		<mapper resource="kr/co/bttf/sql/languages/javascript.xml" />
+		<!-- <mapper resource="kr/co/bttf/sql/languages/jsp.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/languages/oracle.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/languages/spring.xml" /> -->
+
+		<!-- member -->
+		<mapper resource="kr/co/bttf/sql/member/member.xml" />
+
+		<!-- mypage -->
+		<!-- <mapper resource="kr/co/bttf/sql/mypage/mypage_edit.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/mypage/mypage.xml" /> -->
+
+		<!-- user -->
+		<!-- <mapper resource="kr/co/bttf/sql/user/authority.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/user/user_all.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/user/honorary.xml" /> -->
+
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
