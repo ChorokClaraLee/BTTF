@@ -52,7 +52,7 @@
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="bbs" />
+				<property name="username" value="bttf" />
 				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
@@ -72,7 +72,7 @@
 		<mapper resource="kr/co/bttf/sql/languages/css.xml" />
 		<!-- <mapper resource="kr/co/bttf/sql/languages/html.xml" /> -->
 		<!-- <mapper resource="kr/co/bttf/sql/languages/java.xml" /> -->
-		<!-- <mapper resource="kr/co/bttf/sql/languages/javascript.xml" /> -->
+		<mapper resource="kr/co/bttf/sql/languages/javascript.xml" />
 		<!-- <mapper resource="kr/co/bttf/sql/languages/jsp.xml" /> -->
 		<!-- <mapper resource="kr/co/bttf/sql/languages/oracle.xml" /> -->
 		<!-- <mapper resource="kr/co/bttf/sql/languages/spring.xml" /> -->
@@ -91,14 +91,5 @@
 
 	</mappers>
 </configuration>
-
-
-
-
-
-
-
-
-
 
 
