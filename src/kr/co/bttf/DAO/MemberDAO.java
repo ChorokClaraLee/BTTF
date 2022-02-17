@@ -72,15 +72,15 @@ public class MemberDAO {
 	}
 
 ////	 중복확인
-//	public boolean checkid(String user_id) {
-//		//중복된 사용자 없음
-//		boolean result = true;
-//
-//		if ((Integer) sqlsession.selectOne("Member.searchById", user_id) == 1) {
-//			//중복된 사용자 있음
-//			result = false;
-//		}
-//
-//		return result;
-//	}
+	public boolean checkid(String user_id) {
+		//중복된 사용자 없음
+		boolean result = true;
+
+		if ((Integer) sqlsession.selectOne("Member.searchById", user_id) == 1) {
+		//중복된 사용자 있음
+			result = false;
+		}
+
+		return result;
+	}
 }
