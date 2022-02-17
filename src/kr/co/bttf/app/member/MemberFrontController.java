@@ -44,9 +44,19 @@ public class MemberFrontController extends HttpServlet {
             forward = new MemberLoginAction().execute(request, response);
             break;
          
-            // 회원가입
+             // 회원가입
          case "/pages/MemberJoin.us":
         	 forward = new MemberJoinAction().execute(request, response);
+        	 break;
+        	 
+        	 // 회원 정보 수정 화면전환
+         case "/pages/MemberView.us":
+        	 forward = new MemberViewAction().execute(request, response);
+        	 break;
+        	 
+        	 // 회원정보 수정 후 업데이트 완료
+         case "/pages/MemberJoinUpdate.us":
+        	 forward = new MemberJoinUpdateAction().execute(request, response);
         	 break;
         	 
         	 // 아이디 찾기
@@ -59,7 +69,7 @@ public class MemberFrontController extends HttpServlet {
         	 forward = new FindPwAction().execute(request, response);
         	 break;
         	 
-//        	// 중복확인--미구현
+        	// 중복확인
          case "/pages/idCheck.us":
   			forward = new ActionForward(true, request.getContextPath() + "/app/pages/idcheck.jsp");
         	 System.out.println("중복확인 들어감");

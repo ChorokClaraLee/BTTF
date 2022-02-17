@@ -24,4 +24,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="searchById" parameterType="string" resultType="_int">
 		SELECT count(*) FROM USER_ALL WHERE user_id = #{user_id}
 	</select>
+	
+	<select id="getMemberDetail" parameterType="string" resultType="userdto">
+		select * from USER_ALL WHERE user_id = #{user_id}
+	</select>
+	
+	<update id="memberJoinEdit" parameterType="hashmap">
+		update user_all set
+		user_pw = #{user_pw}, user_phone = #{user_phone}, user_email = #{user_email}, main_language = #{main_language}
+	</update>
+	
 </mapper>

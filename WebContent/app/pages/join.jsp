@@ -135,8 +135,7 @@
                                         <option value="HTML5">HTML5</option>
                                     </select>
                                 </div>
-<!--                                 <button id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px;" onclick="sendit()"  > 회원가입하기</button> -->
-                                <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"  > 회원가입하기</a>
+                                <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"> 회원가입하기</a>
                             </form>
                         </div>
                     </div>

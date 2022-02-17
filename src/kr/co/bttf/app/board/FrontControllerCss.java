@@ -68,6 +68,8 @@ public class FrontControllerCss extends HttpServlet {
 			break;
 
 			
+			
+			
 			// 글수정을 위한 정보 날르기
 		case "/pages/cssEditChange.do":
 			forward = new CssEditChangeAction().execute(request, response);
@@ -83,6 +85,9 @@ public class FrontControllerCss extends HttpServlet {
 		case "/pages/cssBoardUpdate.do":
 			forward = new CssBoardUpdateAction().execute(request, response);
 			break;
+			
+			
+			
 			
 			// 댓글수정
 		case "/pages/cssUpdateReply.do":

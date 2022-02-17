@@ -73,7 +73,7 @@
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
     <% UserDTO boardviewer = (UserDTO)session.getAttribute("session_id");%>
-    <c:set var="boardviewer" value="${pageScope.session }" />
+<%--     <c:set var="boardviewer" value="${pageScope.session }" /> --%>
     <div class="bg-color-sky-light" data-auto-height="true">
         <div class="content-lg container">
             <div class="row row-space-1 margin-b-2">

@@ -73,9 +73,9 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>내 정보 수정</h3>
-                                <a class="link" href="mypage_edit">수정하기</a>
+                                <a class="link" href="${pageContext.request.contextPath }/pages/MemberView.us">수정하기</a>
                             </div>
-                            <a href="mypage_edit.jsp" class="content-wrapper-link"></a>
+                            <a href="${pageContext.request.contextPath }/pages/MemberView.us" class="content-wrapper-link" ></a>
                         </div>
                     </div>
                 </div>

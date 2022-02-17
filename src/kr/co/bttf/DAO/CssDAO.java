@@ -86,10 +86,6 @@ public class CssDAO {
 		}
 		return result;
 	}
-//	public void updateCssBoard(Board_CSS_DTO bdto) {
-//		sqlsession.update("css.updateCssBoard", bdto);
-//		
-//	}
 
 	public boolean updateCssReply(int reply_id, String reply_contents) {
 		boolean result = false;
