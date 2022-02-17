@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="js">
+
+	<!-- 1. 리스트 출력 -->
+	<select id="getJsBoardList" parameterType="hashmap"
+		resultType="jsdto">
+		SELECT * FROM (SELECT * FROM ( SELECT ROWNUM R, D.* FROM ( SELECT * FROM JAVASCRIPT ORDER BY POST_ID DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R WHERE post_available = 1
+	</select>
+
+
+	<select id="getJsReplyList" parameterType="hashmap"
+		resultType="rejsdto">
+		<!-- <include refid="pagingHeader"/> -->
+		SELECT * FROM
+		( SELECT ROWNUM R, D.* FROM
+		( SELECT * FROM reply_JAVASCRIPT ORDER BY reply_ID DESC) D ) B
+		WHERE B.R
+		BETWEEN #{startRow} AND #{endRow}
+		and post_id =#{post_id}
+		<!-- <include refid="pagingFooter"/> -->
+	</select>
+
+	<!-- 1.1 페이징 sql -->
+	<sql id="pagingHeader">
+		SELECT * FROM
+		( SELECT ROWNUM R, D.* FROM (
+	</sql>
+
+	<sql id="pagingFooter">
+		) B
+		WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</sql>
+
+
+
+	<!-- 2. 리스트 개수 -->
+	<select id="getJsBoardCnt" resultType="_int">
+		SELECT COUNT(*) FROM JAVASCRIPT WHERE post_available = 1
+	</select>
+
+
+	<select id="getJsReplyCnt" resultType="_int"
+		parameterType="_int">
+		SELECT COUNT(*) FROM REPLY_JAVASCRIPT where post_id = #{post_id}
+	</select>
+
+
+
+	<!-- 3. 작성하기 -->
+	<insert id="insertJsBoard" parameterType="jsdto">
+		INSERT INTO JAVASCRIPT
+		(POST_ID, post_subject, post_contents, post_available, writer)
+		VALUES (js_seq.nextval, #{post_subject}, #{post_contents}, 1, #{writer})
+	</insert>
+
+
+
+	<insert id="insertJsReply" parameterType="rejsdto">
+		INSERT INTO REPLY_JAVASCRIPT
+		(reply_id, reply_contents, post_id, replyer)
+		VALUES
+		(js_reply_seq.nextval, #{reply_contents}, #{post_id}, #{replyer})
+	</insert>
+
+
+
+	<!-- 4. 보드만: 상세보기 -->
+	<select id="getJssDetail" parameterType="_int"
+		resultType="jsdto">
+		select * from JAVASCRIPT where post_id = #{post_id}
+	</select>
+
+
+
+	<!-- 5. 보드만 : 조회수갱신 -->
+	<update id="updateJsReadCount" parameterType="_int">
+		update JAVASCRIPT set
+		post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>
+
+
+
+	<!-- 6. 수정하기 -->
+<!-- 	<select id="selectJsBoard" parameterType="_int"> -->
+<!-- 		SELECT POST_SUBJECT, POST_CONTENTS FROM JAVASCRIPT WHERE POST_ID = #{post_id} -->
+<!-- 	</select> -->
+	
+	<update id="updateJsBoard" parameterType="hashmap">
+		update JAVASCRIPT set
+		post_contents = #{post_contents}, post_subject = #{post_subject}
+		where post_id = #{post_id}
+	</update>
+
+
+	<update id="updateJsReply" parameterType="hashmap">
+		update REPLY_JAVASCRIPT set
+		reply_contents = #{reply_contents} where reply_id = #{reply_id}
+	</update>
+
+
+
+	<!-- 7. 삭제하기 -->
+<!-- 	<delete id="deleteJs" parameterType="_int"> -->
+<!-- 		delete from js where -->
+<!-- 		post_id= #{post_id} -->
+<!-- 	</delete> 0215 진형선익 글삭제기능완료-->
+
+	<update id="deleteJs" parameterType="_int">
+		update JAVASCRIPT SET POST_AVAILABLE = 0 WHERE POST_ID = #{post_id}
+	</update>
+
+
+	<delete id="deleteJsReply" parameterType="_int">
+		delete from REPLY_JAVASCRIPT
+		where reply_id= #{reply_id}
+	</delete>
+
+
+</mapper>
