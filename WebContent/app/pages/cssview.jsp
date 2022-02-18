@@ -103,8 +103,9 @@
 			                                <a href="java::void()" class="btn btn-warning mt-4" id="report" type="submit" style="float: right;">신고</a>
 										</c:if>
 										<c:if test="${sessionScope.session_id.user_id eq board.writer}">
-	    		                            <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit">글 삭제</a>
 	    		                       		<a href="${pageContext.request.contextPath }/pages/cssEditChange.do?post_id=${board.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
+<%-- 	    		                            <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit" oncl>글 삭제</a> --%>
+	    		                            <a class="btn btn-danger mt-4" onclick="confirm_backlist(${board.post_id})">글삭제</a>
 										</c:if>
 <%-- 									<c:if test="${pageScope.session} == ${board.writer}"> --%>
 <%-- 	    		                        <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit">글 삭제</a> --%>
@@ -137,21 +138,21 @@
 															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
 															<%--<c:if test= ${sessionScope.session_id ==  dto.writer} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
 															<div class="row mt-5" style="padding-left:10px;">
-																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})">수정완료</a>
-																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );">수정하기</a>
-																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})">삭제</a>
+																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
+																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
+																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a>
 															</div>
 														</div>
 													</c:if>
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${sessionScope.session_id == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
-															<div class="row mt-5">
-																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-info mt-4" id="editfail">수정 하기</a>
-																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-primary mt-4" id="editsubmitfail">수정 완료</a>
-																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-danger mt-4" id="deletefail">삭제</a>
-															</div>
+															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
+<!-- 															<div class="row mt-5"> -->
+<%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-info mt-4" id="editfail">수정 하기</a> --%>
+<%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-primary mt-4" id="editsubmitfail">수정 완료</a> --%>
+<%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-danger mt-4" id="deletefail">삭제</a> --%>
+<!-- 															</div> -->
 														</div>
 													</c:if>
 												</div>
@@ -252,6 +253,7 @@
                 console.error( error );
             } );
     </script>
+    <script src="../../resource/js/confirm.js"></script>
 </body>
 <!-- END BODY -->
 <script>
@@ -272,6 +274,10 @@
 	// [댓글 수정하기] function
 	function updateReadonlyReply( reply_id ){
 		document.getElementById( 'reply' + reply_id ).readOnly = false;
+		
+// 		document.getElementById( 'editfail' ).style.display = 'block'; 
+// 		document.getElementById( 'editsubmitfail' ).style.display = 'none'; 
+		// 수정하기 버튼 none, 수정완료(펑션) block
 	}
 	
 	// [댓글 수정] function
@@ -279,6 +285,7 @@
 		if (true){
 			document.replyForm.action = "${pageContext.request.contextPath}/pages/cssUpdateReply.do?reply_id="+reply_id;
 			document.replyForm.submit();
+			// 수정하기 버튼 block, 수정완료(펑션) none
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package kr.co.bttf.app.member;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,7 +24,7 @@ public class MemberJoinOutAction implements Action {
 			session.removeAttribute("session_id");
 			
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "/index.jsp");
+			forward.setPath(request.getContextPath() + "/app/pages/alert/alert.jsp");
 		}
 		return forward;
 	}

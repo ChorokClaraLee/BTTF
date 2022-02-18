@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Member">
 
 	<select id="login" parameterType="hashmap" resultType="_int">
-		SELECT COUNT(*) FROM USER_ALL WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+		SELECT COUNT(*) FROM USER_ALL WHERE user_id = #{user_id} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
 	</select>
 	
 	<insert id="join" parameterType="userdto">
