@@ -17,4 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserCnt" resultType="_int">
 		SELECT COUNT(*) FROM USER_ALL where authority_code =1
 	</select>
+	<select id="userBlockedList" parameterType="hashmap" resultType="userdto">
+		SELECT * FROM 
+		(SELECT * FROM 
+		( SELECT ROWNUM R, D.* FROM 
+		( SELECT * FROM USER_ALL ORDER BY USER_REGDATE DESC) D)
+		 B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R
+		 where authority_code =1 AND user_reported = 1
+	</select>
 </mapper>

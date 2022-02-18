@@ -40,14 +40,14 @@ import kr.co.bttf.app.member.MemberLoginAction;
 	            break;
 	            
 			// 회원목록 - 신고된 회원 (select + where)
-//	        case "/pages/MemberReported.mg":
-//	            forward = new MemberReportedAction().execute(request, response);
-//	            break;
+	        case "/pages/MemberReported.mg":
+	            forward = new MemberReportedAction().execute(request, response);
+	            break;
 //	            
-			// 게시글 관리 - 전체게시글 (단순 selectList)
-//	        case "/pages/AllBoard.mg":
-//	            forward = new AllBoardAction().execute(request, response);
-//	            break;
+			// 게시글 관리 - cSS전체게시글 (단순 selectList)
+	        case "/pages/AllBoard.mg":
+	            forward = new AllBoardAction().execute(request, response);
+	            break;
 //	        
 			// 게시글 관리 - 공지사항  (단순 selectList) + 공지사항 화면단도 복붙필요
 //	        case "/pages/Announcements.mg":

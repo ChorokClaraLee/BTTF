@@ -111,12 +111,12 @@
 
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/admin_blocked_member.jsp">
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=1">
                                     	회원관리 - 신고된회원
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/admin_all_board.jsp">
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/AllBoard.mg?page=1">
                                     	게시글 관리 - 전체 게시글 
                                 </a>
                             </li>

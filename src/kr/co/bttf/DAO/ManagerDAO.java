@@ -29,5 +29,13 @@ public class ManagerDAO {
 	public int getUserCnt() {
 		return sqlsession.selectOne("Manager.getUserCnt");
 	}
+
+	public List<UserDTO> userBlockedList(int startRow, int endRow) {
+		HashMap<String, Integer> datas = new HashMap<>();
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<UserDTO> blockedUserList = sqlsession.selectList("Manager.userBlockedList", datas);
+		return blockedUserList;
+	}
 	
 }

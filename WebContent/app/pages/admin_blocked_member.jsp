@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             <!DOCTYPE html>
 
             <html lang="ko" class="no-js">
@@ -46,7 +46,8 @@
             <!-- BODY -->
 
             <body>
-				
+				<c:set var="userBlockedList" value="${requestScope.userBlockedList }" />
+                <c:set var="getUserCnt" value="${requestScope.getUserCnt }" />
                 <!--========== HEADER ==========-->
                 <header class="header navbar-fixed-top">
                     <!-- Navbar -->
@@ -84,14 +85,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>blockedmember1</td>
-                                            <td>test name1</td>
-                                            <td>010-****-1111</td>
-                                            <td>2021-12-08</td>
-                                            <td><input class="btn btn-info" type="button" value="차단 해제">
-                                            </td>
-                                        </tr>
+                                       <c:choose>
+                                                    <c:when
+                                                        test="${userBlockedList != null and fn:length(userBlockedList) > 0 }">
+                                                        <c:forEach var="userBlockedList" items="${userBlockedList}">
+                                                            <tr>
+                                                                <td>
+                                                                    <p>
+                                                                        ${userBlockedList.user_id }
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>
+                                                                        ${userBlockedList.user_name }
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>
+                                                                        ${userBlockedList.user_phone }
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>
+                                                                        ${userBlockedList.user_regdate }
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="button"
+                                                                        class="btn btn-info" value="차단해제">
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <tr>
+                                                            <td colspan="5" class="text-center">등록된 회원이 없습니다.</td>
+                                                        </tr>
+                                                    </c:otherwise>
+                                                </c:choose>
                                     </tbody>
                                 </table>
                             </div>
