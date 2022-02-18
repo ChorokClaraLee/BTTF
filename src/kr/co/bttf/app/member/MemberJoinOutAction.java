@@ -24,7 +24,7 @@ public class MemberJoinOutAction implements Action {
 			session.removeAttribute("session_id");
 			
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "/app/pages/alert/alert.jsp");
+			forward.setPath(request.getContextPath() + "/app/pages/alert/alert_joinout.jsp");
 		}
 		return forward;
 	}

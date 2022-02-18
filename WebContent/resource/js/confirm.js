@@ -21,5 +21,25 @@ function confirm_backlist(post_id) {
 }
 
 function alert_boardwrite() {
+	let frm = document.csswrite;
+	let post_subject = frm.post_subject;
+	let post_contents = frm.post_contents
+	
+	
+	if(post_subject.value == "" || post_subject.value == null) {
+		alert("제목을 입력해 주세요");
+		location.href="/app/pages/csswrite.jsp";
+		post_subject.focus();
+		return false;
+	} 
+	
+	if(post_contents.value == "" || post_contents.value == null) {
+		alert("내용을 입력해 주세요");
+		location.href="/app/pages/csswrite.jsp";
+		post_contents.focus();
+		return false;
+	} 
+	
 	alert("게시글 작성 완료")
+	frm.submit();
 }
