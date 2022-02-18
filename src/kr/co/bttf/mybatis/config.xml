@@ -52,7 +52,7 @@
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="bbs" />
+				<property name="username" value="bttf" />
 				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
@@ -62,7 +62,7 @@
 
 		<!-- admin -->
 		<!-- <mapper resource="kr/co/bttf/sql/admin/announcements.xml" /> -->
-		<mapper resource="kr/co/bttf/sql/admin/manager_page.xml" />
+		<!-- <mapper resource="kr/co/bttf/sql/admin/manager_page.xml" /> -->
 
 		<!-- board -->
 		<!-- <mapper resource="kr/co/bttf/sql/board/edit.xml" /> -->
@@ -72,13 +72,17 @@
 		<mapper resource="kr/co/bttf/sql/languages/css.xml" />
 		<!-- <mapper resource="kr/co/bttf/sql/languages/html.xml" /> -->
 		<!-- <mapper resource="kr/co/bttf/sql/languages/java.xml" /> -->
-		<!-- <mapper resource="kr/co/bttf/sql/languages/javascript.xml" /> -->
+		<mapper resource="kr/co/bttf/sql/languages/javascript.xml" />
 		<!-- <mapper resource="kr/co/bttf/sql/languages/jsp.xml" /> -->
 		<!-- <mapper resource="kr/co/bttf/sql/languages/oracle.xml" /> -->
 		<!-- <mapper resource="kr/co/bttf/sql/languages/spring.xml" /> -->
 
 		<!-- member -->
 		<mapper resource="kr/co/bttf/sql/member/member.xml" />
+
+		<!-- mypage -->
+		<!-- <mapper resource="kr/co/bttf/sql/mypage/mypage_edit.xml" /> -->
+		<!-- <mapper resource="kr/co/bttf/sql/mypage/mypage.xml" /> -->
 
 		<!-- user -->
 		<!-- <mapper resource="kr/co/bttf/sql/user/authority.xml" /> -->
@@ -87,14 +91,5 @@
 
 	</mappers>
 </configuration>
-
-
-
-
-
-
-
-
-
 
 
