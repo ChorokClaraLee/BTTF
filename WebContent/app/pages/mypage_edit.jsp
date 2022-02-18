@@ -96,7 +96,7 @@
                                     <input id="email" class="form-control margin-b-50" type="text" placeholder="이메일" value="${Member.user_email }">
                                 </div>
                                 <div class="col-auto">
-                                    <label class="form-label" for="pref">${Member.main_lang }</label>
+                                    <label class="form-label" for="pref">${Member.main_language }</label>
                                     <select class="form-control" name="pref" id="pref">
                                         <option value="JAVA">관심언어를 선택해주세요.</option>
                                         <option value="JAVA">JAVA</option>

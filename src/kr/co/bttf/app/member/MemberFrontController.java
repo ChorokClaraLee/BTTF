@@ -54,6 +54,8 @@ public class MemberFrontController extends HttpServlet {
         	 forward = new MemberViewAction().execute(request, response);
         	 break;
         	 
+        	 // 회원정보 select	해서 뿌려줄 준비
+        	 
         	 // 회원정보 수정 후 업데이트 완료
          case "/pages/MemberJoinUpdate.us":
         	 forward = new MemberJoinUpdateAction().execute(request, response);

@@ -15,11 +15,12 @@ public class MemberViewAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
+		//UserDTO udto = new UserDTO();
+
 		
 		HttpSession session = request.getSession();
 		UserDTO session_id = (UserDTO) session.getAttribute("session_id");
 		String user_id = session_id.getUser_id();
-		System.out.println(user_id);
 		request.setAttribute("Member", mdao.getMemberDetail(user_id));
 		
 		forward.setRedirect(false);

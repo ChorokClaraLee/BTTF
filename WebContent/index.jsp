@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 
-<html lang="ko" class="no-js">
+<html lang="ko" >
 <!-- BEGIN HEAD -->
 
 <head>
