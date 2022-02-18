@@ -75,12 +75,12 @@ public class FrontControllerCss extends HttpServlet {
 			forward = new CssEditChangeAction().execute(request, response);
 			break;
 			
-//			// 글수정 화면전환
-//		case "/pages/cssedit.do":
-// 			forward = new ActionForward(true, request.getContextPath() + "/app/pages/cssedit.jsp");
-// 			System.out.println("화면전환 들어옴");
-//			break;
-//			
+			// 글수정 화면전환
+		case "/pages/cssedit.do":
+ 			forward = new ActionForward(true, request.getContextPath() + "/app/pages/cssedit.jsp");
+ 			System.out.println("화면전환 들어옴");
+			break;
+			
 			// 글 수정 후 업데이트 완료
 		case "/pages/cssBoardUpdate.do":
 			forward = new CssBoardUpdateAction().execute(request, response);

@@ -74,6 +74,11 @@ public class MemberFrontController extends HttpServlet {
   			forward = new ActionForward(true, request.getContextPath() + "/app/pages/idcheck.jsp");
         	 System.out.println("중복확인 들어감");
         	 break;
+        	
+        	 // 회원탈퇴 
+         case "/pages/MemberJoinOut.us":
+        	 forward = new MemberJoinOutAction().execute(request, response);
+        	 break;
 		
 		}
 
