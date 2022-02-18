@@ -54,8 +54,6 @@ public class MemberFrontController extends HttpServlet {
         	 forward = new MemberViewAction().execute(request, response);
         	 break;
         	 
-        	 // 회원정보 select	해서 뿌려줄 준비
-        	 
         	 // 회원정보 수정 후 업데이트 완료
          case "/pages/MemberJoinUpdate.us":
         	 forward = new MemberJoinUpdateAction().execute(request, response);
@@ -75,6 +73,11 @@ public class MemberFrontController extends HttpServlet {
          case "/pages/idCheck.us":
   			forward = new ActionForward(true, request.getContextPath() + "/app/pages/idcheck.jsp");
         	 System.out.println("중복확인 들어감");
+        	 break;
+        	
+        	 // 회원탈퇴 
+         case "/pages/MemberJoinOut.us":
+        	 forward = new MemberJoinOutAction().execute(request, response);
         	 break;
 		
 		}

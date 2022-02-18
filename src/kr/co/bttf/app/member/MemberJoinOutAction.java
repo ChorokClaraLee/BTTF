@@ -9,23 +9,24 @@ import kr.co.bttf.DTO.UserDTO;
 import kr.co.bttf.action.Action;
 import kr.co.bttf.action.ActionForward;
 
-public class MemberViewAction implements Action{
+public class MemberJoinOutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
-		
 		HttpSession session = request.getSession();
-		UserDTO session_id = (UserDTO) session.getAttribute("session_id");
-		String user_id = session_id.getUser_id();
-		System.out.println(user_id);
-		request.setAttribute("Member", mdao.getMemberDetail(user_id));
+		UserDTO udto = (UserDTO)session.getAttribute("session_id");
 		
-		forward.setRedirect(false);
-		forward.setPath(request.getContextPath() + "/app/pages/mypage_edit.jsp");
+		if(mdao.memberJoinOut(udto)) {
+			//로그아웃 처리
+			session.removeAttribute("session_id");
+			
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath() + "/index.jsp");
+		}
 		return forward;
-		
 	}
-
+	
+	 
 }

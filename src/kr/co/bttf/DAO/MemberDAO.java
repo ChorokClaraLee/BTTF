@@ -106,5 +106,15 @@ public class MemberDAO {
 		return result;
 	}
 
+	// 회원삭제
+	public boolean memberJoinOut(UserDTO udto) {
+		boolean result = false;
+		
+		if (sqlsession.update("Member.memberJoinOut", udto) == 1) {
+			result = true;
+		}
+		return result;
+	}
+
 
 }
