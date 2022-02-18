@@ -1,45 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-            <!DOCTYPE html>
+<!DOCTYPE html>
 
-            <html lang="ko" class="no-js">
-            <!-- BEGIN HEAD -->
+<html lang="ko" class="no-js">
+<!-- BEGIN HEAD -->
 
-            <head>
-                <meta charset="utf-8" />
-                <title>Home4 - Homebrew Community</title>
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta content="width=device-width, initial-scale=1" name="viewport" />
-                <meta content="" name="description" />
-                <meta content="" name="author" />
+<head>
+    <meta charset="utf-8" />
+    <title>Home4 - Homebrew Community</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
 
-                <!-- GLOBAL MANDATORY STYLES -->
-                <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
-                    type="text/css">
-                <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
-                    type="text/css" />
-                <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
+        type="text/css">
+    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
-                <!-- font-Glyphicon -->
-                <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <!-- font-Glyphicon -->
+    <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
-                <!-- PAGE LEVEL PLUGIN STYLES -->
-                <link href="../../resource/css/animate.css" rel="stylesheet">
-                <link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="../../resource/css/animate.css" rel="stylesheet">
+    <link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
-                <!-- THEME STYLES -->
-                <link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
+    <!-- THEME STYLES -->
+    <link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
 
-                <!-- Favicon -->
-                <link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
 
-                <!-- custom -->
-                <link rel="stylesheet" href="../../resource/css/custom.css">
+    <!-- custom -->
+    <link rel="stylesheet" href="../../resource/css/custom.css">
 
-                <!-- c3 chart -->
-<!--                 <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet"> -->
+    <!-- c3 chart -->
+	<!--<link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet"> -->
+	<!-- dataTable css js-->
+	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
+	<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
+	<script type="text/javascript" src="../../resource/js/board.js"></script>
             </head>
             <!-- END HEAD -->
 
@@ -74,7 +78,7 @@
                                 <i class="fas fa-user-alt-slash title_subject_icon"></i>차단된 회원
                             </h2>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table id="foo-table" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -86,43 +90,42 @@
                                     </thead>
                                     <tbody>
                                        <c:choose>
-                                                    <c:when
-                                                        test="${userBlockedList != null and fn:length(userBlockedList) > 0 }">
-                                                        <c:forEach var="userBlockedList" items="${userBlockedList}">
-                                                            <tr>
-                                                                <td>
-                                                                    <p>
-                                                                        ${userBlockedList.user_id }
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <p>
-                                                                        ${userBlockedList.user_name }
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <p>
-                                                                        ${userBlockedList.user_phone }
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <p>
-                                                                        ${userBlockedList.user_regdate }
-                                                                    </p>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="button"
-                                                                        class="btn btn-info" value="차단해제">
-                                                                </td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <tr>
-                                                            <td colspan="5" class="text-center">등록된 회원이 없습니다.</td>
-                                                        </tr>
-                                                    </c:otherwise>
-                                                </c:choose>
+	                                       <c:when test="${userBlockedList != null and fn:length(userBlockedList) > 0 }">
+	                                           <c:forEach var="userBlockedList" items="${userBlockedList}">
+	                                               <tr>
+	                                                   <td>
+	                                                       <p>
+	                                                           ${userBlockedList.user_id }
+	                                                       </p>
+	                                                   </td>
+	                                                   <td>
+	                                                       <p>
+	                                                           ${userBlockedList.user_name }
+	                                                       </p>
+	                                                   </td>
+	                                                   <td>
+	                                                       <p>
+	                                                           ${userBlockedList.user_phone }
+	                                                       </p>
+	                                                   </td>
+	                                                   <td>
+	                                                       <p>
+	                                                           ${userBlockedList.user_regdate }
+	                                                       </p>
+	                                                   </td>
+	                                                   <td>
+	                                                       <input type="button"
+	                                                           class="btn btn-info" value="차단해제">
+	                                                   </td>
+	                                               </tr>
+	                                           </c:forEach>
+	                                       </c:when>
+	                                       <c:otherwise>
+	                                           <tr>
+	                                               <td colspan="5" class="text-center">등록된 회원이 없습니다.</td>
+	                                           </tr>
+	                                       </c:otherwise>
+	                                   </c:choose>
                                     </tbody>
                                 </table>
                             </div>

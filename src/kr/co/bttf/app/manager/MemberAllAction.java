@@ -27,13 +27,13 @@ public class MemberAllAction implements Action {
 		// 삼항연산자
 		page = temp == null ? 1 : Integer.parseInt(temp);
 
-		// 페이징 처리 사이즈
-		int pageSize = 40;
+		// 페이징 처리 사이즈 datatable에서는 데이터 처리 사이즈(노출 건수)
+		int pageSize = 100000;
 
 		// 1 페이지 endRow = 10, 4 페이지 endRow = 40
-		int endRow = page * 40;
+		int endRow = page * 100000;
 		// 1 페이지 startRow = 1, 4 페이지 startRow = 31
-		int startRow = endRow - 39;
+		int startRow = endRow - 99999;
 
 		// [1][2]...[10] : [1], [21],[22],...[30] :[21]
 		int startPage = (page - 1) / pageSize * pageSize + 1;

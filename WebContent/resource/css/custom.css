@@ -588,6 +588,21 @@ pre{
 /* reply style end */
 
 
+/* manager_language page */
+.manager_lnb_box{
+	width: 168.5px !important;
+	height: fit-content;
+	background: #d9d9d9;
+	padding : 50px 20px; 
+	
+}
+
+
+
+
+
+
+
 
 
 /* 3. content section end */

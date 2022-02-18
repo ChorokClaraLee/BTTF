@@ -15,10 +15,8 @@
 <meta content="" name="author" />
 
 <!-- GLOBAL MANDATORY STYLES -->
-<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
-    type="text/css">
-<link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
-    type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+<link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
 <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <!-- font-Glyphicon -->
@@ -40,6 +38,11 @@
 
 <!-- c3 chart -->
 <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+
+<!-- dataTable css js-->
+<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
+<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
+<script type="text/javascript" src="../../resource/js/board.js"></script>
 </head>
 <!-- END HEAD -->
 
@@ -88,7 +91,7 @@
                                       	  회원목록
                                     </h2>
                                     <div class="table-responsive">
-                                        <table class="table table-striped">
+                                        <table id="foo-table" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -141,39 +144,34 @@
                                         </table>
                                     </div>
                                     <!-- End notice -->
-                                    <nav aria-label="Page navigation" class="text-center">
-                                        <%-- <input type="hidden" name="post_id" value="${board.post_id }">
-                                            --%>
-                                            <ul class="pagination">
-                                                <c:if test="${nowPage > 1 }">
-                                                    <li class="page-item">
-                                                        <a class="page-link"
-                                                            href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=${nowPage - 1 }">&lt;</a>
-                                                    </li>
-                                                </c:if>
-                                                <c:forEach var="i" begin="${startPage}" end="${endPage }">
-                                                    <c:choose>
-                                                        <c:when test="${i == nowPage }">
-                                                            <li class="page-item">
-                                                                <a class="page-link">${i } </a>
-                                                            </li>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <li class="page-item">
-                                                                <a class="page-link"
-                                                                    href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=${i }">${i
-                                                                    }</a>
-                                                            </li>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </c:forEach>
-                                                <c:if test="${nowPage<totalPage }">
-                                                    <li class="page-item">
-                                                        <a class="page-link"
-                                                            href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=${nowPage + 1 }">&gt;</a>
-                                                    </li>
-                                                </c:if>
-                                            </ul>
+                                    <nav aria-label="Page navigation" class="text-center" style="display:none;">
+	                                    <ul class="pagination">
+	                                        <c:if test="${nowPage > 1 }">
+	                                            <li class="page-item">
+	                                                <a class="page-link" href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=${nowPage - 1 }">&lt;</a>
+	                                            </li>
+	                                        </c:if>
+	                                        <c:forEach var="i" begin="${startPage}" end="${endPage }">
+	                                            <c:choose>
+	                                                <c:when test="${i == nowPage }">
+	                                                    <li class="page-item">
+	                                                        <a class="page-link">${i } </a>
+	                                                    </li>
+	                                                </c:when>
+	                                                <c:otherwise>
+	                                                    <li class="page-item">
+	                                                        <a class="page-link" href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=${i }">${i}</a>
+	                                                    </li>
+	                                                </c:otherwise>
+	                                            </c:choose>
+	                                        </c:forEach>
+	                                        <c:if test="${nowPage<totalPage }">
+	                                            <li class="page-item">
+	                                                <a class="page-link"
+	                                                    href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=${nowPage + 1 }">&gt;</a>
+	                                            </li>
+	                                        </c:if>
+	                                    </ul>
                                     </nav>
                                 </div>
                             </div>
