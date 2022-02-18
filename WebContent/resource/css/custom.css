@@ -37,6 +37,28 @@
 .mt-5{
     margin-top: 3rem !important;
 }
+
+.mt-6{
+    margin-top: 3.5rem !important;
+}
+
+.mt-7{
+    margin-top: 4.5rem !important;
+}
+
+.mt-8{
+    margin-top: 5rem !important;
+}
+
+.mt-9{
+    margin-top: 5.5rem !important;
+}
+
+
+.mt-10{
+    margin-top: 6rem !important;
+}
+
 /*margin-top end*/
 
 
@@ -234,9 +256,84 @@
     transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
 
-ul.nav li.dropdown:hover > ul.dropdown-menu {
+
+ul.nav li.dropdown:hover > ul.dropdown-menu1 {
      display:block; margin:0; 
 }
+
+.dropdown-menu1 > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.dropdown-menu1 {
+	width:203px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+
+
+}
+
+
+.dropdown-menu1 > li > a:hover,
+.dropdown-menu1 > li > a:focus {
+  background-color: #e8e8e8;
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%);
+  background-image:      -o-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e8e8e8));
+  background-image:         linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+  background-repeat: repeat-x;
+}
+.dropdown-menu1 > .active > a,
+.dropdown-menu1 > .active > a:hover,
+.dropdown-menu1 > .active > a:focus {
+  background-color: #2e6da4;
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+  background-image:      -o-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#2e6da4));
+  background-image:         linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+  background-repeat: repeat-x;
+}
+
+@media (max-width: 767px) {
+    .navbar .navbar-nav .open .dropdown-menu1 > .active > a,
+    .navbar .navbar-nav .open .dropdown-menu1 > .active > a:hover,
+    .navbar .navbar-nav .open .dropdown-menu1 > .active > a:focus {
+      color: #fff;
+      background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+      background-image:      -o-linear-gradient(top, #337ab7 0%, #2e6da4 100%);
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#2e6da4));
+      background-image:         linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+      background-repeat: repeat-x;
+    }
+  }
+
 
 .header .nav-item-child {
     position: relative;

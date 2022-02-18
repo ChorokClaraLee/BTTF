@@ -49,7 +49,6 @@
 <body>
 	<c:set var="boardList" value = "${requestScope.boardList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
-	<c:set var="boardJSON" value="${requestScope.boardJSON }"/>
 	
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">

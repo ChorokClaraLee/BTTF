@@ -62,7 +62,7 @@
 
 		<!-- admin -->
 		<!-- <mapper resource="kr/co/bttf/sql/admin/announcements.xml" /> -->
-		<!-- <mapper resource="kr/co/bttf/sql/admin/manager_page.xml" /> -->
+		<mapper resource="kr/co/bttf/sql/admin/manager_page.xml" />
 
 		<!-- board -->
 		<!-- <mapper resource="kr/co/bttf/sql/board/edit.xml" /> -->
@@ -79,10 +79,6 @@
 
 		<!-- member -->
 		<mapper resource="kr/co/bttf/sql/member/member.xml" />
-
-		<!-- mypage -->
-		<!-- <mapper resource="kr/co/bttf/sql/mypage/mypage_edit.xml" /> -->
-		<!-- <mapper resource="kr/co/bttf/sql/mypage/mypage.xml" /> -->
 
 		<!-- user -->
 		<!-- <mapper resource="kr/co/bttf/sql/user/authority.xml" /> -->
