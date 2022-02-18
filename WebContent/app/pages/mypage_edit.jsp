@@ -109,8 +109,7 @@
                                     </select>
                                 </div>
                                 <input class="btn btn-primary mt-5" value ="수정완료" type="submit">
-                                <a class="btn btn-primary mt-5" href="/pages/MemberJoinOut.us">회원탈퇴123</a>
-<!--                                 <input class="btn btn-danger mt-5" value ="탈퇴하기" onclick="location.href='request.getContextPath()' + '/'" type="button"> -->
+                                <input class="btn btn-danger mt-5" value ="탈퇴하기" onclick="confirm_joinout()" type="button">
                             </form>
                         </div>
                     </div>
@@ -157,6 +156,11 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
+    
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../../resource/js/confirm.js" type="text/javascript"></script>
+    
+
 </body>
 <!-- END BODY -->
 </html>
