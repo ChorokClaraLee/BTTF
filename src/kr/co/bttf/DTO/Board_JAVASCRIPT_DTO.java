@@ -5,12 +5,13 @@ public class Board_JAVASCRIPT_DTO {
 	private String post_subject;
 	private String post_contents;
 	private String user_id;
+	private String writer;
 	private int post_rec;
 	private int post_vcount;
-	private String regdate;
-	private int bookmark;
-	private String writer;
+	private String post_regdate;
+	private int post_bookmark;
 	
+	// get set
 	public String getWriter() {
 		return writer;
 	}
@@ -20,7 +21,6 @@ public class Board_JAVASCRIPT_DTO {
 	public Board_JAVASCRIPT_DTO() {
 		super();
 	}
-	// get set
 	public String getPost_id() {
 		return post_id;
 	}
@@ -57,16 +57,16 @@ public class Board_JAVASCRIPT_DTO {
 	public void setPost_vcount(int post_vcount) {
 		this.post_vcount = post_vcount;
 	}
-	public String getRegdate() {
-		return regdate;
+	public int getpost_bookmark() {
+		return post_bookmark;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setpost_bookmark(int post_bookmark) {
+		this.post_bookmark = post_bookmark;
 	}
-	public int getBookmark() {
-		return bookmark;
+	public String getPost_regdate() {
+		return post_regdate;
 	}
-	public void setBookmark(int bookmark) {
-		this.bookmark = bookmark;
+	public void setPost_regdate(String post_regdate) {
+		this.post_regdate = post_regdate;
 	}
 }

@@ -49,7 +49,6 @@
 <body>
 	<c:set var="boardList" value = "${requestScope.boardList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
-	<c:set var="boardJSON" value="${requestScope.boardJSON }"/>
 	
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -119,35 +118,35 @@
 				<!--<input type="hidden" name="css" value="1"> -->
             </form>
             <!-- board pagination -->
-				<nav aria-label="Page navigation" class="text-center">
-				<input type="hidden" name="post_id" value="${board.post_id }">
-					<ul class="pagination">
-						<c:if test="${nowPage > 1 }">
-							<li class="page-item">							
-								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage - 1 }">&lt;</a>
-							</li>
-						</c:if>
-						<c:forEach var="i" begin="${startPage}" end="${endPage }">
-							<c:choose>
-								<c:when test="${i == nowPage }">
-									<li class="page-item">
-										<a class="page-link">${i }	</a>						
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item">									
-										<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${i }">${i }</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>	
-						<c:if test="${nowPage<totalPage }">
-							<li class="page-item">
-								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage + 1 }">&gt;</a>
-							</li>
-						</c:if>						
-					</ul>
-				</nav>
+<!-- 				<nav aria-label="Page navigation" class="text-center"> -->
+<%-- 				<input type="hidden" name="post_id" value="${board.post_id }"> --%>
+<!-- 					<ul class="pagination"> -->
+<%-- 						<c:if test="${nowPage > 1 }"> --%>
+<!-- 							<li class="page-item">							 -->
+<%-- 								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage - 1 }">&lt;</a> --%>
+<!-- 							</li> -->
+<%-- 						</c:if> --%>
+<%-- 						<c:forEach var="i" begin="${startPage}" end="${endPage }"> --%>
+<%-- 							<c:choose> --%>
+<%-- 								<c:when test="${i == nowPage }"> --%>
+<!-- 									<li class="page-item"> -->
+<%-- 										<a class="page-link">${i }	</a>						 --%>
+<!-- 									</li> -->
+<%-- 								</c:when> --%>
+<%-- 								<c:otherwise> --%>
+<!-- 									<li class="page-item">									 -->
+<%-- 										<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${i }">${i }</a> --%>
+<!-- 									</li> -->
+<%-- 								</c:otherwise> --%>
+<%-- 							</c:choose> --%>
+<%-- 						</c:forEach>	 --%>
+<%-- 						<c:if test="${nowPage<totalPage }"> --%>
+<!-- 							<li class="page-item"> -->
+<%-- 								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage + 1 }">&gt;</a> --%>
+<!-- 							</li> -->
+<%-- 						</c:if>						 --%>
+<!-- 					</ul> -->
+<!-- 				</nav> -->
 								<!-- end of board pagination -->	
         </div>
     </div>
