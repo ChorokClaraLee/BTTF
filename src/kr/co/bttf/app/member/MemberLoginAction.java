@@ -28,7 +28,6 @@ public class MemberLoginAction implements Action {
 		if (loginok) {
 			HttpSession session = request.getSession();
 			session.setAttribute("session_id", udto);
-			//System.out.println("세션등록 성공");
 			forward.setPath(request.getContextPath() + "/index.jsp");
 			forward.setRedirect(true);
 		} else {
