@@ -96,23 +96,18 @@
                                     <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
                                     resize: none; background-color: #fff;" disabled>${board.post_contents }</pre>
                                 </div> 
-	                            <div class="mb-5">
-	                                <c:if test="${empty sessionScope.session}">
-										<a href="${pageContext.request.contextPath }/pages/csslist.do" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
-										<c:if test="${not empty sessionScope.session}">
-			                                <a href="java::void()" class="btn btn-warning mt-4" id="report" type="submit" style="float: right;">신고</a>
-										</c:if>
-										<c:if test="${sessionScope.session_id.user_id eq board.writer}">
-	    		                       		<a href="${pageContext.request.contextPath }/pages/cssEditChange.do?post_id=${board.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
-<%-- 	    		                            <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit" oncl>글 삭제</a> --%>
-	    		                            <a class="btn btn-danger mt-4" onclick="confirm_backlist(${board.post_id})">글삭제</a>
-										</c:if>
-<%-- 									<c:if test="${pageScope.session} == ${board.writer}"> --%>
-<%-- 	    		                        <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit">글 삭제</a> --%>
-<%-- 	    		                        <a href="javascript:updateReadonlyBoard( ${board.post_id })" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                           --%>
-<%-- 									</c:if> --%>
-	                                </c:if>                                                               
-                               </div>
+	                        <div class="mb-5">
+	                        	<a href="${pageContext.request.contextPath }/pages/csslist.do" class="btn btn-default mt-4" id="edit" type="submit">글 목록</a>
+						<c:if test="${not empty sessionScope.session_id}">
+							<a href="${pageContext.request.contextPath }/pages/BookmarkOK.us?post_id=${board.post_id }" class="btn btn-default mt-4">북마크</a>
+			                        	<a href="java::void()" class="btn btn-warning mt-4" id="report" type="submit" style="float: right;">신고</a>
+						</c:if>
+						<c:if test="${sessionScope.session_id.user_id eq board.writer}">
+    		                       			<a href="${pageContext.request.contextPath }/pages/cssEditChange.do?post_id=${board.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
+<%--     		                        	<a class="btn btn-danger mt-4" onclick="confirm_backlist(${board.post_id})">글삭제</a> --%>
+							<a class="btn btn-danger mt-4" onclick="post_delete()">글삭제</a>
+						</c:if> 
+                              	 </div>
                             </form>
                             
            					<!-- 댓글 작성 -->
@@ -297,5 +292,14 @@
 		}
 	}
 	
+	// [글 삭제]
+	function post_delete() {
+		let confirm = confirm("글 삭제 하시겠습니까?")
+		if(confirm) {
+			location.href="${pageContext.request.contextPath}"
+		}else {
+		}
+		
+	}
 </script>
 </html>
