@@ -41,7 +41,10 @@
 			alias="authdto" />
 		<typeAlias type="kr.co.bttf.DTO.HonoraryDTO"
 			alias="honordto" />
-		<typeAlias type="kr.co.bttf.DTO.UserDTO" alias="userdto" />
+		<typeAlias type="kr.co.bttf.DTO.UserDTO" 
+			alias="userdto" />
+		<typeAlias type="kr.co.bttf.DTO.Bookmark_DTO" 
+			alias="bookmarkdto" />
 	</typeAliases>
 
 	<environments default="development">
