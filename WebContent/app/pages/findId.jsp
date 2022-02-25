@@ -113,7 +113,7 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/findId.do" class="form-signin" method="POST">
+                    <form action="${pageContext.request.contextPath }/pages/findId.us" class="form-signin" method="POST">
                         <p class="text2" style="padding-top: 25px;"> ${findid2}</p>
                         <input type="text" name="user_name" id="user_name" class="form-control" placeholder="이름" required autofocus><br>
                         <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>

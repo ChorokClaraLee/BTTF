@@ -73,7 +73,7 @@
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
     <% UserDTO boardviewer = (UserDTO)session.getAttribute("session_id");%>
-    <c:set var="boardviewer" value="${pageScope.session }" />
+<%--     <c:set var="boardviewer" value="${pageScope.session }" /> --%>
     <div class="bg-color-sky-light" data-auto-height="true">
         <div class="content-lg container">
             <div class="row row-space-1 margin-b-2">
@@ -93,8 +93,8 @@
                                 	<p class="margin-b-50 text-center" > 작성자 ${board.writer }</p>
                                 </div>
                                 <div>
-                                    <textarea class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
-                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</textarea>
+                                    <pre class="form-control" placeholder="내용을 입력해 주세요." style="height : 650px; 
+                                    resize: none; background-color: #fff;" disabled>${board.post_contents }</pre>
                                 </div> 
 	                            <div class="mb-5">
 	                                <c:if test="${empty sessionScope.session}">
@@ -103,8 +103,9 @@
 			                                <a href="java::void()" class="btn btn-warning mt-4" id="report" type="submit" style="float: right;">신고</a>
 										</c:if>
 										<c:if test="${sessionScope.session_id.user_id eq board.writer}">
-	    		                            <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit">글 삭제</a>
 	    		                       		<a href="${pageContext.request.contextPath }/pages/cssEditChange.do?post_id=${board.post_id }" class="btn btn-primary mt-4" id="list" type="submit">글 수정</a>                          
+<%-- 	    		                            <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit" oncl>글 삭제</a> --%>
+	    		                            <a class="btn btn-danger mt-4" onclick="confirm_backlist(${board.post_id})">글삭제</a>
 										</c:if>
 <%-- 									<c:if test="${pageScope.session} == ${board.writer}"> --%>
 <%-- 	    		                        <a href="javascript:deleteCss( ${board.post_id })" class="btn btn-danger mt-4" id="delete" type="submit">글 삭제</a> --%>
@@ -127,29 +128,31 @@
 									<c:choose>
 										<c:when test="${replylist != null and fn:length(replylist) > 0 }">
 											<c:forEach var="reply" items="${replylist }">
-												<div>
+												<div class="reply_box mt-5 col-md-12 col-sm-12">
 													<!-- 정상적인 접근 경로 -->
-													<c:if test="${sessionScope.session_id != null }" >
 														<div align="center" width="200px" >
-														<p id="re_author" name="user_id" class="form-control margin-b-50" style="display:hidden;">${reply.replyer }</p>
+															<p id="re_author" name="user_id" class="text-left reply_subject" style="display:hidden;">${reply.replyer }</p>
 														</div>
-														<div valign="top" style="padding-left: 10px;">
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
-															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</textarea>
+													<c:if test="${sessionScope.session_id != null }" >
+														<div class="col-md-12 col-sm-12 row">
+															<textarea id="reply${reply.reply_id }" class="reply_con_box" name="reply${reply.reply_id }" readonly>${reply.reply_contents }</textarea>
 															<%--<c:if test= ${sessionScope.session_id ==  dto.writer} 자신이 쓴 댓글에 대해서만 수정삭제가 가능하도록 처리해야, 게시글도 마찬가지--%>
-															<a href="javascript:updateReply( ${reply.reply_id})">[수정]</a>
-															<a href="javascript:updateReadonlyReply( ${reply.reply_id} );">[수정 하기]</a>
-															<a href="javascript:deleteReply( ${reply.reply_id})">[삭제]</a>
+															<div class="row mt-5" style="padding-left:10px;">
+																<a class="btn btn-primary" href="javascript:updateReply( ${reply.reply_id})" id="editfail">수정완료</a>
+																<a class="btn btn-info" href="javascript:updateReadonlyReply( ${reply.reply_id} );" id="editsubmitfail">수정하기</a>
+																<a class="btn btn-danger" href="javascript:deleteReply( ${reply.reply_id})" id="deletefail">삭제</a>
+															</div>
 														</div>
 													</c:if>
 													<!-- 비정상적인 접근 경로 -->
 													<c:if test="${sessionScope.session_id == null }" >
 														<div >
-															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" 
-															style="text-align:left;border:0px;width:680px;height:85px;resize:none;" readonly>${reply.reply_contents }</textarea>
-															<a href="login.jsp" class="btn btn-info mt-4" id="editsubmitfail">[수정]</a>
-															<a href="login.jsp" class="btn btn-info mt-4" id="editfail">[수정 하기]</a>
-															<a href="login.jsp" class="btn btn-info mt-4" id="deletefail">[삭제]</a>
+															<textarea id="reply${reply.reply_id }" name="reply${reply.reply_id }" class="reply_con_box" style="text-align:left; border:0px; height:fit-content; resize:none;">${reply.reply_contents }</textarea>
+<!-- 															<div class="row mt-5"> -->
+<%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-info mt-4" id="editfail">수정 하기</a> --%>
+<%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-primary mt-4" id="editsubmitfail">수정 완료</a> --%>
+<%-- 																<a href="${pageContext.request.contextPath }/app/pages/login.jsp" class="btn btn-danger mt-4" id="deletefail">삭제</a> --%>
+<!-- 															</div> -->
 														</div>
 													</c:if>
 												</div>
@@ -241,7 +244,6 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-    <script src="../../resource/js/Prevention.js"></script>
     <script src="../../resource/vendor/ckeditor5-build-classic/translations/ko.js"></script>
 	<script src="../../resource/vendor/ckeditor5-build-classic/ckeditor.js"></script>
     <script>
@@ -251,6 +253,7 @@
                 console.error( error );
             } );
     </script>
+    <script src="../../resource/js/confirm.js"></script>
 </body>
 <!-- END BODY -->
 <script>
@@ -271,6 +274,10 @@
 	// [댓글 수정하기] function
 	function updateReadonlyReply( reply_id ){
 		document.getElementById( 'reply' + reply_id ).readOnly = false;
+		
+// 		document.getElementById( 'editfail' ).style.display = 'block'; 
+// 		document.getElementById( 'editsubmitfail' ).style.display = 'none'; 
+		// 수정하기 버튼 none, 수정완료(펑션) block
 	}
 	
 	// [댓글 수정] function
@@ -278,6 +285,7 @@
 		if (true){
 			document.replyForm.action = "${pageContext.request.contextPath}/pages/cssUpdateReply.do?reply_id="+reply_id;
 			document.replyForm.submit();
+			// 수정하기 버튼 block, 수정완료(펑션) none
 		}
 	}
 	

@@ -16,6 +16,7 @@ public class CssEditChangeAction implements Action {
 
 		int post_id = Integer.parseInt(request.getParameter("post_id"));
 		request.setAttribute("board", bdao.getCssDetail(post_id));
+		
 		forward.setRedirect(false);
 		forward.setPath(request.getContextPath() + "/app/pages/cssedit.jsp");
 		return forward;

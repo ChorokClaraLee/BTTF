@@ -28,7 +28,7 @@ public class CssDAO {
 		List<Board_CSS_DTO> boardList = sqlsession.selectList("css.getCssBoardList", datas);
 		return boardList;
 	}
-
+	//댓글 리스트
 	public List<Reply_CSS_DTO> getCssReplyList(int startRow, int endRow, int post_id) {
 		HashMap<String, Integer> datas = new HashMap<>();
 		datas.put("startRow", startRow);
@@ -86,10 +86,6 @@ public class CssDAO {
 		}
 		return result;
 	}
-//	public void updateCssBoard(Board_CSS_DTO bdto) {
-//		sqlsession.update("css.updateCssBoard", bdto);
-//		
-//	}
 
 	public boolean updateCssReply(int reply_id, String reply_contents) {
 		boolean result = false;

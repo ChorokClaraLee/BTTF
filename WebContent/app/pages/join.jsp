@@ -92,7 +92,7 @@
                             <div class="my_box_element">
                                 <i class="my_box_icon fas fa-id-card"></i>
                             </div>
-                            <form action="${PageContext.request.contextPath}/pages/MemberJoin.do" method="post" name="joinForm">
+                            <form action="${PageContext.request.contextPath}/pages/MemberJoin.us" method="post" name="joinForm">
                                 <div class="col-auto">
                                     <label>아이디</label>
                                     <div style="display: flex;">
@@ -135,8 +135,7 @@
                                         <option value="HTML5">HTML5</option>
                                     </select>
                                 </div>
-<!--                                 <button id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px;" onclick="sendit()"  > 회원가입하기</button> -->
-                                <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"  > 회원가입하기</a>
+                                <a id="joinin" class="btn btn-primary" style="height: 50px; margin-top: 10px; line-height: 36px; "href = "java::void(0)" onclick="sendit()"> 회원가입하기</a>
                             </form>
                         </div>
                     </div>

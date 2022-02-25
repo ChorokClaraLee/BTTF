@@ -113,7 +113,7 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/findPw.do" class="form-signin" method="POST">
+                    <form action="${pageContext.request.contextPath }/pages/findPw.us" class="form-signin" method="POST">
                         <input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" required autofocus><br>
                         <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
 						   <c:if test="${ param.findPw }">

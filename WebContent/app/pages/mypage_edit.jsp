@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -43,7 +45,7 @@
 <!-- BODY -->
 
 <body>
-
+   <c:set var="Member" value="${requestScope.Member }"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -70,12 +72,11 @@
                             <div class="my_box_element">
                                 <i class="my_box_icon fas fa-id-card"></i>
                             </div>
-                            <form action="join" method="post">
+                            <form action="${PageContext.request.contextPath}/pages/MemberJoinUpdate.us" method="post" name="joinFormEdit">
                                 <div class="col-auto">
                                     <label for="id">아이디</label>
                                     <div style="display: flex;">
-                                        <input  id="id" class="form-control margin-b-50" type="text" style="width: 80%; margin-right: 10px;" placeholder="아이디">
-                                        <button class="btn btn-primary" style="height: 50px;" type="submit">중복확인</button>
+                                        <input  id="id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly value="${Member.user_id }">
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -84,18 +85,18 @@
                                 </div>
                                 <div class="col-auto">
                                     <label for="name">이름</label>
-                                    <input  id="name" class="form-control margin-b-50" type="text" placeholder="이름">
+                                    <input  id="name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${Member.user_name }">
                                 </div>
                                 <div class="col-auto">
                                     <label for="phone">전화번호</label>
-                                    <input  id="phone" class="form-control margin-b-50" type="text" placeholder="전화번호">
+                                    <input  id="phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${Member.user_phone }">
                                 </div>
                                 <div class="col-auto">
                                     <label for="email">이메일</label>
-                                    <input  id="email" class="form-control margin-b-50" type="text" placeholder="이메일">
+                                    <input id="email" class="form-control margin-b-50" type="text" placeholder="이메일" value="${Member.user_email }">
                                 </div>
                                 <div class="col-auto">
-                                    <label class="form-label" for="pref">관심언어</label>
+                                    <label class="form-label" for="pref">${Member.main_language }</label>
                                     <select class="form-control" name="pref" id="pref">
                                         <option value="JAVA">관심언어를 선택해주세요.</option>
                                         <option value="JAVA">JAVA</option>
@@ -107,6 +108,8 @@
                                         <option value="HTML5">HTML5</option>
                                     </select>
                                 </div>
+                                <input class="btn btn-primary mt-5" value ="수정완료" type="submit">
+                                <input class="btn btn-danger mt-5" value ="탈퇴하기" onclick="confirm_joinout()" type="button">
                             </form>
                         </div>
                     </div>
@@ -153,8 +156,11 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-    <script src="../../resource/js/Prevention.js"></script>
+    
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../../resource/js/confirm.js" type="text/javascript"></script>
+    
+
 </body>
 <!-- END BODY -->
-
 </html>

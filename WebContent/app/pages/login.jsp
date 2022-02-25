@@ -123,20 +123,8 @@ a {
 					</h2>
 				</div>
 				<div class="card-body">
-					<form action="${PageContext.request.contextPath}/pages/MemberLogin.do" class="form-signin" method="POST">
-						<div class="col-md-12 col-sm-12" style="justify-content: flex-end; display: flex; margin-bottom : 20px;">
-							
-							<div class="form-check col-md-4 col-sm-4">
-								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-								 <label class="form-check-label" for="flexCheckDefault"> 일반회원 </label>
-							</div>
-							
-							<div class="form-check col-md-3 col-sm-3">
-								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"> 
-								<label class="form-check-label" for="flexCheckChecked"> 관리자 </label>
-							</div>
-							
-						</div>
+					<form action="${PageContext.request.contextPath}/pages/MemberLogin.us" class="form-signin" method="POST">
+						
 						<input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" style="margin-bottom : 48px; border-radius:10px; height : 55px; " autofocus required> 
 						<input type="password" name="user_pw" id="user_pw" class="form-control" style="border-radius:10px; height : 55px; margin-bottom : 48px;" placeholder="비밀번호" required>
 						<p id="check" class="check">${login_msg}</p>
