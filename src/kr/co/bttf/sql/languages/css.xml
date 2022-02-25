@@ -112,7 +112,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 	<delete id="deleteCss" parameterType="_int"> -->
 <!-- 		delete from css where -->
 <!-- 		post_id= #{post_id} -->
-<!-- 	</delete> -->
+<!-- 	</delete> 0215 진형선익 글삭제기능완료-->
+
 	<update id="deleteCss" parameterType="_int">
 		update css SET POST_AVAILABLE = 0 WHERE POST_ID = #{post_id}
 	</update>

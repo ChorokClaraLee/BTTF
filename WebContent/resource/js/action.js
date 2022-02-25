@@ -12,5 +12,16 @@ $(document).ready(function(){
 });
 
 
+$(document).ready(function(){
 
+	$('#drop_menu_1').hide();
+
+	$('#drop_2').mouseover(function(){
+		$('#drop_menu_1').slideDown();
+
+	});
+	$('#drop_menu_1').mouseleave(function(){
+		$('#drop_menu_1').hide();
+	});
+});
 

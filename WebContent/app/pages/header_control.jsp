@@ -99,6 +99,39 @@
 							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/app/pages/logout.jsp"> Logout </a>
 						</p>
 					</c:if>
+					<li class="nav-item">
+                        <!-- <a class="nav-item-child nav-item-hover dropdown-toggle menu-has-children" data-toggle="dropdown" href="#">Dev Community</a> -->
+                        <a id="drop_2" class="nav-item-child nav-item-hover dropdown-toggle drop2" data-toggle="dropdown" href="#">Admin</a>
+                        <ul id="drop_menu_1" class="dropdown-menu1">
+                            <li>
+                                <!-- <a class="nav-item-child-sub" href=""></a> -->
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=1">
+                                    	회원관리 - 전체 회원
+                                </a>
+
+                            </li>
+                            <li>
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=1">
+                                    	회원관리 - 신고된회원
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/AllBoard.mg?page=1">
+                                    	게시글 관리 - 전체 게시글 
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/admin_notice.jsp">
+                                    	게시글 관리 - 공지사항
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/admin_blocked_board.jsp">
+                                    	게시글 관리 - 신고된 게시글
+                                </a> 
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

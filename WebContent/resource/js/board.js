@@ -2,8 +2,9 @@ jQuery(function($){
    $("#foo-table").DataTable({
       "bInfo": false,
       "bSortable" : false,
-      "bPaginate" : false
-//      "ajax": 'boardJson.json'   
+      "bPaginate" : true,
+      "displayLength" : 25
+      //      "ajax": 'boardJson.json'   
    });
    
 });
