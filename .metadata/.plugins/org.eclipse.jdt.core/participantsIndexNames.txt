@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+D:\homebrew\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3870720840.index
+\bttf_project\src
+D:\homebrew\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3665750356.index
+\bttf_project\src
+D:\homebrew\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1959016411.index
+\bttf_project\src
