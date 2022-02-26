@@ -80,17 +80,17 @@ public class MemberFrontController extends HttpServlet {
         	 forward = new MemberJoinOutAction().execute(request, response);
         	 break;
 				
-		// 마이페이지 리스트업(북마크만)
-	case "/pages/MypageList.us" :
+			// 마이페이지 리스트업(북마크만)
+         case "/pages/MypageList.us" :
         	 forward = new MypageListAction().execute(request, response);
         	 break;
-				
-		// 북마크 추가
-         case "/pages/BookmarkOK.us" :
+					
+			// 북마크 추가
+	         case "/pages/BookmarkOK.us" :
         	 forward = new BookmarkOKAction().execute(request, response);
         	 break;
-				
-		// 북마크 삭제
+					
+			// 북마크 삭제
          case "/pages/BookmarkDelete.us" :
         	 forward = new BookmarkDeleteAction().execute(request, response);
         	 break;

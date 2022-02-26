@@ -38,8 +38,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE USER_ALL SET user_available = 0 where USER_ID = #{user_id}
 	</update>
 	
-	<select id="bookmarkList" parameterType="string" resultType="bookmarkdto">
-		SELECT c.post_subject , c.post_id, c.POST_REC, c.WRITER , c.POST_REGDATE  FROM post_bookmark pb INNER JOIN CSS c ON pb.post_id = c.POST_ID WHERE c.WRITER = #{user_id}
+	<select id="bookmarkList" parameterType="hashmap" resultType="bookmarkdto">
+<!-- 		SELECT c.post_subject , c.post_id, c.POST_REC, c.WRITER , c.POST_REGDATE  FROM post_bookmark pb INNER JOIN CSS c ON pb.post_id = c.POST_ID WHERE c.WRITER = #{user_id} -->
+		SELECT * FROM (SELECT rownum r , c.post_subject , c.post_id, c.POST_REC, c.WRITER , c.POST_REGDATE  FROM post_bookmark pb INNER JOIN CSS c ON pb.post_id = c.POST_ID WHERE c.WRITER = #{user_id} ORDER BY pb.BOOMARK_ID DESC) t WHERE t.r BETWEEN #{startRow} AND #{endRow}
+		
 	</select>
 	
 	<insert id="getBookmarkAdd" parameterType="hashmap">
@@ -49,4 +51,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="bookmarkDelete" parameterType="string">
 		DELETE FROM post_bookmark WHERE POST_ID = #{post_id}
 	</delete>
+	
+	<select id="getBookmarkCnt" resultType="_int">
+		SELECT COUNT(*) FROM POST_BOOKMARK
+	</select>
+	
+	<select id="getMyPostList" parameterType="hashmap" resultType="cssdto">
+		SELECT * FROM (SELECT rownum r, c.* FROM CSS c WHERE WRITER = #{user_id} AND POST_AVAILABLE = 1 ORDER BY c.POST_ID DESC) p WHERE p.r BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="getMyPostCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)  FROM CSS c WHERE WRITER = #{user_id} AND POST_AVAILABLE = 1
+	</select>
+	
+	<select id="getMyReplyCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)  FROM REPLY_CSS rc WHERE REPLYER = #{user_id}
+	</select>
+	
+	<select id="getMyRecomendCount" parameterType="string" resultType="_int">
+		SELECT COUNT(POST_REC) FROM CSS c WHERE USER_ID = #{user_id}
+	</select>
 </mapper>
