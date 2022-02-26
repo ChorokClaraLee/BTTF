@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import kr.co.bttf.DTO.Board_CSS_DTO;
+import kr.co.bttf.DTO.Bookmark_DTO;
 import kr.co.bttf.DTO.UserDTO;
 import kr.co.bttf.mybatis.SqlMapConfig;
 
@@ -116,5 +118,24 @@ public class MemberDAO {
 		return result;
 	}
 
+	public List<Bookmark_DTO> getBookmarkList(String user_id) {
+		List<Bookmark_DTO> bookmarkList = sqlsession.selectList("Member.bookmarkList", user_id);
+		return bookmarkList;
+	}
+
+	public List<Bookmark_DTO> getBookmarkAdd(String user_id, String post_id) {
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("post_id", post_id);
+		System.out.println("userid:" + user_id + "postid" + post_id);
+		System.out.println(datas.get("user_id"));
+		System.out.println(datas.get("post_id"));
+		List<Bookmark_DTO> bookmarkList = sqlsession.selectList("Member.getBookmarkAdd", datas);
+		return bookmarkList;
+	}
+
+	public void bookmarkDelete(String post_id) {
+		sqlsession.delete("Member.bookmarkDelete", post_id);
+	}
 
 }
