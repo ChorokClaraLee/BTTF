@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 			<!DOCTYPE html>
 
 			<html lang="ko" class="no-js">
@@ -46,8 +46,21 @@
 			<!-- BODY -->
 
 			<body>
-				<c:set var="userAllList" value="${requestScope.userAllList }" />
-				<c:set var="getUserCnt" value="${requestScope.getUserCnt }" />
+				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/>
+<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
+<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
+<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
+<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
+<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
+<%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
+
+				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/>
+<%-- 				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/> --%>
+<%-- 				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/> --%>
+<%-- 				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/> --%>
+<%-- 				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/> --%>
+<%-- 				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/> --%>
+<%-- 				<c:set var="cssTotalCnt" value = "${requestScope.totalCnt }"/> --%>
 
 				<!--========== HEADER ==========-->
 				<header class="header navbar-fixed-top">
@@ -209,12 +222,25 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>asdasd</td>
-												<td>111</td>
-												<td>view1</td>
-												<td>2021-12-08</td>
-											</tr>
+											<c:choose>
+		                    					<c:when test = "${cssBoardList != null and fn:length(cssBoardList) > 0 }">
+		                    						<c:forEach var="css" items="${cssBoardList}">
+														<tr>
+															<td>${css.post_id }</td>
+															<td>
+																<a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${css.post_id }">${css.post_subject }</a>
+															</td>
+															<td>${css.writer }</td>
+															<td>${css.post_regdate }</td>
+														</tr>
+													</c:forEach>
+												</c:when>
+												<c:otherwise>
+						                        	<tr>
+						                        		<td colspan="5" class="text-center">등록된 게시물이 없습니다 </td>
+						                        	</tr>
+						                        </c:otherwise>
+											</c:choose>
 										</tbody>
 									</table>
 								</div>
