@@ -58,7 +58,7 @@
         }
      
          #btn-Yes{
-             background-color: #e4932b;
+             background-color: #17bed2;
              border: none;
          }
         
@@ -81,7 +81,7 @@
          }
      
          a{ 
-            color: #f58b34; text-decoration: none; 
+            color: #17bed2; text-decoration: none; 
          }
          .text2{
             color : blue;
@@ -108,7 +108,7 @@
     <!--========== END HEADER ==========-->
     <div class="container-fluid">
         <div class="row">
-            <div class="card align-middle col-md-4 login_card" >
+            <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     

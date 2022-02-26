@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -43,7 +45,7 @@
 <!-- BODY -->
 
 <body>
-
+    <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -159,26 +161,27 @@
                         <th>추천수</th>
                         <th>작성자</th>
                         <th>작성일자</th>
+			<th></th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>asdasd</td>
-                            <td>11</td>
-                            <td>veiw1</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>asddfgdgf</td>
-                            <td>222</td>
-                            <td>veiw2</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>veiw3</td>
-                            <td>2021-12-08</td>
-                        </tr>
+		    	<c:choose>
+                    	<c:when test="${empty bookmarkList }">
+                    		<tr>
+                    		<td colspan="5">등록된 북마크가 없습니다.</td>
+                    		</tr>
+                    	</c:when>
+                    	<c:otherwise>
+		                    <c:forEach var="bookmark" items="${bookmarkList}">
+		                    	<tr>
+		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
+		                    		<td>${bookmark.post_rec}</td>
+		                    		<td>${bookmark.writer}</td>
+		                    		<td>${bookmark.post_regdate}</td>
+		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
+		                    	</tr>
+		                    </c:forEach>
+                    	</c:otherwise>
+                    </c:choose>
                     </tbody>
                 </table>
             </div>
