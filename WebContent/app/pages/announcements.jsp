@@ -40,13 +40,23 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
 	<script type="text/javascript" src="../../resource/js/board.js"></script>
+	<script type="text/javascript">
+		jQuery(function($){
+		   $("#foo-table").DataTable({
+		      "bInfo": false,
+		      "bSortable" : false,
+		      "bPaginate" : true,
+		   });
+		   
+		});		
+	</script>
 
 </head>
 <!-- END HEAD -->
 	
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll">
 	<c:set var="announcmentList" value = "${requestScope.announcmentList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	
@@ -60,8 +70,8 @@
     <!--========== END HEADER ==========-->
 
     <!-- notice -->
-    <div class="bg-color-sky-light">
-        <div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container">
+        <div class="content-lg container" style="margin-top : 50px;">
 <%--         ${boardJSON } --%>
             <!-- notice -->
             <h2>공지사항</h2>
@@ -78,26 +88,28 @@
 <!-- 	                </form> -->
 <!-- 	            </div> -->
 	            <div class="table-responsive">
-	                <table id="foo-table" class="table table-striped" data-page-length='40' data-order='[[ 1, "desc" ]]'>
+	                <table id="foo-table" class="table table-striped" data-order='[[ 1, "desc" ]]'>
 	                    <thead>
-	                        <th>번호</th>
-	                        <th>제목</th>
-	                        <th>작성자</th>
-	                        <th>조회수</th>
-	                        <th>날짜</th>
+	                    	<tr>
+		                        <th>번호</th>
+		                        <th>제목</th>
+		                        <th>작성자</th>
+		                        <th>조회수</th>
+		                        <th>날짜</th>
+	                    	</tr>
 	                    </thead>
 	                    <tbody>
 		                    <c:choose>
 		                    	<c:when test = "${announcmentList != null and fn:length(announcmentList) > 0 }">
-		                    		<c:forEach var="board" items="${announcmentList}">
+		                    		<c:forEach var="announcmentList" items="${announcmentList}">
 				                        <tr>
-				                            <td>${board.post_id }</td>
+				                            <td>${announcmentList.post_id }</td>
 				                            <td>
-				                            <a href="${pageContext.request.contextPath }/pages/ann_view.mg?post_id=${board.post_id }">${board.post_subject }</a>
+				                            <a href="${pageContext.request.contextPath }/pages/ann_view.mg?post_id=${announcmentList.post_id }">${announcmentList.post_subject }</a>
 				                            </td>
-				                            <td>${board.writer }</td>
-				                            <td>${board.post_vcount }</td>
-				                            <td>${board.post_regdate }</td>
+				                            <td>${announcmentList.writer }</td>
+				                            <td>${announcmentList.post_vcount }</td>
+				                            <td>${announcmentList.post_regdate }</td>
 				                        </tr>
 		                        	</c:forEach>
 		                        </c:when>
@@ -111,43 +123,11 @@
 	                </table>
 	            </div>
 	            <!-- End notice -->
-	            
 	            <c:if test="${sessionScope.session_id != null && sessionScope.session_id.user_id == 'admin'}">
-	           	 <a href="${pageContext.request.contextPath }/pages/ann_write.mg"class="btn btn-primary" type="submit">글쓰기</a>
+	           	 <a href="${pageContext.request.contextPath }/app/pages/ann_write.jsp"class="btn btn-primary" type="submit">글쓰기</a>
 	            </c:if>
-				<!--<input type="hidden" name="css" value="1"> -->
             </form>
-            <!-- board pagination -->
-<!-- 				<nav aria-label="Page navigation" class="text-center"> -->
-<%-- 				<input type="hidden" name="post_id" value="${board.post_id }"> --%>
-<!-- 					<ul class="pagination"> -->
-<%-- 						<c:if test="${nowPage > 1 }"> --%>
-<!-- 							<li class="page-item">							 -->
-<%-- 								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage - 1 }">&lt;</a> --%>
-<!-- 							</li> -->
-<%-- 						</c:if> --%>
-<%-- 						<c:forEach var="i" begin="${startPage}" end="${endPage }"> --%>
-<%-- 							<c:choose> --%>
-<%-- 								<c:when test="${i == nowPage }"> --%>
-<!-- 									<li class="page-item"> -->
-<%-- 										<a class="page-link">${i }	</a>						 --%>
-<!-- 									</li> -->
-<%-- 								</c:when> --%>
-<%-- 								<c:otherwise> --%>
-<!-- 									<li class="page-item">									 -->
-<%-- 										<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${i }">${i }</a> --%>
-<!-- 									</li> -->
-<%-- 								</c:otherwise> --%>
-<%-- 							</c:choose> --%>
-<%-- 						</c:forEach>	 --%>
-<%-- 						<c:if test="${nowPage<totalPage }"> --%>
-<!-- 							<li class="page-item"> -->
-<%-- 								<a class="page-link" href="${pageContext.request.contextPath }/pages/csslist.do?page=${nowPage + 1 }">&gt;</a> --%>
-<!-- 							</li> -->
-<%-- 						</c:if>						 --%>
-<!-- 					</ul> -->
-<!-- 				</nav> -->
-								<!-- end of board pagination -->	
+            
         </div>
     </div>
     <!-- End notice -->
@@ -155,7 +135,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  
@@ -187,6 +167,7 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
+    
 </body>
 <!-- END BODY -->
 

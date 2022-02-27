@@ -44,138 +44,163 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
 	<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
 	<script type="text/javascript" src="../../resource/js/board.js"></script>
-            </head>
-            <!-- END HEAD -->
+    </head>
+    <!-- END HEAD -->
 
-            <!-- BODY -->
+    <!-- BODY -->
 
-            <body>
-				<c:set var="userBlockedList" value="${requestScope.userBlockedList }" />
-                <c:set var="getUserCnt" value="${requestScope.getUserCnt }" />
-                <!--========== HEADER ==========-->
-                <header class="header navbar-fixed-top">
-                    <!-- Navbar -->
-                    <%@ include file="/app/pages/header_control.jsp" %>
-                        <!-- Navbar -->
-                </header>
-                <!--========== END HEADER ==========-->
+    <body>
+		<c:set var="userBlockedList" value="${requestScope.userBlockedList }" />
+        <c:set var="getUserCnt" value="${requestScope.getUserCnt }" />
+        <!--========== HEADER ==========-->
+        <header class="header navbar-fixed-top">
+            <!-- Navbar -->
+            <%@ include file="/app/pages/header_control.jsp" %>
+            <!-- Navbar -->
+        </header>
+        <!--========== END HEADER ==========-->
 
-                <!--========== SLIDER ==========-->
+        <!--========== SLIDER ==========-->
 
-                <!--========== SLIDER ==========-->
+        <!--========== SLIDER ==========-->
 
-                <!--========== PAGE LAYOUT ==========-->
-                <!-- Service -->
-                <div class="bg-color-sky-light" data-auto-height="true">
-                    <div class="content-lg container">
-                        <h1 class="pt-4">
-                            <i class="fas fa-user-circle title_subject_icon"></i>
-                            	관리자 - 차단된 회원
-                        </h1>
-                        <!--blockedmember layout -->
-                        <div class="content-lg container">
-                            <h2>
-                                <i class="fas fa-user-alt-slash title_subject_icon"></i>차단된 회원
-                            </h2>
-                            <div class="table-responsive">
-                                <table id="foo-table" class="table table-striped">
-                                    <thead>
+        <!--========== PAGE LAYOUT ==========-->
+        <!-- Service -->
+        <div class="bg-color-sky-light" data-auto-height="true">
+            <div class="content-lg container">
+                <h1 class="pt-4">
+                    <i class="fas fa-user-circle title_subject_icon"></i>
+                    	관리자 - 차단된 회원
+                </h1>
+                <!--blockedmember layout -->
+                <div class="content-lg container">
+                    <h2>
+                        <i class="fas fa-user-alt-slash title_subject_icon"></i>차단된 회원
+                    </h2>
+                    <div class="table-responsive">
+                        <table id="foo-table" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>회원이름</th>
+                                    <th>휴대폰번호</th>
+                                    <th>가입일자</th>
+                                    <th>계정관리</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <c:choose>
+                                <c:when test="${userBlockedList != null and fn:length(userBlockedList) > 0 }">
+                                    <c:forEach var="userBlockedList" items="${userBlockedList}">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>회원이름</th>
-                                            <th>휴대폰번호</th>
-                                            <th>가입일자</th>
-                                            <th>계정관리</th>
+                                            <td>
+                                                <p>
+                                                    ${userBlockedList.user_id }
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    ${userBlockedList.user_name }
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    ${userBlockedList.user_phone }
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    ${userBlockedList.user_regdate }
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <input type="button"
+                                                    class="btn btn-info" value="차단해제">
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                       <c:choose>
-	                                       <c:when test="${userBlockedList != null and fn:length(userBlockedList) > 0 }">
-	                                           <c:forEach var="userBlockedList" items="${userBlockedList}">
-	                                               <tr>
-	                                                   <td>
-	                                                       <p>
-	                                                           ${userBlockedList.user_id }
-	                                                       </p>
-	                                                   </td>
-	                                                   <td>
-	                                                       <p>
-	                                                           ${userBlockedList.user_name }
-	                                                       </p>
-	                                                   </td>
-	                                                   <td>
-	                                                       <p>
-	                                                           ${userBlockedList.user_phone }
-	                                                       </p>
-	                                                   </td>
-	                                                   <td>
-	                                                       <p>
-	                                                           ${userBlockedList.user_regdate }
-	                                                       </p>
-	                                                   </td>
-	                                                   <td>
-	                                                       <input type="button"
-	                                                           class="btn btn-info" value="차단해제">
-	                                                   </td>
-	                                               </tr>
-	                                           </c:forEach>
-	                                       </c:when>
-	                                       <c:otherwise>
-	                                           <tr>
-	                                               <td colspan="5" class="text-center">등록된 회원이 없습니다.</td>
-	                                           </tr>
-	                                       </c:otherwise>
-	                                   </c:choose>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!--end blockedmember layout -->
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <tr>
+                                        <td colspan="5" class="text-center">등록된 회원이 없습니다.</td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- paging -->
+                   	<nav aria-label="Page navigation" class="text-center" style="display:none;">
+                    	<ul class="pagination">
+                        	<c:if test="${nowPage > 1 }">
+                            	<li class="page-item">
+                                	<a class="page-link" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=${nowPage - 1 }">&lt;</a>
+                            	</li>
+                         	</c:if>
+                        <c:forEach var="i" begin="${startPage}" end="${endPage }">
+                        	<c:choose>
+                            	<c:when test="${i == nowPage }">
+                                	<li class="page-item">
+                                    	<a class="page-link">${i } </a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="page-item">
+                                        <a class="page-link" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=${i }">${i}</a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <c:if test="${nowPage<totalPage }">
+                            <li class="page-item">
+                                <a class="page-link" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=${nowPage + 1 }">&gt;</a>
+                            </li>
+                        </c:if>
+                    	</ul>
+                    </nav>
+<!-- end of paging -->
                 </div>
-                </div>
-                <!--========== FOOTER ==========-->
-                <footer class="footer">
+                <!--end blockedmember layout -->
+            </div>
+        </div>
+        <!--========== FOOTER ==========-->
+        <footer class="footer">
 
-                    <!-- Copyright -->
-                    <%@ include file="/app/pages/footer_control.jsp" %>
-                        <!-- End Copyright -->
-                </footer>
-                <!--========== END FOOTER ==========-->
+            <!-- Copyright -->
+            <%@ include file="/app/pages/footer_control.jsp" %>
+                <!-- End Copyright -->
+        </footer>
+<!--========== END FOOTER ==========-->
 
-                <!-- Back To Top -->
-                <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
-                <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-                <!-- CORE PLUGINS -->
-                <script src="../../resource/vendor/jquery.min.js" type="text/javascript"></script>
-                <script src="../../resource/vendor/jquery-migrate.min.js" type="text/javascript"></script>
-                <script src="../../resource/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="../../resource/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="../../resource/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../../resource/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
-                <!-- PAGE LEVEL PLUGINS -->
-                <script src="../../resource/vendor/jquery.easing.js" type="text/javascript"></script>
-                <script src="../../resource/vendor/jquery.back-to-top.js" type="text/javascript"></script>
-                <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
-                <script src="../../resource/vendor/jquery.wow.min.js" type="text/javascript"></script>
-                <script src="../../resource/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-                <script src="../../resource/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-                <script src="../../resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="../../resource/vendor/jquery.easing.js" type="text/javascript"></script>
+    <script src="../../resource/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+    <!--  <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script> -->
+    <script src="../../resource/vendor/jquery.wow.min.js" type="text/javascript"></script>
+	<script src="../../resource/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script src="../../resource/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+    <script src="../../resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
-                <!-- PAGE LEVEL SCRIPTS -->
-                <script src="../../resource/js/layout.min.js" type="text/javascript"></script>
-                <script src="../../resource/js/components/wow.min.js" type="text/javascript"></script>
-                <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
-                <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
-                <script src="../../resource/js/action.js"></script>
-                <!-- F12 ,right click block-->
-                <!-- <script src="js/Prevention.js"></script> -->
-
-                <!-- Load d3.js and c3.js -->
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="../../resource/js/layout.min.js" type="text/javascript"></script>
+    <script src="../../resource/js/components/wow.min.js" type="text/javascript"></script>
+    <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
+    <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
+    <script src="../../resource/js/action.js"></script>
+    <!-- F12 ,right click block-->
+    <!-- <script src="js/Prevention.js"></script> -->
+    <!-- Load d3.js and c3.js -->
 <!--                 <script src="../../resource/vendor/c3-0.7.20/c3.js"></script> -->
 <!--                 <script src="../../resource/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script> -->
-
-
-            </body>
+	</body>
             <!-- END BODY -->
-
-            </html>
+</html>

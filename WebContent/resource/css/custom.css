@@ -426,6 +426,15 @@ ul.nav li.dropdown_man:hover > ul.manager_dropdown {
 /* table end */
 
 
+/* fixed footer(container width) */
+
+.fixed_container {
+    min-height: calc(100vh - 100px);
+}
+
+
+
+
 
 /* 2. container end*/
 
@@ -657,6 +666,15 @@ pre{
     width: 160px;
     height: auto;
 }
+
+
+
+
+
+.fixed_footer {
+    height: 160px;
+}
+​
 
 
 /* 5. footer end */
