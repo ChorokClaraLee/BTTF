@@ -68,6 +68,11 @@ public class MemberFrontController extends HttpServlet {
          case "/pages/findPw.us":
         	 forward = new FindPwAction().execute(request, response);
         	 break;
+        
+        	 // 비밀번호 변경
+         case "/pages/updatePw.us":
+        	 forward = new UpdatePwAction().execute(request, response);
+        	 break;
         	 
         	// 중복확인
          case "/pages/idCheck.us":

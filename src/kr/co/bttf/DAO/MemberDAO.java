@@ -83,20 +83,29 @@ public class MemberDAO {
 
 	
 	// 비밀번호 찾기
-	public String findPw(UserDTO udto) {
+	public boolean findPw(UserDTO udto) {
+		boolean result = false;
 		HashMap<String, String> datas = new HashMap<>();
 
 		datas.put("user_id", udto.getUser_id());
 		datas.put("user_email", udto.getUser_email());
-
-		String pwresult = sqlsession.selectOne("Member.findPw", datas);
-		System.out.println(pwresult);
-		System.out.println(datas);
-		return pwresult;
+		if ((Integer) sqlsession.selectOne("Member.findPw", datas) == 1) {
+			result = true;
+		}
+		return result;
 	}
-
 	
-////	 중복확인
+
+	// 비밀번호 변경
+	public boolean UpdatePwAction(String user_pw) {
+		boolean result = false;
+		if (sqlsession.update("Member.UpdatePwAction", user_pw) == 1) {
+			result = true;
+		}
+		return result;
+	}
+	
+	// 중복확인
 	public boolean checkid(String user_id) {
 		//중복된 사용자 없음
 		boolean result = true;
@@ -137,5 +146,6 @@ public class MemberDAO {
 	public void bookmarkDelete(String post_id) {
 		sqlsession.delete("Member.bookmarkDelete", post_id);
 	}
+
 
 }

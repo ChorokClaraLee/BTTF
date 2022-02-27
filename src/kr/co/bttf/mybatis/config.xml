@@ -45,6 +45,8 @@
 			alias="userdto" />
 		<typeAlias type="kr.co.bttf.DTO.Bookmark_DTO" 
 			alias="bookmarkdto" />
+		<typeAlias type="kr.co.bttf.DTO.AnnDTO" 
+			alias="anndto" />
 	</typeAliases>
 
 	<environments default="development">
