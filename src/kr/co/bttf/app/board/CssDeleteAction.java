@@ -16,9 +16,6 @@ public class CssDeleteAction implements Action {
 		CssDAO bdao = new CssDAO();
 		MemberDAO mdao = new MemberDAO();
 		int post_id = Integer.parseInt(request.getParameter("post_id"));
-
-		// 글 삭제시 북마크 삭제
-		mdao.bookmarkDelete(""+post_id);
 		
 		if(bdao.deleteCss(post_id)) {
 			forward.setRedirect(true);

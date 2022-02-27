@@ -139,6 +139,8 @@ public class MemberDAO {
 	}
 
 	public void bookmarkDelete(String post_id) {
+		System.out.println("methodDeleteAction");
+		System.out.println(post_id);
 		sqlsession.delete("Member.bookmarkDelete", post_id);
 	}
 
