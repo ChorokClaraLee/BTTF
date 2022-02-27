@@ -12,11 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		( SELECT * FROM USER_ALL ORDER BY USER_REGDATE DESC) D)
 		 B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R
 		 where authority_code =1
-		 
 	</select>
+	
+	<!-- 2. 전체 회원수 -->
 	<select id="getUserCnt" resultType="_int">
 		SELECT COUNT(*) FROM USER_ALL where authority_code =1
 	</select>
+	
+	<!-- 3. 신고된 회원 목록 -->
 	<select id="userBlockedList" parameterType="hashmap" resultType="userdto">
 		SELECT * FROM 
 		(SELECT * FROM 
@@ -25,4 +28,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R
 		 where authority_code =1 AND user_reported = 1
 	</select>
+	
+	<!-- 4. 공지사항 목록 -->
+	<select id="announcmentList" parameterType="hashmap" resultType="userdto">
+		SELECT * FROM 
+		(SELECT * FROM 
+		( SELECT ROWNUM R, D.* FROM 
+		( SELECT * FROM announcements ORDER BY post_id DESC) D)
+		 B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R
+	</select>
+	
+	<!-- 5. 공지사항 수 -->
+	<select id="getAnnCnt" resultType="_int">
+		SELECT COUNT(*) FROM announcements
+	</select>
+	
+	<!-- 6. 공지사항 조회수 갱신 -->
+	<update id="updateAnnReadCount" parameterType="_int">
+		update announcements set
+		post_vcount = post_vcount + 1 where post_id = #{post_id}
+	</update>
+	
+	<!-- 7. 공지사항 게시글 상세 보기 -->
+	<select id="getAnnDetail" parameterType="_int"
+		resultType="anndto">
+		select * from announcements where post_id = #{post_id}
+	</select>
+	
 </mapper>
