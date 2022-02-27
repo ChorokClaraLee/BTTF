@@ -36,6 +36,10 @@
 
     <!-- custom -->
     <link rel="stylesheet" href="../../resource/css/custom.css">
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
+    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
+    <script type="text/javascript" src="../../resource/js/board.js"></script>
 
     <!-- c3 chart -->
     <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
@@ -46,6 +50,10 @@
 
 <body>
     <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
+    <c:set var="mypostList" value="${requestScope.mypostList}"/>
+    <c:set var="mypostcount" value="${requestScope.getMyPostCount}"/>
+    <c:set var="myreplycount" value="${requestScope.getMyReplyCount}"/>
+    <c:set var="myrecomendcount" value="${requestScope.getMyRecomendCount}"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
@@ -89,7 +97,7 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>작성한 글 수</h3>
-                                <p class="margin-b-5">1111</p>
+                                <p class="margin-b-5">${mypostcount}</p>
                                 <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
                             <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
@@ -104,7 +112,7 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>작성한 댓글 수</h3>
-                                <p class="margin-b-5">1111</p>
+                                <p class="margin-b-5">${myreplycount}</p>
                                 <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
                             <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
@@ -119,7 +127,7 @@
                             </div>
                             <div class="my_box_my_page_info">
                                 <h3>받은 추천 수</h3>
-                                <p class="margin-b-5">1111</p>
+                                <p class="margin-b-5">${myrecomendcount}</p>
                                 <!-- <a class="link" href="html5.html">Read More</a> -->
                             </div>
                             <!-- <a href="html5.html" class="content-wrapper-link"></a> -->
@@ -155,7 +163,49 @@
                 	북마크
             </h2>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table id="foo-table" class="table table-striped" data-page-length='5' data-order='[[ 1, "desc" ]]'>
+                    <thead>
+                        <th>제목</th>
+                        <th>추천수</th>
+                        <th>작성자</th>
+                        <th>작성일자</th>
+			<th></th>
+                    </thead>
+                    <tbody>
+		    	<c:choose>
+                    	<c:when test="${empty mypostList }">
+                    		<tr>
+                    		<td colspan="5">등록된 북마크가 없습니다.</td>
+                    		</tr>
+                    	</c:when>
+                    	<c:when test="${mypostList != null and fn:length(mypostList) > 0 }">
+		                    <c:forEach var="mypostList" items="${mypostList}">
+		                    	<tr>
+		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${mypostList.post_id}">${mypostList.post_subject}</a></td>
+		                    		<td>${mypostList.post_rec}</td>
+		                    		<td>${mypostList.writer}</td>
+		                    		<td>${mypostList.post_regdate}</td>
+		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${mypostList.post_id }">삭제</a></td>
+		                    	</tr>
+		                    </c:forEach>
+                    	</c:when>
+                    </c:choose>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End notice -->
+        </div>
+    </div>
+    <!-- End notice -->
+    
+    <div class="content-lg container">
+            <!-- notice -->
+            <h2>
+                <i class="fas fa-user-tag title_subject_icon"></i>
+                	내가 작성한 글
+            </h2>
+            <div class="table-responsive">
+                <table id="foo-table" class="table table-striped" data-page-length='5' data-order='[[ 1, "desc" ]]'>
                     <thead>
                         <th>제목</th>
                         <th>추천수</th>
@@ -167,10 +217,10 @@
 		    	<c:choose>
                     	<c:when test="${empty bookmarkList }">
                     		<tr>
-                    		<td colspan="5">등록된 북마크가 없습니다.</td>
+                    		<td colspan="5">등록된 내 글이 없습니다.</td>
                     		</tr>
                     	</c:when>
-                    	<c:otherwise>
+                    	<c:when test="${bookmarkList != null and fn:length(bookmarkList) > 0 }">
 		                    <c:forEach var="bookmark" items="${bookmarkList}">
 		                    	<tr>
 		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
@@ -180,59 +230,14 @@
 		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
-                    	</c:otherwise>
+                    	</c:when>
                     </c:choose>
                     </tbody>
                 </table>
             </div>
             <!-- End notice -->
         </div>
-    </div>
-    <!-- End notice -->
-    <div class="content-lg container">
-        
-        <!--// end row -->
-
-        <div class="row">
-            <!-- notice -->
-            <h2>
-                <i class="fas fa-user-edit title_subject_icon"></i>
-                	내가 작성한 글
-            </h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <th>제목</th>
-                        <th>추천수</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>asdasd</td>
-                            <td>11</td>
-                            <td>veiw1</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>asddfgdgf</td>
-                            <td>222</td>
-                            <td>veiw2</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                        <tr>
-                            <td>xcvccxvxcv</td>
-                            <td>333</td>
-                            <td>veiw3</td>
-                            <td>2021-12-08</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- End notice -->
-        </div>
-
-    </div>
+    
     <!-- End Work -->
     <!--========== END PAGE LAYOUT ==========-->
 
@@ -267,7 +272,7 @@
     <script src="../../resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="../../resource/js/layout.min.js" type="text/javascript"></script>
+    <script src="../../resource/js/layout.js" type="text/javascript"></script>
     <script src="../../resource/js/components/wow.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
@@ -277,17 +282,7 @@
     <script src="../../resource/vendor/c3-0.7.20/c3.js"></script>
     <script src="../../resource/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 
-	<script>
-        var chart = c3.generate({
-            bindto: '#chart',
-            data: {
-            columns: [
-                ['작성한 글', 30, 200, 100, 400, 150, 250],
-                ['받은 추천수', 50, 20, 10, 40, 15, 25]
-            ]
-            }
-        });
-    </script>
+	
 	
 </body>
 <!-- END BODY -->

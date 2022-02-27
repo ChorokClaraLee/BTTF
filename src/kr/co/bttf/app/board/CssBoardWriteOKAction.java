@@ -9,6 +9,7 @@ import kr.co.bttf.DTO.Board_CSS_DTO;
 import kr.co.bttf.DTO.UserDTO;
 import kr.co.bttf.action.Action;
 import kr.co.bttf.action.ActionForward;
+import kr.co.bttf.function.Alert;
 
 public class CssBoardWriteOKAction implements Action {
 
@@ -28,48 +29,20 @@ public class CssBoardWriteOKAction implements Action {
 		bdto.setPost_subject(post_subject);
 		bdto.setPost_contents(post_contents);
 		
-		if ( post_subject.equals("") && post_contents.equals("") ) {
-			request.setAttribute("post_subject", post_subject);
-			request.setAttribute("post_contents", post_contents);
-			forward.setRedirect(false);
-//			cdao.insertCssBoard(bdto);
-			forward.setPath(request.getContextPath() + "/app/pages/alert/alert_boardwrite_title.jsp");
-			System.out.println("post_subject: " + post_subject);
-			System.out.println("post_contents: " + post_contents);
+		if ( post_subject.equals("")) {
+			Alert.alert(request, forward, "/pages/csswrite.do", "제목을 입력하세요.");
 			
-		} else if ( post_subject.equals("") || post_contents.equals("") ) {
-			request.setAttribute("post_subject", post_subject);
-			request.setAttribute("post_contents", post_contents);
-			forward.setRedirect(false);
-//			cdao.insertCssBoard(bdto);
-			forward.setPath(request.getContextPath() + "/app/pages/csswrite.jsp");
-			System.out.println("post_subject: " + post_subject);
-			System.out.println("post_contents: " + post_contents);
-			
+		} else if (post_contents.equals("") ) {
+			Alert.alert(request, forward, "/pages/csswrite.do", "내용을 입력하세요.");
+		} else if (post_subject.equals("") && post_contents.equals("")){
+			Alert.alert(request, forward, "/pages/csswrite.do", "제목을 입력하세요.");
 		} else {
-			System.out.println("post else");
-			request.setAttribute("post_subject", post_subject);
-			request.setAttribute("post_contents", post_contents);
-			forward.setRedirect(false);
 			cdao.insertCssBoard(bdto);
+			forward.setRedirect(false);
 			forward.setPath(request.getContextPath() + "/pages/csslist.do?page=1");
-			System.out.println("post_subject: " + post_subject);
-			System.out.println("post_contents: " + post_contents);
-			
-		}	
-//			try {
-//				
-//			} catch (Exception e) {
-//				
-//				System.out.println(e);
-//			} finally {
-//				System.out.println("박지율바보");
-//				return forward;
-//				
-//			}
+		}
 		
 		return forward;
-		
 		
 	}
 }

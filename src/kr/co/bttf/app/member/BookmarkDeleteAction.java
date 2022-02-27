@@ -14,6 +14,7 @@ public class BookmarkDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
 		
+		System.out.println("deleteAction");
 		String post_id = request.getParameter("post_id");
 
 		mdao.bookmarkDelete(post_id);
