@@ -113,14 +113,14 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/findPw.us" class="form-signin" method="POST">
+<%--                     <form action="${pageContext.request.contextPath }/pages/findPw.us" class="form-signin" method="POST"> --%>
                         <input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" required autofocus><br>
                         <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
 						   <c:if test="${ param.findPw }">
 						      <p class="check" id="check">회원님의 비밀번호는 ${pwresult} 입니다.</p><br/>
 						   </c:if>
-                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호찾기</button>
-                    </form>
+                        <a id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="send_mail()">비밀번호찾기</a>
+<!--                     </form> -->
                 </div>
                 <div class="links" style="padding: 10px 20px;">
                     <a href="${pageContext.request.contextPath }/app/pages/findId.jsp">아이디 찾기</a> | <a href="${pageContext.request.contextPath }/app/pages/login.jsp">로그인</a> | <a href="${pageContext.request.contextPath }/app/pages/join.jsp">회원가입</a>
@@ -160,20 +160,13 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-<!--     <script type="text/javascript"> -->
-//     Email.send({
-//         Host : "smtp.yourisp.com",
-//         Username : "*****@naver.com",
-//         Password : "123444444",
-//         To : 'them@website.com',
-//         From : "you@isp.com",
-//         Subject : "This is the subject",
-//         Body : "And this is the body"
-//     }).then(
-//       message => alert(message)
-//     );
-    
-<!--     </script> -->
+	<script type="text/javascript">
+		function send_mail() {
+			window.open("./test_mail.jsp", "", "width=370, height=360, resizable=no, scrollbars=no, status=no");
+
+		}
+	
+	</script>
 </body>
 <!-- END BODY -->
 
