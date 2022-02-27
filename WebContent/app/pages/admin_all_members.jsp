@@ -144,6 +144,7 @@
                                         </table>
                                     </div>
                                     <!-- End notice -->
+									<!-- paging -->
                                     <nav aria-label="Page navigation" class="text-center" style="display:none;">
 	                                    <ul class="pagination">
 	                                        <c:if test="${nowPage > 1 }">
@@ -173,6 +174,7 @@
 	                                        </c:if>
 	                                    </ul>
                                     </nav>
+									<!-- end of paging -->
                                 </div>
                             </div>
                             <!-- allmembers tab end-->

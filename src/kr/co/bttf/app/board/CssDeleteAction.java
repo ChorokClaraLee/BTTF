@@ -14,7 +14,6 @@ public class CssDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		CssDAO bdao = new CssDAO();
-		MemberDAO mdao = new MemberDAO();
 		int post_id = Integer.parseInt(request.getParameter("post_id"));
 		
 		if(bdao.deleteCss(post_id)) {

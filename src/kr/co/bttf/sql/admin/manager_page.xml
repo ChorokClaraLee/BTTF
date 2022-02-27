@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Manager">
 
-	<!-- 1. 유저리스트 출력 -->
+	<!-- 1. 전체회원목록 -->
 	<select id="getUserAllList" parameterType="hashmap" resultType="userdto">
 		SELECT * FROM 
 		(SELECT * FROM 
@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 4. 공지사항 목록 -->
-	<select id="announcmentList" parameterType="hashmap" resultType="userdto">
+	<select id="announcmentList" parameterType="hashmap" resultType="anndto">
 		SELECT * FROM 
 		(SELECT * FROM 
 		( SELECT ROWNUM R, D.* FROM 
@@ -50,9 +50,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 7. 공지사항 게시글 상세 보기 -->
-	<select id="getAnnDetail" parameterType="_int"
-		resultType="anndto">
+	<select id="getAnnDetail" parameterType="_int" resultType="anndto">
 		select * from announcements where post_id = #{post_id}
 	</select>
+	
+	<!--8. 공지사항 쓰기 -->
+	<insert id="annInsert" parameterType="anndto">
+		INSERT INTO announcements
+		(POST_ID, post_subject, post_contents, writer)
+		VALUES (ann_seq.nextval, #{post_subject}, #{post_contents}, #{writer})
+	</insert>
+	
+	<!--9.공지사항 삭제 -->
+	<delete id="annDelete" parameterType="_int">
+		delete from announcements where post_id= #{post_id}
+	</delete>
+	
+	<!--10.수정하기 -->
+	<update id="annEditChange" parameterType="hashmap">
+		update announcements set
+		post_contents = #{post_contents}, post_subject = #{post_subject}
+		where post_id = #{post_id}
+	</update>
+	
+	
 	
 </mapper>
