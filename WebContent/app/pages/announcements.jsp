@@ -39,13 +39,13 @@
     
     <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
-	<script type="text/javascript" src="../../resource/js/board.js"></script>
+<!-- 	<script type="text/javascript" src="../../resource/js/board.js"></script> -->
 	<script type="text/javascript">
 		jQuery(function($){
 		   $("#foo-table").DataTable({
 		      "bInfo": false,
-		      "bSortable" : false,
-		      "bPaginate" : true,
+		      "bSort" : false,
+		      "bPaginate" : true
 		   });
 		   
 		});		
