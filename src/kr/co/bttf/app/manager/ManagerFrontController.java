@@ -55,9 +55,9 @@ import kr.co.bttf.app.member.MemberLoginAction;
 	            
 	        /* 공지사항 */  
 			// 게시글 관리 - 공지사항  (단순 selectList) + 공지사항 화면단도 복붙필요
-	        case "/pages/Announcements.mg":
-	            forward = new AnnouncementsAction().execute(request, response);
-	            break;
+//	        case "/pages/Announcements.mg":
+//	            forward = new AnnouncementsAction().execute(request, response);
+//	            break;
 	       
 	        // 공지사항 작성
 	 		case "/pages/ann_write.mg":
@@ -65,14 +65,14 @@ import kr.co.bttf.app.member.MemberLoginAction;
 	 			break;  
 	            
 	        // 공지사항 작성 저장
-//			case "/pages/annWriteOKAction.mg": 
-//				forward = new annWriteOKAction().execute(request, response);
-//				break;    
+			case "/pages/annWriteOKAction.mg": 
+				forward = new annWriteOKAction().execute(request, response);
+				break;    
 	            
 			// 상세항목 조회
-			case "/pages/ann_view.mg":
-				forward = new AnnViewAction().execute(request, response);
-				break;
+//			case "/pages/ann_view.mg":
+//				forward = new AnnViewAction().execute(request, response);
+//				break;
 				
 				
 				
