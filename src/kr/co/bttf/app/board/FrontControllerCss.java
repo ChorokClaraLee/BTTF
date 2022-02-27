@@ -69,7 +69,6 @@ public class FrontControllerCss extends HttpServlet {
 
 			
 			
-			
 			// 글수정을 위한 정보 날르기
 		case "/pages/cssEditChange.do":
 			forward = new CssEditChangeAction().execute(request, response);

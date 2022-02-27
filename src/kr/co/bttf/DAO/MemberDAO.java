@@ -127,25 +127,55 @@ public class MemberDAO {
 		return result;
 	}
 
-	public List<Bookmark_DTO> getBookmarkList(String user_id) {
-		List<Bookmark_DTO> bookmarkList = sqlsession.selectList("Member.bookmarkList", user_id);
+	public List<Bookmark_DTO> getBookmarkList(String user_id, int startRow, int endRow) {
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<Bookmark_DTO> bookmarkList = sqlsession.selectList("Member.bookmarkList", datas);
 		return bookmarkList;
 	}
 
-	public List<Bookmark_DTO> getBookmarkAdd(String user_id, String post_id) {
+	public int getBookmarkAdd(String user_id, String post_id) {
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("user_id", user_id);
 		datas.put("post_id", post_id);
 		System.out.println("userid:" + user_id + "postid" + post_id);
 		System.out.println(datas.get("user_id"));
 		System.out.println(datas.get("post_id"));
-		List<Bookmark_DTO> bookmarkList = sqlsession.selectList("Member.getBookmarkAdd", datas);
-		return bookmarkList;
+		int flag = sqlsession.insert("Member.getBookmarkAdd", datas);
+		return flag;
 	}
 
 	public void bookmarkDelete(String post_id) {
+		System.out.println("methodDeleteAction");
+		System.out.println(post_id);
 		sqlsession.delete("Member.bookmarkDelete", post_id);
 	}
 
+	public int getBookmarkCnt() {
+		return sqlsession.selectOne("Member.getBookmarkCnt");
+	}
+
+	public List<Board_CSS_DTO> getMyPostList(String user_id, int startRow, int endRow) {
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<Board_CSS_DTO> mypostList = sqlsession.selectList("Member.getMyPostList", datas);
+		return mypostList;
+	}
+
+	public int getMyPostCount(String user_id) {
+		return sqlsession.selectOne("Member.getMyPostCount" , user_id);
+	}
+
+	public Object getMyReplyCount(String user_id) {
+		return sqlsession.selectOne("Member.getMyReplyCount" , user_id);
+	}
+
+	public Object getMyRecomendCount(String user_id) {
+		return sqlsession.selectOne("Member.getMyRecomendCount" , user_id);
+	}
 
 }
