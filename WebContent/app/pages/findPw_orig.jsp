@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="kr.co.bttf.DTO.UserDTO" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
@@ -93,7 +94,7 @@
 <!-- BODY -->
 
 <body>
-	<c:set var="pwresult" value="${requestScope.member }"/>
+	<c:set var="member" value="${requestScope.member }"/>
 	<c:if test = "${not empty param.findPw }">
 		<c:if test = "${not param.findPw }">
 			<script> alert("일치하는 회원 정보가 없습니다.")</script>
@@ -113,10 +114,12 @@
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
-                    <form action="${pageContext.request.contextPath }/pages/updatePw.us" class="form-signin" method="POST">
-                        <input type="password" name="user_id" id="user_id" class="form-control" placeholder="비밀번호 변경" required autofocus><br>
-                        <input type="password" name="user_email" id="user_email" class="form-control" placeholder="비밀번호 재확인" required><br>
-                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 변경</button>
+                    <form action="${pageContext.request.contextPath }/pages/updatePw.us" class="form-signin" method="POST">                    	
+                        <input type="text" name="user_email" id="user_email" class="form-control" style="display:none;" value="${user_email }" minlength="11" maxlength="18" autofocus required ><br>
+                        <input type="text" name="user_email" id="user_email" class="form-control" value="${member.user_email }" minlength="11" maxlength="18" autofocus required ><br>
+                        <input type="password" name="user_pw" id="user_pw" class="form-control" placeholder="비밀번호 변경"  minlength="11" maxlength="18" autofocus required ><br>
+                        <input type="password" name="user_pw_re" id="user_pw_re" class="form-control" placeholder="비밀번호 재확인" minlength="11" maxlength="18" required ><br>
+                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="confirm()">비밀번호 변경</button>
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
@@ -157,6 +160,25 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
+    <script type="text/javascript">
+	    $(document).on("keyup", "#user_pw", function () {  // 전화번호
+	        var val = $(this).val();
+	        $(this).val(autoHypenPwNum(val));
+	    });
+	
+	    function autoHypenPwNum(str) {
+	        str = str.replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})/, "$1-$2-$3").replace("--", "-");
+	        return str;
+	    }  	
+    
+    	function confirm(){
+    		
+    		
+    		
+    		alert("비밀번호가 정상적으로 변경 되었습니다.");
+    	}
+    
+    </script>
 </body>
 <!-- END BODY -->
 
