@@ -91,7 +91,7 @@ public class MemberFrontController extends HttpServlet {
         	 break;
 					
 			// 북마크 추가
-	         case "/pages/BookmarkOK.us" :
+         case "/pages/BookmarkOK.us" :
         	 forward = new BookmarkOKAction().execute(request, response);
         	 break;
 					

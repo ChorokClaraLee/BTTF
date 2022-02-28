@@ -173,19 +173,21 @@
                     </thead>
                     <tbody>
 		    	<c:choose>
-                    	<c:when test="${empty mypostList }">
+                    	<c:when test="${empty bookmarkList }">
                     		<tr>
                     		<td colspan="5">등록된 북마크가 없습니다.</td>
                     		</tr>
                     	</c:when>
-                    	<c:when test="${mypostList != null and fn:length(mypostList) > 0 }">
-		                    <c:forEach var="mypostList" items="${mypostList}">
+                    	<c:when test="${bookmarkList != null and fn:length(bookmarkList) > 0 }">
+		                    <c:forEach var="bookmark" items="${bookmarkList}">
 		                    	<tr>
-		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${mypostList.post_id}">${mypostList.post_subject}</a></td>
-		                    		<td>${mypostList.post_rec}</td>
-		                    		<td>${mypostList.writer}</td>
-		                    		<td>${mypostList.post_regdate}</td>
-		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${mypostList.post_id }">삭제</a></td>
+		                    		<td>
+		                    			<a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a>
+		                    		</td>
+		                    		<td>${bookmark.post_rec}</td>
+		                    		<td>${bookmark.writer}</td>
+		                    		<td>${bookmark.post_regdate}</td>
+		                    		<td><a class="btn btn-danger" href="${pageContext.request.contextPath }/pages/BookmarkDelete.us?bookmark_id=${bookmark.bookmark_id }">삭제${bookmark.post_id}</a></td>
 		                    	</tr>
 		                    </c:forEach>
                     	</c:when>
@@ -215,19 +217,19 @@
                     </thead>
                     <tbody>
 		    	<c:choose>
-                    	<c:when test="${empty bookmarkList }">
+                    	<c:when test="${empty mypostList }">
                     		<tr>
                     		<td colspan="5">등록된 내 글이 없습니다.</td>
                     		</tr>
                     	</c:when>
-                    	<c:when test="${bookmarkList != null and fn:length(bookmarkList) > 0 }">
-		                    <c:forEach var="bookmark" items="${bookmarkList}">
+                    	<c:when test="${mypostList != null and fn:length(mypostList) > 0 }">
+		                    <c:forEach var="mypostList" items="${mypostList}">
 		                    	<tr>
-		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${bookmark.post_id}">${bookmark.post_subject}</a></td>
-		                    		<td>${bookmark.post_rec}</td>
-		                    		<td>${bookmark.writer}</td>
-		                    		<td>${bookmark.post_regdate}</td>
-		                    		<td><a class="btn btn-danger" href="/pages/BookmarkDelete.us?post_id=${bookmark.post_id }">삭제</a></td>
+		                    		<td><a href="${pageContext.request.contextPath }/pages/cssBoardView.do?post_id=${mypostList.post_id}">${mypostList.post_subject}</a></td>
+		                    		<td>${mypostList.post_rec}</td>
+		                    		<td>${mypostList.writer}</td>
+		                    		<td>${mypostList.post_regdate}</td>
+		                    		<td><a class="btn btn-danger" href="/pages/cssDelete.do?post_id=${mypostList.post_id }&flag=mypage">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
                     	</c:when>
@@ -282,9 +284,6 @@
     <script src="../../resource/vendor/c3-0.7.20/c3.js"></script>
     <script src="../../resource/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
 
-	
-	
 </body>
 <!-- END BODY -->
-
 </html>
