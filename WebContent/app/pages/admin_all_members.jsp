@@ -7,42 +7,52 @@
 <!-- BEGIN HEAD -->
 
 <head>
-<meta charset="utf-8" />
-<title>Home4 - Homebrew Community</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="width=device-width, initial-scale=1" name="viewport" />
-<meta content="" name="description" />
-<meta content="" name="author" />
-
-<!-- GLOBAL MANDATORY STYLES -->
-<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-<link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-<link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-
-<!-- font-Glyphicon -->
-<!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-
-<!-- PAGE LEVEL PLUGIN STYLES -->
-<link href="../../resource/css/animate.css" rel="stylesheet">
-<link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
-
-<!-- THEME STYLES -->
-<link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
-
-<!-- Favicon -->
-<link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
-
-<!-- custom -->
-<link rel="stylesheet" href="../../resource/css/custom.css">
-
-<!-- c3 chart -->
-<link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-
-<!-- dataTable css js-->
-<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
-<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
-<script type="text/javascript" src="../../resource/js/board.js"></script>
+	<meta charset="utf-8" />
+	<title>Home4 - Homebrew Community</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- GLOBAL MANDATORY STYLES -->
+	<link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+	<link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	
+	<!-- font-Glyphicon -->
+	<!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/fontawesome.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+	
+	<!-- PAGE LEVEL PLUGIN STYLES -->
+	<link href="../../resource/css/animate.css" rel="stylesheet">
+	<link href="../../resource/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- THEME STYLES -->
+	<link href="../../resource/css/layout.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/resource/img/favicon/favicon-32x32.png" />
+	
+	<!-- custom -->
+	<link rel="stylesheet" href="../../resource/css/custom.css">
+	
+	<!-- c3 chart -->
+	<link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
+	
+	<!-- dataTable css js-->
+	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
+	<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.js"></script>
+	<!-- <script type="text/javascript" src="../../resource/js/board.js"></script> -->
+	<script type="text/javascript">
+		jQuery(function($){
+		   $("#foo-table").DataTable({
+		      "bInfo": false,
+		      "bSort" : false,
+		      "bPaginate" : true
+		   });
+		   
+		});		
+	</script>
 </head>
 <!-- END HEAD -->
 
@@ -144,6 +154,7 @@
                                         </table>
                                     </div>
                                     <!-- End notice -->
+									<!-- paging -->
                                     <nav aria-label="Page navigation" class="text-center" style="display:none;">
 	                                    <ul class="pagination">
 	                                        <c:if test="${nowPage > 1 }">
@@ -173,6 +184,7 @@
 	                                        </c:if>
 	                                    </ul>
                                     </nav>
+									<!-- end of paging -->
                                 </div>
                             </div>
                             <!-- allmembers tab end-->

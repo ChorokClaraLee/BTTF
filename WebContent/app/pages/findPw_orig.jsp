@@ -114,8 +114,8 @@
                 </div>     
                 <div class="card-body">
                     <form action="${pageContext.request.contextPath }/pages/updatePw.us" class="form-signin" method="POST">
-                        <input type="text" name="user_id" id="user_id" class="form-control" placeholder="비밀번호 변경" required autofocus><br>
-                        <input type="email" name="user_email" id="user_email" class="form-control" placeholder="비밀번호 재확인" required><br>
+                        <input type="password" name="user_id" id="user_id" class="form-control" placeholder="비밀번호 변경" required autofocus><br>
+                        <input type="password" name="user_email" id="user_email" class="form-control" placeholder="비밀번호 재확인" required><br>
                         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 변경</button>
                     </form>
                 </div>

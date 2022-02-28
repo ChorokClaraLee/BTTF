@@ -14,7 +14,6 @@ public class CssDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		CssDAO bdao = new CssDAO();
-		MemberDAO mdao = new MemberDAO();
 		int post_id = Integer.parseInt(request.getParameter("post_id"));
 		// 마이페이지에서 or 각 게시판에서 삭제하는지 구분
 		String flag = request.getParameter("flag");
