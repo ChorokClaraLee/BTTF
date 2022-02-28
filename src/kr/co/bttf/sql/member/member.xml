@@ -9,6 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM USER_ALL WHERE user_id = #{user_id} AND user_pw = #{user_pw} AND USER_AVAILABLE = 1
 	</select>
 	
+	<select id="getMemberEmail" parameterType="hashmap" resultType="userdto">
+		SELECT * FROM USER_ALL WHERE user_id = #{user_id} AND user_email = #{user_email} AND USER_AVAILABLE = 1
+	</select>
+
+	
 	<insert id="join" parameterType="userdto">
 		INSERT INTO USER_ALL (user_id, user_pw, user_name, user_phone, user_email, main_language) VALUES ( #{user_id }, #{user_pw }, #{user_name }, #{user_phone }, #{user_email }, #{main_language } )
 	</insert>
@@ -18,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="UpdatePwAction" parameterType="hashmap">
-		update user_all set user_pw = #{user_pw}
+		update user_all set user_pw = #{user_pw} where user_email = #{user_email}
 	</update>
 		
 	<select id ="findId" parameterType = "hashmap" resultType="string"	>

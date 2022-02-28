@@ -78,6 +78,7 @@ public class ManagerFrontController extends HttpServlet {
 
 		// 공지사항 저장
 		case "/pages/AnnWriteOK.mg":
+			System.out.println("fc!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			forward = new AnnWriteOKAction().execute(request, response);
 			break;
 

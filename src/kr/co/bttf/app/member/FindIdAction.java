@@ -21,19 +21,13 @@ public class FindIdAction implements Action {
 		
 		String user_name = request.getParameter( "user_name" );
 		udto.setUser_name(user_name);
-//		request.setAttribute("user_name", user_name);
 		System.out.println(user_name);
 		String user_email = request.getParameter( "user_email" );
 		udto.setUser_email(user_email);
-
 		System.out.println(user_email);
 		String member = mdao.findId( udto );
 		request.setAttribute( "member", member );
-		
-//		forward.setRedirect( false );
-		
-		
-		
+
 		
 		// 일치하는 아이디, 이메일 없을 경우 -> 아이디 찾기 페이지 유지
 		if ( member == null ) {

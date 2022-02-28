@@ -35,6 +35,28 @@ public class MemberDAO {
 		return sqlsession.selectOne("Member.getMemberDetail",user_id);
 	}
 	
+	//smtp user_email 조회
+	public UserDTO getMemberEmail(String user_id, String user_email) {
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("user_email", user_email);		
+		return sqlsession.selectOne("Member.getMemberEmail",datas);
+	}
+	
+	
+	// 비밀번호 찾기
+	public boolean findPw(UserDTO udto) {
+		boolean result = false;
+		HashMap<String, String> datas = new HashMap<>();
+		
+		datas.put("user_id", udto.getUser_id());
+		datas.put("user_email", udto.getUser_email());
+		if ((Integer) sqlsession.selectOne("Member.findPw", datas) == 1) {
+			result = true;
+		}
+		return result;
+	}
+	
 
 	// 회원 정보 수정
 	public boolean memberJoinEdit(String user_pw, String user_phone, String user_email, String main_language) {
@@ -49,6 +71,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
 	
 	
 	// 로그인
@@ -81,26 +104,18 @@ public class MemberDAO {
 		return idresult;
 	}
 
-	
-	// 비밀번호 찾기
-	public boolean findPw(UserDTO udto) {
-		boolean result = false;
-		HashMap<String, String> datas = new HashMap<>();
-
-		datas.put("user_id", udto.getUser_id());
-		datas.put("user_email", udto.getUser_email());
-		if ((Integer) sqlsession.selectOne("Member.findPw", datas) == 1) {
-			result = true;
-		}
-		return result;
-	}
-	
 
 	// 비밀번호 변경
-	public boolean UpdatePwAction(String user_pw) {
+	public boolean UpdatePwAction(String user_pw, String user_email) {
 		boolean result = false;
-		if (sqlsession.update("Member.UpdatePwAction", user_pw) == 1) {
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("user_pw", user_pw);
+		datas.put("user_email", user_email);
+		
+		if (sqlsession.update("Member.UpdatePwAction", datas) == 1) {
+		
 			result = true;
+			System.out.println("dkdkdkdkdkdk");
 		}
 		return result;
 	}
