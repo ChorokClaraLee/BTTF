@@ -93,8 +93,9 @@
 	                                </div>
 	                                <div class="col-md-2 bookmark_icon">
 	                                	<p class="margin-b-50 text-center" > 작성자 ${board.writer }</p>
-	                                	<a href="${pageContext.request.contextPath }/pages/BookmarkOK.us?post_id=${board.post_id }" class=""><i class="fa fa-bookmark"></i></a>
-	                                	
+	                                	<c:if test="${not empty sessionScope.session_id}">
+	                                		<a href="${pageContext.request.contextPath }/pages/BookmarkOK.us?post_id=${board.post_id }" class=""><i class="fa fa-bookmark"></i></a>
+	                                	</c:if>
 	                                </div>
                             	</div>
                                 

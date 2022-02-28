@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 			SELECT c.POST_SUBJECT , c.POST_REC , c.WRITER , c.POST_REGDATE, pb.BOOKMARK_ID FROM css c INNER JOIN POST_BOOKMARK pb ON pb.POST_ID = c.POST_ID WHERE pb.USER_ID = #{user_id}; 	 -->
 <!-- 	</select> -->
 	<select id="bookmarkList" parameterType="string" resultType="bookmarkdto">
-		SELECT c.POST_SUBJECT , c.POST_REC , c.WRITER , c.POST_REGDATE, pb.BOOKMARK_ID FROM POST_BOOKMARK pb LEFT OUTER JOIN CSS c ON pb.POST_ID = c.POST_ID WHERE pb.USER_ID = #{user_id}
+		SELECT * FROM POST_BOOKMARK pb LEFT OUTER JOIN CSS c ON pb.POST_ID = c.POST_ID WHERE pb.USER_ID = #{user_id}
 	</select>
 	
 	<insert id="getBookmarkAdd" parameterType="hashmap">
