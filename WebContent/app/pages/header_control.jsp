@@ -26,13 +26,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse nav-collapse">
             <div class="menu-container">
-                <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item"><a class="nav-item-child nav-item-hover active"
-                            href="${pageContext.request.contextPath }/index.jsp">Home</a></li>
+                <ul class="navbar-nav navbar-nav-right nav">
                     <li class="nav-item">
+                    	<a class="nav-item-child nav-item-hover active" href="${pageContext.request.contextPath }/index.jsp">
+                    		Home
+                    	</a>
+                    </li>
+                    <li class="nav-item dropdown">
                         <!-- <a class="nav-item-child nav-item-hover dropdown-toggle menu-has-children" data-toggle="dropdown" href="#">Dev Community</a> -->
-                        <a class="nav-item-child nav-item-hover dropdown-toggle drop1" data-toggle="dropdown"
-                            href="#">Languages</a>
+                        <a class="nav-item-child nav-item-hover dropdown-toggle drop1 " data-toggle="dropdown" href="#">Languages</a>
                         <ul class="dropdown-menu">
                             <li>
                                 <!-- <a class="nav-item-child-sub" href=""></a> -->
@@ -82,7 +84,7 @@
 								<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/login.jsp">MyPage</a></li>
 						</c:if>
 						<c:if test="${sessionScope.session_id != null }" >
-							<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/mypage.jsp">MyPage</a>
+							<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/pages/MypageList.us">MyPage</a>
 						</c:if>
 					</li>
 					<li class="nav-item ">
@@ -95,42 +97,42 @@
 						</c:if>
 					</li> 
 					<c:if test="${sessionScope.session_id != null }" >
-						<p class="nav-item-child nav-item-hover" style="display:flex;"><%= user_id.getUser_id()%>님 반갑습니다!
+						<p class="nav-item-child nav-item-hover" style="display:flex; float : left;"><%= user_id.getUser_id()%>님 반갑습니다!
 							<a class="nav-item-child" style="padding-top:0 !important; padding-left:10px !important; " href="/app/pages/logout.jsp"> Logout </a>
 						</p>
 					</c:if>
-					<li class="nav-item">
-                        <!-- <a class="nav-item-child nav-item-hover dropdown-toggle menu-has-children" data-toggle="dropdown" href="#">Dev Community</a> -->
-                        <a id="drop_2" class="nav-item-child nav-item-hover dropdown-toggle drop2" data-toggle="dropdown" href="#">Admin</a>
-                        <ul id="drop_menu_1" class="dropdown-menu1">
-                            <li>
-                                <!-- <a class="nav-item-child-sub" href=""></a> -->
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=1">
-                                    	회원관리 - 전체 회원
-                                </a>
-
-                            </li>
-                            <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=1">
-                                    	회원관리 - 신고된회원
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/AllBoard.mg?page=1">
-                                    	게시글 관리 - 전체 게시글 
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/admin_notice.jsp">
-                                    	게시글 관리 - 공지사항
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-item-child-sub" href="${pageContext.request.contextPath }/app/pages/admin_blocked_board.jsp">
-                                    	게시글 관리 - 신고된 게시글
-                                </a> 
-                            </li>
-                        </ul>
+					<li class="nav-item dropdown_man">
+						<c:if test="${sessionScope.session_id !=null && sessionScope.session_id.user_id == 'admin'  }" >
+							<a class="nav-item-child nav-item-hover dropdown-toggle drop1 " data-toggle="dropdown" href="#">Admin</a>
+	                        <ul class="manager_dropdown">
+	                            <li>
+	                                <!-- <a class="nav-item-child-sub" href=""></a> -->
+	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/MemberAll.mg?page=1">
+	                                    	회원관리 - 전체회원
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/MemberReported.mg?page=1">
+	                                   		 회원관리 - 신고된 회원
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/AllBoard.mg?page=1">
+											게시글관리 - 전체게시글
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/BoardReported.mg?page=1">
+	                                    	게시글관리 - 신고된 게시글
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a class="nav-item-child-sub_man" href="${pageContext.request.contextPath }/pages/Announcements.mg?page=1">
+	                                    	게시글관리 - 공지사항
+	                                </a>
+	                            </li>
+	                		</ul>
+						</c:if>
                     </li>
                 </ul>
             </div>

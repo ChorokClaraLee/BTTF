@@ -46,6 +46,10 @@ public class CssDAO {
 	public int getCssReplyCnt(int post_id) {
 		return sqlsession.selectOne("css.getCssReplyCnt", post_id);
 	}
+	
+	public int getReportedCssBoardCnt() {
+		return sqlsession.selectOne("css.getReportedCssBoardCnt");
+	}
 
 	// 3. 작성하기
 	public boolean insertCssBoard(Board_CSS_DTO board) {
@@ -65,7 +69,15 @@ public class CssDAO {
 	}
 
 	// 4. 보드만: 상세보기
+	// 동작되는 이유 모름 
+	// Board_CSS_DTO bdto = sqlsession.selectOne("css.getCssDetail", post_id);
+	// bdto.getPost_id();
+	// System.out.println(bdto.getPost_id());
+	// 없으면 에러가 생겨도 캐치에 안들어감
 	public Board_CSS_DTO getCssDetail(int post_id) {
+		Board_CSS_DTO bdto = sqlsession.selectOne("css.getCssDetail", post_id);
+		bdto.getPost_id();
+		System.out.println(bdto.getPost_id());
 		return sqlsession.selectOne("css.getCssDetail", post_id);
 	}
 
@@ -114,5 +126,24 @@ public class CssDAO {
 		}
 		return result;
 	}
+	
+	//8. 신고된 게시글
+	
+	public List<Board_CSS_DTO> CSSboardBlockedList(int startRow, int endRow) {
+		HashMap<String, Integer> datas = new HashMap<>();
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<Board_CSS_DTO> CSSboardBlockedList = sqlsession.selectList("css.CSSboardBlockedList", datas);
+		return CSSboardBlockedList;
+	}
+
+//	public boolean getPostAvailable(int post_id) {
+//		boolean result = false;
+//		if((Integer)sqlsession.selectOne("css.getPostAvailable", post_id) == 1) {
+//			result = true;
+//		}
+//		return result;
+//	}
+	
 
 }

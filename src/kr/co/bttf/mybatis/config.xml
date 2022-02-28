@@ -41,7 +41,12 @@
 			alias="authdto" />
 		<typeAlias type="kr.co.bttf.DTO.HonoraryDTO"
 			alias="honordto" />
-		<typeAlias type="kr.co.bttf.DTO.UserDTO" alias="userdto" />
+		<typeAlias type="kr.co.bttf.DTO.UserDTO" 
+			alias="userdto" />
+		<typeAlias type="kr.co.bttf.DTO.Bookmark_DTO" 
+			alias="bookmarkdto" />
+		<typeAlias type="kr.co.bttf.DTO.AnnDTO" 
+			alias="anndto" />
 	</typeAliases>
 
 	<environments default="development">
@@ -52,7 +57,7 @@
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="bttf" />
+				<property name="username" value="bbs" />
 				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
@@ -62,7 +67,7 @@
 
 		<!-- admin -->
 		<!-- <mapper resource="kr/co/bttf/sql/admin/announcements.xml" /> -->
-		<!-- <mapper resource="kr/co/bttf/sql/admin/manager_page.xml" /> -->
+		<mapper resource="kr/co/bttf/sql/admin/manager_page.xml" />
 
 		<!-- board -->
 		<!-- <mapper resource="kr/co/bttf/sql/board/edit.xml" /> -->

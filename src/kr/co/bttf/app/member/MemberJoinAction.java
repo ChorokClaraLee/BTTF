@@ -19,7 +19,6 @@ public class MemberJoinAction implements Action {
 		udto.setUser_id(request.getParameter("user_id"));
 		udto.setUser_pw(request.getParameter("user_pw"));
 		udto.setUser_name(request.getParameter("user_name"));
-		//udto.setUser_phone(Integer.parseInt(request.getParameter("user_phone")));
 		udto.setUser_phone(request.getParameter("user_phone"));
 		udto.setUser_email(request.getParameter("user_email"));
 		udto.setMain_language(request.getParameter("main_language"));

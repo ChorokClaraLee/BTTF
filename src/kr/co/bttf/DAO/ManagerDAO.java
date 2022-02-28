@@ -26,10 +26,12 @@ public class ManagerDAO {
 		return userList;
 	}
 
+	// 2. 전체 회원수
 	public int getUserCnt() {
 		return sqlsession.selectOne("Manager.getUserCnt");
 	}
 
+	// 3. 신고된 회원 목록
 	public List<UserDTO> userBlockedList(int startRow, int endRow) {
 		HashMap<String, Integer> datas = new HashMap<>();
 		datas.put("startRow", startRow);
@@ -37,5 +39,29 @@ public class ManagerDAO {
 		List<UserDTO> blockedUserList = sqlsession.selectList("Manager.userBlockedList", datas);
 		return blockedUserList;
 	}
+
+	// 4. 공지사항 목록
+	public List<UserDTO> announcmentList(int startRow, int endRow) {
+		HashMap<String, Integer> datas = new HashMap<>();
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<UserDTO> announcmentList = sqlsession.selectList("Manager.announcmentList", datas);
+		return announcmentList;
+	}
 	
+	// 5. 공지사항 수
+	public int getAnnCnt() {
+		return sqlsession.selectOne("Manager.getAnnCnt");
+	}
+
+	// 6. 공지사항 조회수
+	public void updateAnnReadCount(int post_id) {
+		sqlsession.update("Manager.updateAnnReadCount", post_id);
+	}
+
+	// 7. 공지사항 게시글 상세 보기
+	public Object getAnnDetail(int post_id) {
+		return sqlsession.selectOne("Manager.getAnnDetail", post_id);
+	}
+
 }
