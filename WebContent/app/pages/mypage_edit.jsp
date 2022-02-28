@@ -96,7 +96,7 @@
                                     <input id="email" class="form-control margin-b-50" type="text" placeholder="이메일" value="${Member.user_email }">
                                 </div>
                                 <div class="col-auto">
-                                    <label class="form-label" for="pref">${Member.main_lang }</label>
+                                    <label class="form-label" for="pref">${Member.main_language }</label>
                                     <select class="form-control" name="pref" id="pref">
                                         <option value="JAVA">관심언어를 선택해주세요.</option>
                                         <option value="JAVA">JAVA</option>
@@ -109,7 +109,7 @@
                                     </select>
                                 </div>
                                 <input class="btn btn-primary mt-5" value ="수정완료" type="submit">
-                                <input class="btn btn-danger mt-5" value ="탈퇴하기" onclick="joinout()" type="button">
+                                <input class="btn btn-danger mt-5" value ="탈퇴하기" onclick="confirm_joinout()" type="button">
                             </form>
                         </div>
                     </div>
@@ -156,6 +156,11 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
+    
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../../resource/js/confirm.js" type="text/javascript"></script>
+    
+
 </body>
 <!-- END BODY -->
 </html>

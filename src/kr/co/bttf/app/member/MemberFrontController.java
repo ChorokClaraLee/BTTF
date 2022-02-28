@@ -68,13 +68,38 @@ public class MemberFrontController extends HttpServlet {
          case "/pages/findPw.us":
         	 forward = new FindPwAction().execute(request, response);
         	 break;
+        
+        	 // 비밀번호 변경
+         case "/pages/updatePw.us":
+        	 forward = new UpdatePwAction().execute(request, response);
+        	 break;
         	 
         	// 중복확인
          case "/pages/idCheck.us":
   			forward = new ActionForward(true, request.getContextPath() + "/app/pages/idcheck.jsp");
         	 System.out.println("중복확인 들어감");
         	 break;
-		
+        	
+        	 // 회원탈퇴 
+         case "/pages/MemberJoinOut.us":
+        	 forward = new MemberJoinOutAction().execute(request, response);
+        	 break;
+				
+			// 마이페이지 리스트업(북마크만)
+         case "/pages/MypageList.us" :
+        	 forward = new MypageListAction().execute(request, response);
+        	 break;
+					
+			// 북마크 추가
+	         case "/pages/BookmarkOK.us" :
+        	 forward = new BookmarkOKAction().execute(request, response);
+        	 break;
+					
+			// 북마크 삭제
+         case "/pages/BookmarkDelete.us" :
+        	 forward = new BookmarkDeleteAction().execute(request, response);
+        	 break;
+				
 		}
 
 		

@@ -16,7 +16,6 @@ public class MemberLoginAction implements Action {
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
 		UserDTO udto = new UserDTO();
-
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		udto.setUser_id(user_id);
@@ -28,7 +27,6 @@ public class MemberLoginAction implements Action {
 		if (loginok) {
 			HttpSession session = request.getSession();
 			session.setAttribute("session_id", udto);
-			//System.out.println("세션등록 성공");
 			forward.setPath(request.getContextPath() + "/index.jsp");
 			forward.setRedirect(true);
 		} else {

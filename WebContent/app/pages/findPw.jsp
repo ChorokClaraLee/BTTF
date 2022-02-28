@@ -58,7 +58,7 @@
         }
      
          #btn-Yes{
-             background-color: #e4932b;
+             background-color: #17bed2;
              border: none;
          }
         
@@ -81,12 +81,47 @@
          }
      
          a{ 
-            color: #f58b34; text-decoration: none; 
+            color: #17bed2; text-decoration: none; 
          }
          .text2{
             color : blue;
          }
     </style>
+    <!-- <script type="text/javascript">
+		function sendEMail() {
+		     
+		    var form = document.formEMail;
+		 
+		    //
+		    try {
+		        $.ajax({
+		            type: 'GET',
+		            url: 'mail',
+		            dataType: 'html',
+		            data: {
+		                from_email : form.from_email.value,
+		                to_email : form.to_email.value,
+		                subtitle : form.subtitle.value,
+		                content : form.content.value
+		            },
+		            success: function(data)
+		            {
+		                //alert(data);
+		                $('.clsResult').html(data.result);
+		            },
+		            error : function(XMLHttpRequest, textStatus, errorThrown) {
+		                alert('There was an error.');
+		            }
+		        });
+		         
+		    } catch(e) {
+		        alert(e);
+		    }
+		     
+		    return false;
+		}
+
+	</script>-->
 </head>
 <!-- END HEAD -->
 
@@ -108,18 +143,19 @@
     <!--========== END HEADER ==========-->
     <div class="container-fluid">
         <div class="row">
-            <div class="card align-middle col-md-4 login_card" >
+            <div class="card align-middle col-md-3 login_card" >
                 <div class="card-title" style="margin-top:30px;">         
                     <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
                 </div>     
                 <div class="card-body">
                     <form action="${pageContext.request.contextPath }/pages/findPw.us" class="form-signin" method="POST">
-                        <input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" required autofocus><br>
+                        <input type="text" name="user_id" id="user_id" class="form-control" placeholder="아이디" required autofocus ><br>
                         <input type="email" name="user_email" id="user_email" class="form-control" placeholder="이메일" required><br>
-						   <c:if test="${ param.findPw }">
-						      <p class="check" id="check">회원님의 비밀번호는 ${pwresult} 입니다.</p><br/>
-						   </c:if>
-                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호찾기</button>
+<%-- 						   <c:if test="${ param.findPw }"> --%>
+<%-- 						      <p class="check" id="check">회원님의 비밀번호는 ${pwresult} 입니다.</p><br/> --%>
+<%-- 						   </c:if> --%>
+<!--                         <a id="btn-Yes" class="btn btn-lg btn-primary btn-block" onclick="send_mail()">비밀번호찾기</a> -->
+                        <input id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" value="비밀번호찾기" onclick="send()">
                     </form>
                 </div>
                 <div class="links" style="padding: 10px 20px;">
@@ -160,20 +196,6 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-<!--     <script type="text/javascript"> -->
-//     Email.send({
-//         Host : "smtp.yourisp.com",
-//         Username : "*****@naver.com",
-//         Password : "123444444",
-//         To : 'them@website.com',
-//         From : "you@isp.com",
-//         Subject : "This is the subject",
-//         Body : "And this is the body"
-//     }).then(
-//       message => alert(message)
-//     );
-    
-<!--     </script> -->
 </body>
 <!-- END BODY -->
 

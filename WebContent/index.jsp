@@ -37,13 +37,18 @@
 
     <!-- custom -->
     <link rel="stylesheet" href="/resource/css/custom.css">
+	
+	
+
+
+
 
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -76,22 +81,21 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-        <div class="content-lg container">
-            <div class="row row-space-1 margin-b-2">
-                <div class="col-sm-4 sm-margin-b-2">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    	<div class="content-lg container" style="margin-top : 50px;">
+        	<div class="row row-space-1 margin-b-2">
+            	<div class="col-sm-4 sm-margin-b-2">
+                	<div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                         <div class="service" data-height="height">
                             <div class="service-element">
                                 <i class="service-icon fab fa-html5"></i>
                             </div>
                             <div class="service-info">
                                 <h3>HTML5</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
-                                <a class="link" href="#">Read More</a>
+                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiatdolor</p>
+                                <a class="link" href="${pageContext.request.contextPath }/app/pages/html.jsp">Read More</a>
                             </div>
-                            <a href="#" class="content-wrapper-link"></a>
+                            <a href="${pageContext.request.contextPath }/app/pages/html.jsp" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -103,11 +107,10 @@
                             </div>
                             <div class="service-info">
                                 <h3>CSS3</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
-                                <a class="link" href="#">Read More</a>
+                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                <a class="link" href="${pageContext.request.contextPath }/pages/csslist.do?page=1">Read More</a>
                             </div>
-                            <a href="#" class="content-wrapper-link"></a>
+                            <a href="${pageContext.request.contextPath }/pages/csslist.do?page=1" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -119,8 +122,7 @@
                             </div>
                             <div class="service-info">
                                 <h3>JAVASCRIPT</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
+                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                                 <a class="link" href="#">Read More</a>
                             </div>
                             <a href="#" class="content-wrapper-link"></a>
@@ -129,73 +131,70 @@
                 </div>
                 <!--// end row -->
                 <div class="row row-space-1">
-                <div class="col-sm-4 sm-margin-b-2">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".4s">
-                        <div class="service" data-height="height">
-                            <div class="service-element">
-                                <i class="service-icon fab fa-java"></i>
-                            </div>
-                            <div class="service-info">
-                                <h3>JAVA</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
-                                <a class="link" href="#">Read More</a>
-                            </div>
-                            <a href="#" class="content-wrapper-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 sm-margin-b-2">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
-                        <div class="service" data-height="height">
-                            <div class="service-element">
-                                <i class="service-icon service-icon fab fa-java"></i>
-                            </div>
-                            <div class="service-info">
-                                <h3>JSP</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
-                                <a class="link" href="#">Read More</a>
-                            </div>
-                            <a href="#" class="content-wrapper-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 sm-margin-b-2">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
-                        <div class="service" data-height="height">
-                            <div class="service-element">
-                                <i class="service-icon fas fa-leaf"></i>
-                            </div>
-                            <div class="service-info">
-                                <h3>SPRING</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
-                                <a class="link" href="#">Read More</a>
-                            </div>
-                            <a href="#" class="content-wrapper-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".6s">
-                        <div class="service" data-height="height">
-                            <div class="service-element">
-                                <i class="service-icon fas fa-database"></i>
-                            </div>
-                            <div class="service-info">
-                                <h3>ORACLE</h3>
-                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat
-                                    dolor</p>
-                                <a class="link" href="#">Read More</a>
-                            </div>
-                            <a href="#" class="content-wrapper-link"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// end row -->
-        </div>
+	                <div class="col-sm-4 sm-margin-b-2">
+	                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".4s">
+	                        <div class="service" data-height="height">
+	                            <div class="service-element">
+	                                <i class="service-icon fab fa-java"></i>
+	                            </div>
+	                            <div class="service-info">
+	                                <h3>JAVA</h3>
+	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+	                                <a class="link" href="#">Read More</a>
+	                            </div>
+	                            <a href="#" class="content-wrapper-link"></a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-4 sm-margin-b-2">
+	                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
+	                        <div class="service" data-height="height">
+	                            <div class="service-element">
+	                                <i class="service-icon service-icon fab fa-java"></i>
+	                            </div>
+	                            <div class="service-info">
+	                                <h3>JSP</h3>
+	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+	                                <a class="link" href="#">Read More</a>
+	                            </div>
+	                            <a href="#" class="content-wrapper-link"></a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-4 sm-margin-b-2">
+	                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">
+	                        <div class="service" data-height="height">
+	                            <div class="service-element">
+	                                <i class="service-icon fas fa-leaf"></i>
+	                            </div>
+	                            <div class="service-info">
+	                                <h3>SPRING</h3>
+	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+	                                <a class="link" href="#">Read More</a>
+	                            </div>
+	                            <a href="#" class="content-wrapper-link"></a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-4">
+	                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".6s">
+	                        <div class="service" data-height="height">
+	                            <div class="service-element">
+	                                <i class="service-icon fas fa-database"></i>
+	                            </div>
+	                            <div class="service-info">
+	                                <h3>ORACLE</h3>
+	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+	                                <a class="link" href="#">Read More</a>
+	                            </div>
+	                            <a href="#" class="content-wrapper-link"></a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <!--// end row -->
+	        </div>
+	    </div>
     </div>
     <!-- End Service -->
 
@@ -211,10 +210,12 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
-                        <th>제목</th>
-                        <th>추천수</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
+	                    <tr>
+	                        <th>제목</th>
+	                        <th>추천수</th>
+	                        <th>작성자</th>
+	                        <th>작성일자</th>
+	                    </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -313,7 +314,7 @@
                         <img class="img-responsive" src="/resource/img/970x647/02.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">김진훈</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <h4><a href="#">정진형</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -324,7 +325,7 @@
                         <img class="img-responsive" src="/resource/img/970x647/03.jpg" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">최서연</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
+                <h4><a href="#">김선경</a> <span class="text-uppercase margin-l-20">크루원</span></h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
             </div>
@@ -335,7 +336,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  
@@ -363,11 +364,12 @@
     <script src="/resource/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="/resource/js/layout.min.js" type="text/javascript"></script>
+    <script src="/resource/js/layout.js" type="text/javascript"></script>
     <script src="/resource/js/components/wow.min.js" type="text/javascript"></script>
     <script src="/resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="/resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="/resource/js/action.js"></script>
+    
 </body>
 <!-- END BODY -->
 
