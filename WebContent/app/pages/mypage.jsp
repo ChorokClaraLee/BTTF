@@ -48,7 +48,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class= "page-on-scroll">
     <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
     <c:set var="mypostList" value="${requestScope.mypostList}"/>
     <c:set var="mypostcount" value="${requestScope.getMyPostCount}"/>
@@ -187,7 +187,7 @@
 		                    		<td>${bookmark.post_rec}</td>
 		                    		<td>${bookmark.writer}</td>
 		                    		<td>${bookmark.post_regdate}</td>
-		                    		<td><a class="btn btn-danger" href="${pageContext.request.contextPath }/pages/BookmarkDelete.us?bookmark_id=${bookmark.bookmark_id }">삭제${bookmark.post_id}</a></td>
+		                    		<td><a class="btn btn-danger" href="${pageContext.request.contextPath }/pages/BookmarkDelete.us?bookmark_id=${bookmark.bookmark_id }">삭제</a></td>
 		                    	</tr>
 		                    </c:forEach>
                     	</c:when>

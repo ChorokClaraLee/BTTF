@@ -50,7 +50,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class= "page-on-scroll">
    <c:set var="board" value="${requestScope.board }"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">

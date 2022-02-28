@@ -22,7 +22,7 @@ public class MypageListAction implements Action{
 		UserDTO udto = (UserDTO)session.getAttribute("session_id");
 		System.out.println("session"+udto);
 		
-//		try {
+		try {
 		String user_id = udto.getUser_id();
 		// totalCnt
 		int totalCnt = mdao.getBookmarkCnt();
@@ -67,10 +67,10 @@ public class MypageListAction implements Action{
 		forward.setRedirect(false);
 		forward.setPath(request.getContextPath() + "/app/pages/mypage.jsp");
 			
-//		} catch (Exception e) {
-//			forward.setRedirect(false);
-//			forward.setPath(request.getContextPath() + "/app/pages/login.jsp");
-//		}
+		} catch (Exception e) {
+			forward.setRedirect(false);
+			forward.setPath(request.getContextPath() + "/app/pages/login.jsp");
+		}
 		
 		return forward;
 	}

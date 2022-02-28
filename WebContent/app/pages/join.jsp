@@ -48,7 +48,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class= "page-on-scroll">
 	<c:if test = "${not empty param.flag }">
 		<c:if test = "${not param.flag }">
 			<script> alert("회원가입 실패")</script>

@@ -38,7 +38,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class= "page-on-scroll">
 
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">

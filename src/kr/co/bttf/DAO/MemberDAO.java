@@ -37,13 +37,15 @@ public class MemberDAO {
 	
 
 	// 회원 정보 수정
-	public boolean memberJoinEdit(String user_pw, String user_phone, String user_email, String main_language) {
+	public boolean memberJoinEdit(String user_pw, String user_phone, String user_email, String main_language, String user_id) {
 		boolean result = false;
 		HashMap<String, Object> datas = new HashMap<>();
 		datas.put("user_pw", user_pw);
 		datas.put("user_phone", user_phone);
 		datas.put("user_email", user_email);
 		datas.put("main_language", main_language);
+		datas.put("user_id", user_id);
+		
 		if (sqlsession.update("Member.memberJoinEdit", datas) == 1) {
 			result = true;
 		}

@@ -44,7 +44,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class= "page-on-scroll">
    <c:set var="Member" value="${requestScope.Member }"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -76,28 +76,28 @@
                                 <div class="col-auto">
                                     <label for="id">아이디</label>
                                     <div style="display: flex;">
-                                        <input  id="id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly value="${Member.user_id }">
+                                        <input  id="id" name="user_id" class="form-control margin-b-50" type="text" placeholder="아이디" readonly value="${Member.user_id }">
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <label for="pw">비밀번호</label>
-                                    <input  id="pw" class="form-control margin-b-50" type="password" placeholder="8자이상 영문+숫자모두 포함">
+                                    <input  id="pw" name="user_pw" class="form-control margin-b-50" type="password" placeholder="8자이상 영문+숫자모두 포함"  >
                                 </div>
                                 <div class="col-auto">
                                     <label for="name">이름</label>
-                                    <input  id="name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${Member.user_name }">
+                                    <input  id="name" name="user_name" class="form-control margin-b-50" type="text" placeholder="이름" readonly value="${Member.user_name }">
                                 </div>
                                 <div class="col-auto">
                                     <label for="phone">전화번호</label>
-                                    <input  id="phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${Member.user_phone }">
+                                    <input  id="phone" name="user_phone" class="form-control margin-b-50" type="text" placeholder="전화번호" value="${Member.user_phone }">
                                 </div>
                                 <div class="col-auto">
                                     <label for="email">이메일</label>
-                                    <input id="email" class="form-control margin-b-50" type="text" placeholder="이메일" value="${Member.user_email }">
+                                    <input id="email" name="user_email" class="form-control margin-b-50" type="text" placeholder="이메일" value="${Member.user_email }">
                                 </div>
                                 <div class="col-auto">
                                     <label class="form-label" for="pref">${Member.main_language }</label>
-                                    <select class="form-control" name="pref" id="pref">
+                                    <select class="form-control" name="main_language" id="pref">
                                         <option value="JAVA">관심언어를 선택해주세요.</option>
                                         <option value="JAVA">JAVA</option>
                                         <option value="JSP">JSP</option>

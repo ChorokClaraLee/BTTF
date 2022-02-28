@@ -85,7 +85,7 @@ public class MemberFrontController extends HttpServlet {
         	 forward = new MemberJoinOutAction().execute(request, response);
         	 break;
 				
-			// 마이페이지 리스트업(북마크만)
+			// 마이페이지 리스트업
          case "/pages/MypageList.us" :
         	 forward = new MypageListAction().execute(request, response);
         	 break;

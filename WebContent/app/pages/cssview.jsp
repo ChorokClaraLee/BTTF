@@ -55,7 +55,7 @@
 <!-- END HEAD -->
 
 <!-- BODY -->
-<body>
+<body class= "page-on-scroll">
    <c:set var="board" value="${requestScope.board }"/>
    
     <!--========== HEADER ==========-->
