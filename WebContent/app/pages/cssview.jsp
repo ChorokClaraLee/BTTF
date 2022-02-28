@@ -57,6 +57,7 @@
 <!-- BODY -->
 <body>
    <c:set var="board" value="${requestScope.board }"/>
+   <c:set var="flag_rec" value="${requestScope.flag_rec }"/>
    
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -90,11 +91,20 @@
 	                                </div>
 	                                <div class="col-md-2">
 	                                	<p class="margin-b-50 text-center" >조회수 ${board.post_vcount }</p>
+	                                	<!-- 추천수 받아오기 -->
+	                                	<p class="margin-b-50 text-center" >추천수 ${board.post_rec }</p>
 	                                </div>
 	                                <div class="col-md-2 bookmark_icon">
 	                                	<p class="margin-b-50 text-center" > 작성자 ${board.writer }</p>
 	                                	<c:if test="${not empty sessionScope.session_id}">
-	                                		<a href="${pageContext.request.contextPath }/pages/BookmarkOK.us?post_id=${board.post_id }" class=""><i class="fa fa-bookmark"></i></a>
+	                               			<a href="${pageContext.request.contextPath }/pages/BookmarkOK.us?post_id=${board.post_id }" class=""><i class="fa fa-bookmark"></i></a>
+		 		                    		<c:set var="flag_rec" value="true"></c:set>
+		 		                    		<a href="${pageContext.request.contextPath }/pages/RecommendationOk.us?post_id=${board.post_id }&post_rec=${board.post_rec }" class="btn btn-primary mt-4" id="list">추천</a>   
+		 		                    		<c:if test="${flag_rec eq 'true' }">
+		 		                    		</c:if>
+		 		                    		<c:if test="${flag_rec eq 'false' }">
+		 		                    		<a href="${pageContext.request.contextPath }/pages/RecommendationOk.us?post_id=${board.post_id }&post_rec=${board.post_rec }&flag_rec=true" class="btn btn-primary mt-4" id="list">추천</a>   
+		 		                    		</c:if>
 	                                	</c:if>
 	                                </div>
                             	</div>

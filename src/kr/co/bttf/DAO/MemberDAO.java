@@ -181,4 +181,16 @@ public class MemberDAO {
 		return sqlsession.selectOne("Member.getMyRecomendCount" , user_id);
 	}
 
+	public boolean getRecommendationAdd(String post_rec, String post_id) {
+		boolean result = false;
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("post_rec" , post_rec);
+		datas.put("post_id" , post_id);
+		if(sqlsession.update("Member.getRecommendationAdd" , datas) == 1) {
+			result = true;
+		}
+		return result;
+		
+	}
+
 }

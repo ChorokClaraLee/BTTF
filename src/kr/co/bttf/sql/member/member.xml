@@ -83,4 +83,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getMyRecomendCount" parameterType="string" resultType="_int">
 		SELECT COUNT(POST_REC) FROM CSS c WHERE USER_ID = #{user_id}
 	</select>
+	
+	<update id="getRecommendationAdd" parameterType="string">
+		UPDATE CSS SET POST_REC =#{post_rec} WHERE POST_ID = #{post_id}
+	</update>
 </mapper>
