@@ -43,7 +43,7 @@
 
 <!-- BODY -->
 
-<body class="page-on-scroll">
+<body class="page-on-scroll fixed_container">
 
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">

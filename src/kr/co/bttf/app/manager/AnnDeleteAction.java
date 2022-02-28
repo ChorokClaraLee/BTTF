@@ -6,20 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.bttf.DAO.ManagerDAO;
 import kr.co.bttf.action.Action;
 import kr.co.bttf.action.ActionForward;
+import kr.co.bttf.function.Alert;
 
-public class AnnViewAction implements Action {
+public class AnnDeleteAction implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		ManagerDAO mdao = new ManagerDAO();
-
 		int post_id = Integer.parseInt(request.getParameter("post_id"));
-		mdao.updateAnnReadCount(post_id);
-		request.setAttribute("board", mdao.getAnnDetail(post_id));
-		
-		forward.setRedirect(false);
-		forward.setPath(request.getContextPath() + "/app/pages/ann_view.jsp");
 
+		if (mdao.annDelete(post_id)) {
+			forward.setRedirect(true);
+			forward.setPath(request.getContextPath() +"/pages/Announcements.mg?page=1");
+		}
 		return forward;
 	}
 }

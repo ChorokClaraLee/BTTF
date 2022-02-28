@@ -59,11 +59,11 @@
 <!-- BODY -->
 
 <body>
-	<c:if test = "${not empty param.flag }">
-		<c:if test = "${not param.flag }">
-			<script> alert("글 쓰기 실패")</script>
-		</c:if>
-	</c:if>
+<%-- 	<c:if test = "${not empty param.flag }"> --%>
+<%-- 		<c:if test = "${not param.flag }"> --%>
+<!-- 			<script> alert("글 쓰기 실패")</script> -->
+<%-- 		</c:if> --%>
+<%-- 	</c:if> --%>
 	<!--========== HEADER ==========-->
 	<header class="header navbar-fixed-top">
 		<!-- Navbar -->
@@ -85,29 +85,18 @@
 			</h1>
 			<div class="row row-space-1 margin-b-2">
 				<div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">
-					<div class="wow fadeInLeft" data-wow-duration=".3"
-						data-wow-delay=".3s">
+					<div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
 						<div class="my_box" data-height="height">
-						
 							<!-- Start write Form -->
-							<form name = "csswrite" action="${pageContext.request.contextPath }/pages/cssBoardWriteOKAction.do" method="post">
-<%-- 								<input type="hidden" name="post_id" value="${board.post_id }"> --%>
+							<form name = "annwrite" action="${pageContext.request.contextPath }/pages/AnnWriteOK.mg" method="post">
+								<input type="hidden" name="post_id" value="${board.post_id }">
 								<div class="col-auto">
 									<label for="subject">제목</label>
 									<input id="subject" name="post_subject" class="form-control margin-b-50" type="text" placeholder="제목">
 									<textarea id="editor" name="post_contents" class="form-control" placeholder="내용을 입력해 주세요." style="height: 650px; resize: none;"></textarea>
 								</div>
-									<%-- 로그인X--%>
-									<c:if test="${sessionScope.session_id == null }">
-<!-- 										<a href="login.jsp" class="btn btn-info mt-4" id="writefail">작성완료</a> -->
-<!-- 										<a href="login.jsp" class="btn btn-default mt-4" id="edit">수정하기</a> -->
-									</c:if>
-									<%-- 로그인O--%>
-									<c:if test="${sessionScope.session_id != null }">
-										<a href="javascript:document.csswrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a>
-<%-- 										<a href="${pageContext.request.contextPath }/pages/cssBoardUpdate.do" class="btn btn-default mt-4" id="editBoard">수정 하기</a> --%>
-									</c:if>
-										<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
+									<a href="javascript:document.annwrite.submit()" class="btn btn-info mt-4" id="writesuccess">작성완료</a>
+									<a class="btn btn-primary mt-4" id="list" onclick="confirm_backlist()">목록</a>
 							</form>
 							<!-- End write Form -->
 							

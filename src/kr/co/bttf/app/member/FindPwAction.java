@@ -43,6 +43,12 @@ public class FindPwAction implements Action {
 			forward.setPath(request.getContextPath() + "/app/pages/findPw_send.jsp?findPw=true");
 			forward.setRedirect(false);
 		}
+		
+		
+		
+		
+		
+		
 		return forward;
 	}
 }
