@@ -42,15 +42,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE USER_ALL SET user_available = 0 where USER_ID = #{user_id}
 	</update>
 	
-	<select id="bookmarkList" parameterType="hashmap" resultType="bookmarkdto">
+<!-- 	<select id="bookmarkList" parameterType="hashmap" resultType="bookmarkdto"> -->
 <!-- 		SELECT c.post_subject , c.post_id, c.POST_REC, c.WRITER , c.POST_REGDATE   -->
 <!-- 		FROM post_bookmark pb  -->
 <!-- 		INNER JOIN CSS c ON pb.post_id = c.POST_ID  -->
 <!-- 		WHERE c.WRITER = #{user_id} -->
 <!-- 		SELECT * FROM  -->
-<!-- 		(SELECT rownum r , c.post_subject , c.post_id, c.POST_REC, c.WRITER , c.POST_REGDATE  FROM post_bookmark pb INNER JOIN CSS c ON pb.post_id = c.POST_ID WHERE c.WRITER = #{user_id} ORDER BY pb.BOOMARK_ID DESC) t  -->
+<!-- 		(SELECT rownum r , c.post_subject , c.post_id, c.POST_REC, c.WRITER , c.POST_REGDATE  FROM post_bookmark pb INNER JOIN CSS c ON pb.post_id = c.POST_ID WHERE c.WRITER = #{user_id} ORDER BY pb.BOOKMARK_ID DESC) t  -->
 <!-- 		WHERE t.r BETWEEN #{startRow} AND #{endRow} -->
-			SELECT c.POST_SUBJECT , c.POST_REC , c.WRITER , c.POST_REGDATE FROM css c INNER JOIN POST_BOOKMARK pb ON pb.POST_ID = c.POST_ID WHERE pb.USER_ID = 'pjy'
+<!-- 			SELECT c.POST_SUBJECT , c.POST_REC , c.WRITER , c.POST_REGDATE, pb.BOOKMARK_ID FROM css c INNER JOIN POST_BOOKMARK pb ON pb.POST_ID = c.POST_ID WHERE pb.USER_ID = #{user_id}; 	 -->
+<!-- 	</select> -->
+	<select id="bookmarkList" parameterType="string" resultType="bookmarkdto">
+		SELECT c.POST_SUBJECT , c.POST_REC , c.WRITER , c.POST_REGDATE, pb.BOOKMARK_ID FROM POST_BOOKMARK pb LEFT OUTER JOIN CSS c ON pb.POST_ID = c.POST_ID WHERE pb.USER_ID = #{user_id}
 	</select>
 	
 	<insert id="getBookmarkAdd" parameterType="hashmap">
@@ -58,8 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<delete id="bookmarkDelete" parameterType="string">
-		DELETE FROM post_bookmark WHERE POST_ID = #{post_id}
-<!-- 		DELETE FROM POST_BOOKMARK pb WHERE BOOMARK_ID = 69 -->
+		DELETE FROM post_bookmark WHERE BOOKMARK_ID = #{bookmark_id}
 	</delete>
 	
 	<select id="getBookmarkCnt" resultType="_int">

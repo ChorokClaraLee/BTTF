@@ -78,7 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 4. 보드만: 상세보기 -->
 	<select id="getCssDetail" parameterType="_int"
 		resultType="cssdto">
-		select * from css where post_id = #{post_id}
+		select * from css where post_id = #{post_id} AND POST_AVAILABLE = 1
 	</select>
 
 
@@ -134,6 +134,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 		) B -->
 <!-- 		WHERE B.R BETWEEN #{startRow} AND #{endRow} -->
 		SELECT * FROM (SELECT * FROM ( SELECT ROWNUM R, D.* FROM ( SELECT * FROM CSS ORDER BY POST_ID DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R WHERE post_reported = 1
+	</select>
+	
+	<select id="getPostAvailable" parameterType="_int" resultType="_int">
+		SELECT POST_AVAILABLE FROM CSS c WHERE POST_ID = #{post_id}
 	</select>
 
 </mapper>

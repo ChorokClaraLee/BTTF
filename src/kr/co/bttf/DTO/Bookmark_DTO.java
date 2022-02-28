@@ -10,6 +10,7 @@ public class Bookmark_DTO {
 	private String post_rec;
 	private String writer;
 	private String post_regdate;
+	private String bookmark_id;
 	
 	public String getUser_id() {
 		return user_id;
@@ -52,6 +53,12 @@ public class Bookmark_DTO {
 	}
 	public void setPost_regdate(String post_regdate) {
 		this.post_regdate = post_regdate;
+	}
+	public String getBookmark_id() {
+		return bookmark_id;
+	}
+	public void setBookmark_id(String bookmark_id) {
+		this.bookmark_id = bookmark_id;
 	}
 	
 }
