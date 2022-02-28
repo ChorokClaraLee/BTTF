@@ -14,10 +14,9 @@ public class BookmarkDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
 		
-		System.out.println("deleteAction");
-		String post_id = request.getParameter("post_id");
+		String bookmark_id = request.getParameter("bookmark_id");
 
-		mdao.bookmarkDelete(post_id);
+		mdao.bookmarkDelete(bookmark_id);
 		
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath() + "/pages/MypageList.us");
