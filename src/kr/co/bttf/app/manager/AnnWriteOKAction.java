@@ -36,6 +36,7 @@ public class AnnWriteOKAction implements Action {
 		} else if (post_subject.equals("") && post_contents.equals("")){
 			Alert.alert(request, forward, "/app/pages/ann_write.jsp", "제목을 입력하세요.");
 		} else {
+			System.out.println("else 들어왔다아아앙아아아아아아아앙");
 			mdao.annInsert(adto);
 			forward.setRedirect(false);
 			forward.setPath(request.getContextPath() + "/pages/Announcements.mg?page=1");
