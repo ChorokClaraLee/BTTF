@@ -56,7 +56,7 @@
 	
 <!-- BODY -->
 
-<body class="page-on-scroll">
+<body class="page-on-scroll fixed_container">
 	<c:set var="announcmentList" value = "${requestScope.announcmentList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	
