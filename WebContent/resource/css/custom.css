@@ -2,8 +2,9 @@
 /* 0. general */
 /* 1. header */
 /* 2. container*/
-/* 3. content section1 */
-/* 4. footer */
+/* 3. content section*/
+/* 4. mail content */
+/* 5. footer */
 /* =============================================================================== */
 
 
@@ -425,6 +426,15 @@ ul.nav li.dropdown_man:hover > ul.manager_dropdown {
 /* table end */
 
 
+/* fixed footer(container width) */
+
+.fixed_container {
+    min-height: calc(100vh - 160px);
+}
+
+
+
+
 
 /* 2. container end*/
 
@@ -621,11 +631,29 @@ pre{
 /* 3. content section end */
 
 
+/* 4. mail content */
+.mail_subject{
+	border-bottom: 1px solid #d9d9d9;
+	background : cornflowerblue;
+	color : #fff;
+	font-weight : bold;
+	text-align:center;
+	padding : 10px;
+}
+
+
+.mail_content_center{
+	position: absolute;
+	top: 0;
+	left: calc(50% - 226.5px);
+	
+}
 
 
 
+/* 4. end mail content */
 
-/* 4. footer */
+/* 5. footer */
 
 .footer {
     background: url(../img/1920x1080/main_visual2.png) no-repeat;
@@ -640,7 +668,16 @@ pre{
 }
 
 
-/* 4. footer end */
+
+
+
+.fixed_footer {
+    height: 160px;
+}
+​
+
+
+/* 5. footer end */
 
 
 

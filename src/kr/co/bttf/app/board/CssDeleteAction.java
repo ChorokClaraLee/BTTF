@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.bttf.action.Action;
 import kr.co.bttf.action.ActionForward;
 import kr.co.bttf.DAO.CssDAO;
+import kr.co.bttf.DAO.MemberDAO;
 
 public class CssDeleteAction implements Action {
 

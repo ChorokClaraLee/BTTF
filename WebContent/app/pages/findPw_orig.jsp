@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="ko" class="no-js">
@@ -15,10 +15,8 @@
     <meta content="" name="author" />
 
     <!-- GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
-        type="text/css">
-    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="../../resource/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <link href="../../resource/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- font-Glyphicon -->
@@ -37,89 +35,101 @@
 
     <!-- custom -->
     <link rel="stylesheet" href="../../resource/css/custom.css">
-
-    <!-- c3 chart -->
-    <link href="../../resource/vendor/c3-0.7.20/c3.css" rel="stylesheet">
-    <script type="text/javascript">
-		jQuery(function($){
-		   $("#foo-table").DataTable({
-		      "bInfo": false,
-		      "bSort" : false,
-		      "bPaginate" : true
-		   });
-		   
-		});		
-	</script>
+    <style>
+   
+        html {
+           height: 100%;
+        }
+        
+        body {
+            width:100%;
+            height:100%;
+            margin: 0;
+             padding-top: 200px;
+             padding-bottom: 40px;
+             font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+             background-repeat: no-repeat;
+        }
+        
+         .card {
+             margin: 0 auto; /* Added */
+             float: none; /* Added */
+           
+        }
+     
+         #btn-Yes{
+             background-color: #17bed2;
+             border: none;
+         }
+        
+        .form-signin .form-control {
+             position: relative;
+             height: auto;
+             -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+                 box-sizing: border-box;
+             padding: 10px;
+             font-size: 16px;
+        }
+         .card-title{
+             margin-left: 30px;
+             margin-bottom: 30px;
+         }
+         .links{
+             text-align: center;
+             margin-bottom: 10px;
+         }
+     
+         a{ 
+            color: #17bed2; text-decoration: none; 
+         }
+         .text2{
+            color : blue;
+         }
+    </style>
 </head>
 <!-- END HEAD -->
 
 <!-- BODY -->
 
 <body>
-    <c:set var="userAllList" value="${requestScope.userAllList }" />
-    <c:set var="getUserCnt" value="${requestScope.getUserCnt }" />
-
+	<c:set var="pwresult" value="${requestScope.member }"/>
+	<c:if test = "${not empty param.findPw }">
+		<c:if test = "${not param.findPw }">
+			<script> alert("일치하는 회원 정보가 없습니다.")</script>
+		</c:if>
+	</c:if>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
         <!-- Navbar -->
-        <%@ include file="/app/pages/header_control.jsp" %>
-            <!-- Navbar -->
+                <%@ include file="/app/pages/header_control.jsp" %>  
+        <!-- Navbar -->
     </header>
     <!--========== END HEADER ==========-->
-    
-    <!--========== PAGE LAYOUT ==========-->
-    <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-        <div class="content-lg container">
-            <h1 class="pt-4">
-                <i class="fas fa-user-circle title_subject_icon"></i>
-                	관리자 - 공지사항
-            </h1>
-
-            <!--notice tab -->
-            <div class="content-lg container">
-                <!-- notice table -->
-                <h2>
-                    <i class="fas fa-bullhorn title_subject_icon"></i>
-                    	공지사항
-                </h2>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>게시글</th>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일자</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        	<tr>
-                                <td>게시글</td>
-                                <td>제목</td>
-                                <td>작성자</td>
-                                <td>작성일자</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="text-center">등록된 게시글이 없습니다.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card align-middle col-md-3 login_card" >
+                <div class="card-title" style="margin-top:30px;">         
+                    <h2 class="card-title" style="color:#f58b34;"><img src="/resource/img/home_logo.png"/></h2>
+                </div>     
+                <div class="card-body">
+                    <form action="${pageContext.request.contextPath }/pages/updatePw.us" class="form-signin" method="POST">
+                        <input type="password" name="user_id" id="user_id" class="form-control" placeholder="비밀번호 변경" required autofocus><br>
+                        <input type="password" name="user_email" id="user_email" class="form-control" placeholder="비밀번호 재확인" required><br>
+                        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 변경</button>
+                    </form>
+                </div>
+                <div class="links" style="padding: 10px 20px;">
+                    <a href="${pageContext.request.contextPath }/app/pages/findId.jsp">아이디 찾기</a> | <a href="${pageContext.request.contextPath }/app/pages/login.jsp">로그인</a> | <a href="${pageContext.request.contextPath }/app/pages/join.jsp">회원가입</a>
                 </div>
             </div>
-        </div>
-        <!--notice tab end -->
-
-    </div>
-
-    <!-- End Service -->
-
-    <!--========== FOOTER ==========-->
+        </div>           
+    </div> 
     <footer class="footer">
 
         <!-- Copyright -->
-        <%@ include file="/app/pages/footer_control.jsp" %>
-            <!-- End Copyright -->
+                <%@ include file="/app/pages/footer_control.jsp" %>  
+        <!-- End Copyright -->
     </footer>
     <!--========== END FOOTER ==========-->
 
@@ -147,15 +157,8 @@
     <script src="../../resource/js/components/swiper.min.js" type="text/javascript"></script>
     <script src="../../resource/js/components/masonry.min.js" type="text/javascript"></script>
     <script src="../../resource/js/action.js"></script>
-    <!-- F12 ,right click block-->
-    <!-- <script src="js/Prevention.js"></script> -->
-
-    <!-- Load d3.js and c3.js -->
-    <script src="../../resource/vendor/c3-0.7.20/c3.js"></script>
-    <script src="../../resource/vendor/c3-0.7.20/docs/js/d3-5.8.2.min.js" charset="utf-8"></script>
-
-
 </body>
 <!-- END BODY -->
+
 
 </html>

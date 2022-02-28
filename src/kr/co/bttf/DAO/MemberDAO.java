@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import kr.co.bttf.DTO.Board_CSS_DTO;
+import kr.co.bttf.DTO.Bookmark_DTO;
 import kr.co.bttf.DTO.UserDTO;
 import kr.co.bttf.mybatis.SqlMapConfig;
 
@@ -81,20 +83,29 @@ public class MemberDAO {
 
 	
 	// 비밀번호 찾기
-	public String findPw(UserDTO udto) {
+	public boolean findPw(UserDTO udto) {
+		boolean result = false;
 		HashMap<String, String> datas = new HashMap<>();
 
 		datas.put("user_id", udto.getUser_id());
 		datas.put("user_email", udto.getUser_email());
-
-		String pwresult = sqlsession.selectOne("Member.findPw", datas);
-		System.out.println(pwresult);
-		System.out.println(datas);
-		return pwresult;
+		if ((Integer) sqlsession.selectOne("Member.findPw", datas) == 1) {
+			result = true;
+		}
+		return result;
 	}
-
 	
-////	 중복확인
+
+	// 비밀번호 변경
+	public boolean UpdatePwAction(String user_pw) {
+		boolean result = false;
+		if (sqlsession.update("Member.UpdatePwAction", user_pw) == 1) {
+			result = true;
+		}
+		return result;
+	}
+	
+	// 중복확인
 	public boolean checkid(String user_id) {
 		//중복된 사용자 없음
 		boolean result = true;
@@ -116,5 +127,55 @@ public class MemberDAO {
 		return result;
 	}
 
+	public List<Bookmark_DTO> getBookmarkList(String user_id, int startRow, int endRow) {
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<Bookmark_DTO> bookmarkList = sqlsession.selectList("Member.bookmarkList", datas);
+		return bookmarkList;
+	}
+
+	public int getBookmarkAdd(String user_id, String post_id) {
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("post_id", post_id);
+		System.out.println("userid:" + user_id + "postid" + post_id);
+		System.out.println(datas.get("user_id"));
+		System.out.println(datas.get("post_id"));
+		int flag = sqlsession.insert("Member.getBookmarkAdd", datas);
+		return flag;
+	}
+
+	public void bookmarkDelete(String post_id) {
+		System.out.println("methodDeleteAction");
+		System.out.println(post_id);
+		sqlsession.delete("Member.bookmarkDelete", post_id);
+	}
+
+	public int getBookmarkCnt() {
+		return sqlsession.selectOne("Member.getBookmarkCnt");
+	}
+
+	public List<Board_CSS_DTO> getMyPostList(String user_id, int startRow, int endRow) {
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("user_id", user_id);
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		List<Board_CSS_DTO> mypostList = sqlsession.selectList("Member.getMyPostList", datas);
+		return mypostList;
+	}
+
+	public int getMyPostCount(String user_id) {
+		return sqlsession.selectOne("Member.getMyPostCount" , user_id);
+	}
+
+	public Object getMyReplyCount(String user_id) {
+		return sqlsession.selectOne("Member.getMyReplyCount" , user_id);
+	}
+
+	public Object getMyRecomendCount(String user_id) {
+		return sqlsession.selectOne("Member.getMyRecomendCount" , user_id);
+	}
 
 }

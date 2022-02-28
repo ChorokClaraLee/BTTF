@@ -3,28 +3,20 @@ package kr.co.bttf.app.manager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.bttf.DAO.CssDAO;
 import kr.co.bttf.DAO.ManagerDAO;
 import kr.co.bttf.action.Action;
 import kr.co.bttf.action.ActionForward;
 
-public class AllBoardAction implements Action {
+public class AnnouncementsAction implements Action {
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		ManagerDAO mdao = new ManagerDAO();
-		CssDAO cssdao = new CssDAO();
-		//CssDAO cssdao = new CssDAO();
-		//CssDAO cssdao = new CssDAO();
-		//CssDAO cssdao = new CssDAO();
-		//CssDAO cssdao = new CssDAO();
-		//CssDAO cssdao = new CssDAO();
-		//CssDAO cssdao = new CssDAO();
+		ManagerDAO mdao= new ManagerDAO();
 
-		
-		int getUserCnt = mdao.getUserCnt();
+		// totalCnt
+		int totalCnt = mdao.getAnnCnt();
 
 		// 게시글의 페이징 처리
 		// 현재 넘겨받은 페이지
@@ -46,7 +38,7 @@ public class AllBoardAction implements Action {
 		int startPage = (page - 1) / pageSize * pageSize + 1;
 		// [1][2]...[10] : [10], [21],[22],...[30] :[30]
 		int endPage = startPage + pageSize - 1;
-		int totalPage = (getUserCnt - 1) / pageSize + 1;
+		int totalPage = (totalCnt - 1) / pageSize + 1;
 
 		endPage = endPage > totalPage ? totalPage : endPage;
 
@@ -54,21 +46,13 @@ public class AllBoardAction implements Action {
 		request.setAttribute("nowPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("getUserCnt", getUserCnt);
-		//mdao에 7번 새로운 list 메서드와 쿼리문을 구현하기 보다 
-		//기존에 있는 것을 그대로 재활용
-		request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		//request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		//request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		//request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		//request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		//request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		//request.setAttribute("cssBoardList", cssdao.getCssBoardList(startRow, endRow));
-		
+		request.setAttribute("totalCnt", totalCnt);
+		request.setAttribute("announcmentList", mdao.announcmentList(startRow, endRow));
 
 		forward.setRedirect(false);
-		forward.setPath(request.getContextPath() + "/app/pages/admin_all_board.jsp");
+		forward.setPath(request.getContextPath() + "/app/pages/announcements.jsp");
+
+
 		return forward;
 	}
-
 }

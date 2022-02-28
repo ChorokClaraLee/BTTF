@@ -53,7 +53,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM reply_css where post_id = #{post_id}
 	</select>
 
-
+	<select id = "getReportedCssBoardCnt" resultType="_int">
+			SELECT COUNT(*) FROM CSS WHERE post_reported = 1
+	</select>
 
 	<!-- 3. 작성하기 -->
 	<insert id="insertCssBoard" parameterType="cssdto">
@@ -123,6 +125,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from reply_css
 		where reply_id= #{reply_id}
 	</delete>
-
+	
+<!-- 	8. 신고된 게시글 목록 -->
+	<select id="CSSboardBlockedList" parameterType="hashmap" resultType="cssdto">
+<!-- 		SELECT * FROM -->
+<!-- 		( SELECT ROWNUM R, D.* FROM -->
+<!-- 		( SELECT * FROM CSS ORDER BY POST_ID DESC) D -->
+<!-- 		) B -->
+<!-- 		WHERE B.R BETWEEN #{startRow} AND #{endRow} -->
+		SELECT * FROM (SELECT * FROM ( SELECT ROWNUM R, D.* FROM ( SELECT * FROM CSS ORDER BY POST_ID DESC) D) B WHERE B.R BETWEEN #{startRow} AND #{endRow}) R WHERE post_reported = 1
+	</select>
 
 </mapper>

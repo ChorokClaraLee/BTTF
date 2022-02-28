@@ -84,7 +84,7 @@
 								<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/login.jsp">MyPage</a></li>
 						</c:if>
 						<c:if test="${sessionScope.session_id != null }" >
-							<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/app/pages/mypage.jsp">MyPage</a>
+							<a class="nav-item-child nav-item-hover" href="${pageContext.request.contextPath }/pages/MypageList.us">MyPage</a>
 						</c:if>
 					</li>
 					<li class="nav-item ">
@@ -132,7 +132,7 @@
 	                                </a>
 	                            </li>
 	                		</ul>
-						</c:if>
+						</c:if>                        
                     </li>
                 </ul>
             </div>
