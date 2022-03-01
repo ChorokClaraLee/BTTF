@@ -101,7 +101,7 @@ a {
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 	<c:if test = "${not empty param.flag }">
 		<c:if test = "${not param.flag }">
 			<script> alert("로그인실패")</script>
@@ -139,7 +139,7 @@ a {
 		</div>
 	</div>
 
-	<footer class="footer">
+	<footer class="footer fixed_footer">
 
 		<!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  

@@ -48,7 +48,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
     <c:set var="bookmarkList" value="${requestScope.bookmarkList}"/>
     <c:set var="mypostList" value="${requestScope.mypostList}"/>
     <c:set var="mypostcount" value="${requestScope.getMyPostCount}"/>
@@ -68,8 +68,8 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-        <div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+        <div class="content-lg container" style="margin-top : 50px;">
             <h1 class="pt-4">
                 <i class="fas fa-user-circle title_subject_icon"></i>
                 	마이페이지
@@ -246,7 +246,7 @@
 
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  
         <!-- End Copyright -->

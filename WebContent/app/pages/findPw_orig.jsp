@@ -93,7 +93,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 	<c:set var="member" value="${requestScope.member }"/>
 	<c:if test = "${not empty param.findPw }">
 		<c:if test = "${not param.findPw }">
@@ -128,7 +128,7 @@
             </div>
         </div>           
     </div> 
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  
