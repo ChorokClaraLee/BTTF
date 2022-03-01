@@ -10,6 +10,7 @@ public class Board_CSS_DTO {
 	private int post_vcount;
 	private String post_regdate;
 	private int post_bookmark;
+	
 	public String getPost_id() {
 		return post_id;
 	}

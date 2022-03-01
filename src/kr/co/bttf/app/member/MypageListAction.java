@@ -20,8 +20,9 @@ public class MypageListAction implements Action{
 		HttpSession session = request.getSession();
 		MemberDAO mdao = new MemberDAO();
 		UserDTO udto = (UserDTO)session.getAttribute("session_id");
+		System.out.println("session"+udto);
 		
-		try {
+//		try {
 		String user_id = udto.getUser_id();
 		// totalCnt
 		int totalCnt = mdao.getBookmarkCnt();
@@ -55,9 +56,9 @@ public class MypageListAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalCnt", totalCnt);
-//		List<Bookmark_DTO> umm = mdao.getBookmarkList(user_id, startRow, endRow);
 		
-		request.setAttribute("bookmarkList", mdao.getBookmarkList(user_id, startRow, endRow));
+//		request.setAttribute("bookmarkList", mdao.getBookmarkList(user_id, startRow, endRow));
+		request.setAttribute("bookmarkList", mdao.getBookmarkList(user_id));
 		request.setAttribute("mypostList", mdao.getMyPostList(user_id, startRow, endRow));
 		request.setAttribute("getMyPostCount", mdao.getMyPostCount(user_id));
 		request.setAttribute("getMyReplyCount", mdao.getMyReplyCount(user_id));
@@ -66,10 +67,10 @@ public class MypageListAction implements Action{
 		forward.setRedirect(false);
 		forward.setPath(request.getContextPath() + "/app/pages/mypage.jsp");
 			
-		} catch (Exception e) {
-			forward.setRedirect(false);
-			forward.setPath(request.getContextPath() + "/app/pages/login.jsp");
-		}
+//		} catch (Exception e) {
+//			forward.setRedirect(false);
+//			forward.setPath(request.getContextPath() + "/app/pages/login.jsp");
+//		}
 		
 		return forward;
 	}

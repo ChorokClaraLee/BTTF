@@ -622,7 +622,17 @@ pre{
 
 
 
+.bookmark_icon{
+	display: flex;
+	justify-content: space-around;
+	
+}
 
+
+div.bookmark_icon a i{
+	color: darkgoldenrod;
+	font-size: 22px;
+}
 
 
 

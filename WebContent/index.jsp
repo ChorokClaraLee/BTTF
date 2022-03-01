@@ -118,9 +118,9 @@
                             <div class="service-info">
                                 <h3>JAVASCRIPT</h3>
                                 <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                <a class="link" href="#">Read More</a>
+                                <a class="link" href="${pageContext.request.contextPath }/app/pages/javascript.jsp">Read More</a>
                             </div>
-                            <a href="#" class="content-wrapper-link"></a>
+                            <a href="${pageContext.request.contextPath }/app/pages/javascript.jsp" class="content-wrapper-link"></a>
                         </div>
                     </div>
                 </div>
@@ -135,9 +135,9 @@
 	                            <div class="service-info">
 	                                <h3>JAVA</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="${pageContext.request.contextPath }/app/pages/java.jsp">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="${pageContext.request.contextPath }/app/pages/java.jsp" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -150,9 +150,9 @@
 	                            <div class="service-info">
 	                                <h3>JSP</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="${pageContext.request.contextPath }/app/pages/jsp.jsp">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="${pageContext.request.contextPath }/app/pages/jsp.jsp" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -165,9 +165,9 @@
 	                            <div class="service-info">
 	                                <h3>SPRING</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="${pageContext.request.contextPath }/app/pages/spring.jsp">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="${pageContext.request.contextPath }/app/pages/spring.jsp" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -180,9 +180,9 @@
 	                            <div class="service-info">
 	                                <h3>ORACLE</h3>
 	                                <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-	                                <a class="link" href="#">Read More</a>
+	                                <a class="link" href="${pageContext.request.contextPath }/app/pages/oracle.jsp">Read More</a>
 	                            </div>
-	                            <a href="#" class="content-wrapper-link"></a>
+	                            <a href="${pageContext.request.contextPath }/app/pages/oracle.jsp" class="content-wrapper-link"></a>
 	                        </div>
 	                    </div>
 	                </div>
