@@ -50,7 +50,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
    <c:set var="board" value="${requestScope.board }"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -66,8 +66,8 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-        <div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+        <div class="content-lg container" style="margin-top : 50px;">
             <h1 class="pt-4">
                 <i class="fas fa-file-alt title_subject_icon"></i>
                		 공지사항 수정하기
@@ -100,7 +100,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  

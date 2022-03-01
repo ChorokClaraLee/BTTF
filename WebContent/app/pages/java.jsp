@@ -39,7 +39,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -49,8 +49,8 @@
     </header>
     <!--========== END HEADER ==========-->
     <!-- notice -->
-    <div class="bg-color-sky-light">
-        <div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container">
+        <div class="content-lg container" style="margin-top : 50px;">
             <!-- notice -->
             <h2>JAVA QNA</h2>
             <div class="search_box">
@@ -145,7 +145,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  

@@ -37,12 +37,6 @@
 
     <!-- custom -->
     <link rel="stylesheet" href="/resource/css/custom.css">
-	
-	
-
-
-
-
 </head>
 <!-- END HEAD -->
 
@@ -81,8 +75,8 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-    	<div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+    	<div class="content-lg container" style="margin-top : 50px;">
         	<div class="row row-space-1 margin-b-2">
             	<div class="col-sm-4 sm-margin-b-2">
                 	<div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
@@ -336,7 +330,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  

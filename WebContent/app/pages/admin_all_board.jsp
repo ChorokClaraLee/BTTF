@@ -45,7 +45,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 	<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/>
 <%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
 <%-- 				<c:set var="cssBoardList" value = "${requestScope.cssBoardList }"/> --%>
@@ -76,8 +76,8 @@
 
 	<!--========== PAGE LAYOUT ==========-->
 	<!-- Service -->
-	<div class="bg-color-sky-light" data-auto-height="true">
-		<div class="content-lg container">
+	<div class="bg-color-sky-light fixed_container" data-auto-height="true">
+		<div class="content-lg container" style="margin-top : 50px;">
 			<h1 class="pt-4">
 				<i class="fas fa-user-circle title_subject_icon"></i>
 				관리자 - 전체 게시글
@@ -393,7 +393,7 @@
 	<!-- End Service -->
 
 	<!--========== FOOTER ==========-->
-	<footer class="footer">
+	<footer class="footer fixed_footer">
 
 		<!-- Copyright -->
 		<%@ include file="/app/pages/footer_control.jsp" %>
