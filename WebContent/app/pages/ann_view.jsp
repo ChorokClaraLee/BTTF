@@ -47,7 +47,7 @@
 <!-- END HEAD -->
 
 <!-- BODY -->
-<body>
+<body class="page-on-scroll fixed_container">
    <c:set var="board" value="${requestScope.board }"/>
     <!--========== HEADER ==========-->
     <header class="header navbar-fixed-top">
@@ -63,9 +63,9 @@
     <!--========== SLIDER ==========-->
 
     <!--========== PAGE LAYOUT ==========-->
-    <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-        <div class="content-lg container">
+    <!-- Service --> 
+    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+        <div class="content-lg container" style="margin-top : 50px;">
             <div class="row row-space-1 margin-b-2">
                 <div class="col-sm-12 sm-margin-b-2" style="margin-bottom: 20px;">
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
@@ -108,7 +108,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  

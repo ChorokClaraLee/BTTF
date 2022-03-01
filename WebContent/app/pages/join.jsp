@@ -48,7 +48,7 @@
 
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 	<c:if test = "${not empty param.flag }">
 		<c:if test = "${not param.flag }">
 			<script> alert("회원가입 실패")</script>
@@ -79,8 +79,8 @@
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Service -->
-    <div class="bg-color-sky-light" data-auto-height="true">
-        <div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container" data-auto-height="true">
+        <div class="content-lg container" style="margin-top : 50px;">
             <h1 class="pt-4">
                 <i class="fas fa-users title_subject_icon"></i>
                 	회원가입

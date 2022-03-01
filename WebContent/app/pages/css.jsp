@@ -46,7 +46,7 @@
 	
 <!-- BODY -->
 
-<body>
+<body class="page-on-scroll fixed_container">
 	<c:set var="boardList" value = "${requestScope.boardList }"/>
 	<c:set var="totalCnt" value = "${requestScope.totalCnt }"/>
 	
@@ -60,8 +60,8 @@
     <!--========== END HEADER ==========-->
 
     <!-- notice -->
-    <div class="bg-color-sky-light">
-        <div class="content-lg container">
+    <div class="bg-color-sky-light fixed_container">
+        <div class="content-lg container" style="margin-top : 50px;">
 <%--         ${boardJSON } --%>
             <!-- notice -->
             <h2>CSS QnA</h2>
@@ -155,7 +155,7 @@
     <!--========== END PAGE LAYOUT ==========-->
 
     <!--========== FOOTER ==========-->
-    <footer class="footer">
+    <footer class="footer fixed_footer">
 
         <!-- Copyright -->
                 <%@ include file="/app/pages/footer_control.jsp" %>  
