@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="getBookmarkAdd" parameterType="hashmap">
-		INSERT INTO POST_BOOKMARK values (seq_bookmark.nextval, #{user_id}, #{post_id}, 0)
+		INSERT INTO POST_BOOKMARK values (bookmark_seq.nextval, #{user_id}, #{post_id}, 0)
 	</insert>
 	
 	<delete id="bookmarkDelete" parameterType="string">
